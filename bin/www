@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('project:server');
 var http = require('http');
+var db = require('../services/db');
 
 /**
  * Get port from environment and store in Express.
@@ -25,7 +26,12 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+db.sync().then(function(){
+  server.listen(port);
+  console.log('server is listening is ' + port);
+}).catch(function(err){
+  console.error(err);
+})
 server.on('error', onError);
 server.on('listening', onListening);
 

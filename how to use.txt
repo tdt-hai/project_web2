@@ -1,0 +1,22 @@
+#install cookie-session
+npm install cookie-session --save
+
+#install bcrypt
+npm install bcrypt --save
+
+#install protgre sql
+
+npm install sequelize
+npm install pg pg-hstore --save
+
+npm install --save express-async-handler
+
+#Mailer
+npm install nodemailer --save
+
+#validator
+npm install --save express-validator
+
+Sử dụng node validator
+
+edit file register and email để chạy trên local
