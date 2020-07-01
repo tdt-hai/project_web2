@@ -28,21 +28,40 @@ User.init({
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
-  },
-  displayname: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true
   },
   password:{
     type: Sequelize.STRING,
     allowNull: false
     // allowNull defaults to true
   },
-  token: {
+  displayname: {
     type: Sequelize.STRING,
-  }
+    allowNull: false,
+  },
+  paper_type:{
+    type: Sequelize.STRING,
+    allowNull: false
+    // allowNull defaults to true
+  },
+  number_paper:{
+    type: Sequelize.STRING,
+    allowNull: false
+    // allowNull defaults to true
+  },
+  date_range:{
+    type: Sequelize.DATE,
+    allowNull: false
+    // allowNull defaults to true
+  },
+  account_number:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+    // allowNull defaults to true
+  },
+  active:{
+    type: Sequelize.BOOLEAN,
+  },
 }, {
   sequelize: db,
   modelName: 'user'
