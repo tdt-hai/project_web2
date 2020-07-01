@@ -33,7 +33,7 @@ app.use(require('./middleware/auth'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);     
-app.use('/logout',loginRouter);     
+app.use('/logout',logoutRouter);     
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
