@@ -10,7 +10,7 @@
     -ms-user-select: none;
     user-select: none;
   }
-  
+
   /* Hide the browser's default checkbox */
   .haha input {
     position: absolute;
