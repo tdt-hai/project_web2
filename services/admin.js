@@ -24,10 +24,15 @@ Admin.init({
     allowNull: false
     // allowNull defaults to true
   },
-  displayname: {
+  displayName: {
     type: Sequelize.STRING,
     allowNull: false,
-  },
+  }
+  
+}, {
+    sequelize: db,
+    modelName: 'admin'
+    // options
 });
 
 module.exports = Admin;
