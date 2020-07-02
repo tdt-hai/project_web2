@@ -8,6 +8,7 @@ router.get('/', asyncHandler( async function (req,res,next){
 }));
 
 router.post('/',asyncHandler(async function (req,res){
+    
     const users =  await user.findUserByEmail(req.body.email);
     
     if(!users || ! user.verifyPassword(req.body.password,users.password )){
