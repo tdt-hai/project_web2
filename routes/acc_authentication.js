@@ -4,8 +4,11 @@ const user = require('../services/user');
 const multer = require('multer');
 const fs = require("fs");
 const asyncHandler = require('express-async-handler');
+var userId = '';
 
 router.get('/', asyncHandler (async function(req,res){
+   userId = req.session.userId;
+  //res.json(userId);
     res.render('acc_authentication');
 }))
 
@@ -15,7 +18,7 @@ var storage1 = multer.diskStorage({
     callback(null, './public/images');
   },
   filename: function (req, file, callback) {
-    callback(null,`g` + '-' + 'frontImage' + '.png' );
+    callback(null,`${userId}` + '-' + 'frontImage' + '.png' );
   }
 });
 var storage2 = multer.diskStorage({
@@ -23,7 +26,7 @@ var storage2 = multer.diskStorage({
     callback(null, './public/images');
   },
   filename: function (req, file, callback) {
-    callback(null, currentUser + '-' + 'backImage' + '.png');
+    callback(null, `${userId}` + '-' + 'backImage' + '.png');
   }
 });
 //upload mặt trước cmnd
