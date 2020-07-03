@@ -40,10 +40,10 @@ router.post('/frontUpload',function(req,res){
 var backsideUpload = multer({ storage : storage2 }).array('backImage',1);
 router.post('/backsideUpload',function(req,res){
   backsideUpload(req,res,function(err) {  
-        if(err) {
-            return res.end("Error uploading file.");
-        }
-        res.end("File is uploaded");
+      if(err) {
+          return res.end("Error uploading file.");
+      }
+      res.end("File is uploaded");
     });
   });
 module.exports = router;

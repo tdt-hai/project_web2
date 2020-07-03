@@ -1,15 +1,21 @@
 <%- include('header'); -%>
-        <label>Ảnh cmnd mặt trước</label>
-        <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/frontUpload"method="post">
-        <input type="file" name="frontImage" multiple />
-        <input type="submit" value="Upload Image" name="submit">
-        <span id = "status"></span></br>
-        </form>
-        <label>Ảnh cmnd mặt sau</label>
-        <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/backsideUpload"method="post">
-        <input type="file" name="backImage" multiple />
-        <input type="submit" value="Upload Image" name="submit">
-        <span id = "status"></span>
-        </form>
-        
+<div class="card">
+<p class="h4 text-center py-4" style="text-align: center;">Xác thực tài khoản</p>
+<div class="card-body">
+    <label>Ảnh cmnd mặt trước</label>
+    <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/frontUpload"method="post">
+    <input type="file" name="frontImage" multiple />
+    <input type="submit" value="Upload Image" name="submit">
+    <span id = "status"></span></br>
+    </form>
+</div>
+<div class="card-body">
+    <label>Ảnh cmnd mặt sau</label>
+    <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/backsideUpload"method="post">
+    <input type="file" name="backImage" multiple />
+    <input type="submit" value="Upload Image" name="submit">
+    <span id = "status"></span>
+    </form>
+</div>
+</div>
 <%- include('footer'); -%>
