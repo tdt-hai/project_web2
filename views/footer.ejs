@@ -45,5 +45,22 @@
       });    
   });
   </script>
+<script>
+    $(document).ready(function() {
+      $('#uploadFormBack').submit(function() {
+          $("#statusBack").empty().text("File is uploading...");
+          $(this).ajaxSubmit({
+              error: function(xhr) {
+            status('Error: ' + xhr.status);
+              },
+              success: function(response) {
+          console.log(response)
+              $("#statusBack").empty().text(response);
+              }
+      });
+      return false;
+      });    
+  });
+  </script>
 </body>
 </html>

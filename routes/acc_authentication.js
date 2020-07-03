@@ -4,11 +4,8 @@ const user = require('../services/user');
 const multer = require('multer');
 const fs = require("fs");
 const asyncHandler = require('express-async-handler');
-var userId = '';
 
 router.get('/', asyncHandler (async function(req,res){
-   userId = req.session.userId;
-  //res.json(userId);
     res.render('acc_authentication');
 }))
 
@@ -18,7 +15,7 @@ var storage1 = multer.diskStorage({
     callback(null, './public/images');
   },
   filename: function (req, file, callback) {
-    callback(null,`${userId}` + '-' + 'frontImage' + '.png' );
+    callback(null,`${req.session.userId}` + '-' + 'frontImage' + '.png' );
   }
 });
 var storage2 = multer.diskStorage({
@@ -26,7 +23,7 @@ var storage2 = multer.diskStorage({
     callback(null, './public/images');
   },
   filename: function (req, file, callback) {
-    callback(null, `${userId}` + '-' + 'backImage' + '.png');
+    callback(null, `${req.session.userId}` + '-' + 'backImage' + '.png');
   }
 });
 //upload mặt trước cmnd
@@ -34,9 +31,9 @@ var frontUpload = multer({ storage : storage1 }).array('frontImage',1);
 router.post('/frontUpload',function(req,res){
   frontUpload(req,res,function(err) {  
       if(err) {
-          return res.end("Error uploading file.");
+          return res.end("Vui lòng upload 1 ảnh");
       }
-      res.end("File is uploaded");
+     res.end("Upload thành công");
   });
 });
 //upload mặt sau cmnd
@@ -44,9 +41,9 @@ var backsideUpload = multer({ storage : storage2 }).array('backImage',1);
 router.post('/backsideUpload',function(req,res){
   backsideUpload(req,res,function(err) {  
         if(err) {
-            return res.end("Error uploading file.");
+            return res.end("Vui lòng upload 1 ảnh");
         }
-        res.end("File is uploaded");
+        res.end("Upload thành công");
     });
   });
 module.exports = router;
