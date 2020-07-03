@@ -3,11 +3,11 @@ var router = express.Router();
 const user = require('../services/user');
 const asyncHandler = require('express-async-handler');
 /*Login */
-router.get('/', asyncHandler( async function (req,res,next){
+router.get('/login', asyncHandler( async function (req,res,next){
     res.render('login');
 }));
 
-router.post('/',asyncHandler(async function (req,res){
+router.post('/login',asyncHandler(async function (req,res){
     
     const users =  await user.findUserByEmail(req.body.email);
     
