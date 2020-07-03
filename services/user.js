@@ -7,7 +7,12 @@ const Model = Sequelize.Model;
 
 class User extends Model {
     static async findUserById(id){
-        return User.findByPk(id);
+        // return User.findByPk(id);
+        return User.findOne({
+          where:{
+            id,
+          }
+        })
     }
     static  async findUserByEmail(email){
         return User.findOne({

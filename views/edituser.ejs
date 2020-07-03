@@ -1,0 +1,43 @@
+<%- include('header'); -%>
+<title>Edit User</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="stylesheets/mystyle.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+   <div class="row justify-content-center">
+        <div class="col-8">
+            <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"> 
+                            <%= conf.name %> <br>
+                            <%= conf.detail %> <br>
+                            Thời gian: <%= conf.timeStarted %> 
+                            
+                        </li>
+                        
+            </ul>
+        <form action="/conferencedetail/<%=conf.id %>" method="POST">
+        <br>
+            
+            <div class="form-group" id = "example2">
+                <label for="text">Name</label>
+                <input type="text" value="<%= conf.name %>" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group" id = "example2">
+                <label for="text">Detail</label>
+                <input type="text"  value="<%= conf.detail %>" class="form-control" id="password" name="password">
+            </div>  
+           
+            <div class="form-group" id = "example2">
+                <label for="text">Time started</label>
+                <input type="date"  value="<%= time %>" id="timeStarted" name="timeStarted">
+            </div>  
+            
+            <button type="submit" class="btn btn-info">Save</button>
+        </form>
+        </div>
+    </div>
+
+
+ <%- include('./footer'); -%>

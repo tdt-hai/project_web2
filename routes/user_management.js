@@ -8,4 +8,12 @@ router.get('/',asyncHandler(async function profile(req,res){
 }));
 
 
+router.get('/:id',asyncHandler(async function(req,res){
+    const {id} = req.params;
+    const user = await User.findUserById(id);
+    //const time = formatDate(conf.timeStarted);
+    res.render('edituser',{user});
+}));
+
+
 module.exports = router;

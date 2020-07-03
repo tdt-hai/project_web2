@@ -5,17 +5,18 @@
 <link rel="stylesheet" href="stylesheets/mystyle.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<h1>Danh sách người dùng</h1>
+<div class="container emp-profile">
    <div class="row justify-content-center">
         <div class="col-8">
             <ul class="list-group">
                 <% if (listUser) { %>
                     <% listUser.forEach(u => { %>
                         <li class="list-group-item d-flex justify-content-between align-items-center"> 
-                            <%= u.email %> <br>
+                            <%=u.id%> -- <%= u.email %> <br>
                             <%= u.displayName %> <br>
                             Account number: <%= u.account_number %> 
-                            <a href="/conferencedetail/<%= u.id %>" class="btn btn-outline-secondary" type="button">Edit</a>
-                            <a href="/admin" class="btn btn-outline-secondary" type="button">List attend</a>
+                            <a href="/user_management/<%= u.id %>" class="btn btn-outline-secondary" type="button">Edit</a>
                             
                         </li>
                         
@@ -25,6 +26,6 @@
         </div>
     </div>
      
-
+</div>
 
  <%- include('./footer'); -%>
