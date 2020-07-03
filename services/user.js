@@ -16,6 +16,9 @@ class User extends Model {
             }
         });
     }
+    static async findAllUser(){
+      return User.findAll();
+    }
     static verifyPassword(password,passhash){
         return bcrypt.compareSync(password, passhash);
     }
