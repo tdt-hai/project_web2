@@ -13,6 +13,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var logoutRouter = require('./routes/logout');
 var changePasswordRouter = require('./routes/changePassword');
+var acc_authenticationRouter = require('./routes/acc_authentication');
 var user_managementRouter = require('./routes/user_management');
 
 var app = express();
@@ -41,6 +42,10 @@ app.use('/',loginRouter);
 app.use('/logout',logoutRouter);     
 app.use('/register',registerRouter);     
 app.use('/user_management',user_managementRouter);
+
+app.use('/changePassword',changePasswordRouter); 
+app.use('/acc_authentication',acc_authenticationRouter);  
+
 
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
