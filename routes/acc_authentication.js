@@ -15,7 +15,7 @@ var storage1 = multer.diskStorage({
     callback(null, './public/images');
   },
   filename: function (req, file, callback) {
-    callback(null, user.id + '-' + 'frontImage' + '.png');
+    callback(null,`g` + '-' + 'frontImage' + '.png' );
   }
 });
 var storage2 = multer.diskStorage({
@@ -23,7 +23,7 @@ var storage2 = multer.diskStorage({
     callback(null, './public/images');
   },
   filename: function (req, file, callback) {
-    callback(null, user.id + '-' + 'backImage' + '.png');
+    callback(null, currentUser + '-' + 'backImage' + '.png');
   }
 });
 //upload mặt trước cmnd
