@@ -38,9 +38,13 @@ app.use('/users', usersRouter);
 app.use('/login',loginRouter);     
 app.use('/logout',logoutRouter);     
 app.use('/register',registerRouter);     
+
 app.use('/changePassword',changePasswordRouter); 
 app.use('/acc_authentication',acc_authenticationRouter);  
 
+
+app.use('/changePassword',changePasswordRouter);  
+app.use('/profile',require('./routes/profile'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
