@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const db = require('./db');
 const Sequelize = require('sequelize');
+const { or } = require('sequelize');
+const Op = Sequelize.Op;
 
 /*model user*/
 const Model = Sequelize.Model;
@@ -16,6 +18,18 @@ class User extends Model {
             }
         });
     }
+
+    static  async findUserByContent(content){
+      return User.findAll({
+        where : {
+         [Op.or]: [
+           { email: { [Op.like]: '%' + content + '%' } },
+           { displayName: { [Op.like]: '%' + content + '%' } },
+           { account_number: { [Op.like]: '%' + content + '%' } }
+         ]
+       }
+      });
+  }
     static verifyPassword(password,passhash){
         return bcrypt.compareSync(password, passhash);
     }

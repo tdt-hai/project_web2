@@ -12,6 +12,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var logoutRouter = require('./routes/logout');
 var changePasswordRouter = require('./routes/changePassword');
+var findUser = require('./routes/findUser');
 
 var app = express();
 
@@ -36,7 +37,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);     
 app.use('/logout',logoutRouter);     
-app.use('/register',registerRouter);     
+app.use('/register',registerRouter);   
+app.use('/findUser', findUser);  
 
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
