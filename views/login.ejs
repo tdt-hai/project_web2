@@ -1,27 +1,50 @@
 <%- include('header'); -%>
 
 <!-- Default form login -->
-<form class="text-center border border-light p-5" action="login" method="POST" style="text-align: center;">
-
-    <p class="h4 mb-4">Đăng nhập</p>
-
-    <!-- Email -->
-    <input type="email" id="email" name="email" class="form-control mb-4" placeholder="Email" value = "hai@gmail.com">
-
-    <!-- Password -->
-    <input type="password" id="password" name="password" class="form-control mb-4" placeholder="Mật khẩu" value = "123456">
-
-    <!-- Sign in button -->
-    <button class="btn btn-info btn-block my- 4" type="submit">Đăng nhập</button>
-    <!-- Social login -->
-    <p>or sign in with:</p>
-
-    <a href="https://www.facebook.com/tdthai99" target="_blank" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-
-</form>
+<div class="authincation section-padding">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-xl-5 col-md-6">
+                            <div class="mini-logo text-center my-5">
+                                <img src="images/images/m_logo.png" alt="">
+                            </div>
+                        <div class="auth-form card">
+                            <div class="card-header justify-content-center">
+                                <h4 class="card-title">Đăng nhập</h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" name="myform" class="signin_validate"action="login">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                            <!-- Email -->
+                                         <input type="email" id="email" name="email" class="form-control" placeholder="Email" value = "hai@gmail.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mật khẩu</label>
+                                         <input type="password" id="password" name="password" class="form-control" placeholder="Mật khẩu" value = "123456">
+                                    </div>
+                                    <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                                        <div class="form-group mb-0">
+                                            <label class="toggle">
+                                                <input class="toggle-checkbox" type="checkbox">
+                                                <div class="toggle-switch"></div>
+                                                <span class="toggle-label">Nhớ mât khẩu</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <a href="reset.html">Quên mật khẩu?</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success btn-block">Đăng nhập</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 <!-- Default form login -->
 
 

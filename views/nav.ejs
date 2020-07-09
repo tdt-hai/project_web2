@@ -1,0 +1,68 @@
+<div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <nav class="navbar navbar-expand-lg navbar-light px-0 justify-content-between">
+                            <a class="navbar-brand" href="index.html"><img src="images/images/w_logo.png" alt="">
+                                <span>ACB</span></a>
+                                 <% if (currentUser.adminRole) { %>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/register">Đăng kí</a>
+                                    </li>
+                                    <li class="nav-item">
+                                                <a class="nav-link" href="/user_management">Quản lý người dùng</a>
+                                    </li>
+                                    </ul>
+                                    <ul class="navbar-nav ml-auto nav-flex-icons">
+                                        <form class="form-inline" method="POST" action="findUser">
+                                        <div class="md-form my-0">
+                                            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="contentSearch" aria-label="Search">
+                                        </div>
+                                        </form>
+                                        <div class="dashboard_log my-2">
+                                        <div class="d-flex align-items-center">
+                                   <% } else if(!currentUser.adminRole) {%>
+                                    <div class="dashboard_log my-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="account_money">
+                                                <ul>
+                                                    <li class="crypto">
+                                                        <span>0.0025</span>
+                                                        <i class="cc BTC-alt"></i>
+                                                    </li>
+                                                    <li class="usd">
+                                                        <span>19.93 USD</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                    <% }%>
+                                    <div class="profile_log dropdown">
+                                        <div class="user" data-toggle="dropdown">
+                                            <span class="thumb"><i class="la la-user"></i></span>
+                                            <span class="name">Maria Pascle</span>
+                                            <span class="arrow"><i class="la la-angle-down"></i></span>
+                                        </div>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="/profile" class="dropdown-item">
+                                                <i class="la la-user"></i> Thông tin cá nhân
+                                            </a>
+                                             <% if(!currentUser.adminRole) {%>
+                                            <a href="/acc_authentication" class="dropdown-item">
+                                                <i class="la la-book"></i> Xác thực tài khoản 
+                                            </a>
+                                            <%}%>
+                                            <a href="/changePassword" class="dropdown-item">
+                                                <i class="la la-cog"></i> Đổi mật khẩu
+                                            </a>
+                                            <a href="/logout" class="dropdown-item logout">
+                                                <i class="la la-sign-out"></i> Đăng xuất
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
