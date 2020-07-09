@@ -1,66 +1,24 @@
 
-</div>
-</div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="page-footer font-small blue center" style="text-align: center;">
+   <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/waves/waves.min.js"></script>
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> Ngân hàng</a>
-  </div>
-  <!-- Copyright -->
+    <script src="vendor/owlcarousel/js/owl.carousel.min.js"></script>
+    <script src="javascripts/js/plugins/owl-carousel-init.js"></script>
+    <script src="vendor/scrollit/scrollIt.js"></script>
+    <script src="javascripts/js/plugins/scrollit-init.js"></script>
 
-</footer>
-<!-- Footer -->
-  <!-- jQuery -->
-  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="javascripts/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="javascripts/mdb.min.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript"></script>
-  
-  <script src="javascripts/style.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-<script>
-    $(document).ready(function() {
-      $('#uploadForm').submit(function() {
-          $("#status").empty().text("File is uploading...");
-          $(this).ajaxSubmit({
-              error: function(xhr) {
-            status('Error: ' + xhr.status);
-              },
-              success: function(response) {
-          console.log(response)
-              $("#status").empty().text(response);
-              }
-      });
-      return false;
-      });    
-  });
-  </script>
-<script>
-    $(document).ready(function() {
-      $('#uploadFormBack').submit(function() {
-          $("#statusBack").empty().text("File is uploading...");
-          $(this).ajaxSubmit({
-              error: function(xhr) {
-            status('Error: ' + xhr.status);
-              },
-              success: function(response) {
-          console.log(response)
-              $("#statusBack").empty().text(response);
-              }
-      });
-      return false;
-      });    
-  });
-  </script>
+    <!-- Chart sparkline plugin files -->
+    <script src="vendor/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="javascripts/js/plugins/sparkline-init.js"></script>
+
+    <script src="vendor/validator/jquery.validate.js"></script>
+    <script src="vendor/validator/validator-init.js"></script>
+    <script src="javascripts/js/scripts.js"></script>
+
+    <script src="javascripts/js/settings.js"></script>
+    <script src="javascripts/js/quixnav-init.js"></script>
+    <script src="javascripts/js/styleSwitcher.js"></script>
+<!-- Mirrored from quixlab.com/demo/elaenia/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jul 2020 02:37:22 GMT -->
 </body>
 </html>
