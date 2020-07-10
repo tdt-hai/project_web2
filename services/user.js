@@ -52,6 +52,10 @@ User.init({
     type: Sequelize.STRING,
     allowNull: false,
   },
+  phoneNumber: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   paper_type:{
     type: Sequelize.STRING,
     
