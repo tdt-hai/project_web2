@@ -17,7 +17,7 @@ var changePasswordRouter = require('./routes/changePassword');
 var findUser = require('./routes/findUser');
 var acc_authenticationRouter = require('./routes/acc_authentication');
 var user_managementRouter = require('./routes/user_management');
-
+var reset_password = require('./routes/reset_password');
 
 var app = express();
 
@@ -51,7 +51,7 @@ app.use('/user_management',user_managementRouter);
 
 app.use('/changePassword',changePasswordRouter); 
 app.use('/acc_authentication',acc_authenticationRouter);  
-
+app.use('/reset_password',reset_password);  
 
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
