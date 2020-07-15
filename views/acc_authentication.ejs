@@ -1,21 +1,36 @@
 <%- include('header'); -%>
-<div class="card">
-<p class="h4 text-center py-4" style="text-align: center;">Xác thực tài khoản</p>
-        <div class="card-body">
-                <label>Ảnh cmnd mặt trước</label>
-                <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/frontUpload"method="post">
-                        <input type="file" name="frontImage" multiple />
-                        <input type="submit" value="Upload Image" name="submit">
-                        <span id = "status"></span></br>
-                </form>
+<%- include('nav'); -%>
+ <div class="verification section-padding">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-xl-5 col-md-6">
+                        <div class="auth-form card">
+                            <div class="card-body">
+                                    <div class="identity-content">
+                                        <h4>Upload your ID card</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mr-sm-2">Ảnh cmnd mặt trước</label>
+                                        <span class="float-right">Tối đa 2mb</span>
+                                        <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/frontUpload"method="post">
+                                                <input class="file-upload-field" type="file" name="frontImage" multiple />
+                                                <input type="submit" value="Upload Image" name="submit">
+                                                <span id = "status"></span></br>
+                                        </form>
+                                     </div>
+                                    <div class="form-group">
+                                        <label class="mr-sm-2">Ảnh cmnd mặt sau</label>
+                                        <span class="float-right">Tối đa 2mb</span>
+                                        <form id="uploadFormBack" enctype="multipart/form-data"action="/acc_authentication/backsideUpload"method="post">
+                                                <input class="file-upload-field" type="file" name="frontImage" multiple />
+                                                <input type="submit" value="Upload Image" name="submit">
+                                                <span id = "statusBack"></span></br>
+                                     </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-                <label>Ảnh cmnd mặt sau</label>
-                <form id="uploadFormBack" enctype="multipart/form-data"action="/acc_authentication/backsideUpload"method="post">
-                        <input type="file" name="frontImage" multiple />
-                        <input type="submit" value="Upload Image" name="submit">
-                        <span id = "statusBack"></span></br>
-                </form>
-        </div>
-</div>
 <%- include('footer'); -%>

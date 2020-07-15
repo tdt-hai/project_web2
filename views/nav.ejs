@@ -11,10 +11,10 @@
                     <div class="col-xl-12">
                         <nav class=" navbar navbar-expand-lg navbar-light px-0 justify-content-between">
                         <% if (currentUser.adminRole) { %>
-                            <a class="navbar-brand"  href="admin"><img src="images/images/w_logo.png" alt="">
+                            <a class="navbar-brand"  href="/admin"><img src="/images/images/w_logo.png" alt="">
                                 <span>ACB</span></a>
                                 <% } else if (!currentUser.adminRole) {%>
-                                <a class="navbar-brand"  href="users"><img src="images/images/w_logo.png" alt="">
+                                <a class="navbar-brand"  href="/users"><img src="/images/images/w_logo.png" alt="">
                                     <span>ACB</span></a>
                                 <% }%>
                                  <% if (currentUser.adminRole) { %>
@@ -26,7 +26,7 @@
                                     </li>
                                     </ul>
                                     <ul class="navbar-nav ml-auto nav-flex-icons">
-                                        <form class="form-inline" method="POST" action="findUser">
+                                        <form class="form-inline" method="POST" action="/findUser">
                                         <div class="md-form my-0">
                                             <input class="form-control mr-sm-2 " type="text" placeholder="Search" name="contentSearch" aria-label="Search">
                                         </div>
@@ -60,7 +60,7 @@
                                             </a>
                                              <% if(!currentUser.adminRole) {%>
                                             <a href="/acc_authentication" class="dropdown-item">
-                                                <i class="la la-book"></i> Xác thực tài khoản 
+                                                <i class="fa fa-check"></i> Xác thực tài khoản 
                                             </a>
                                             <%}%>
                                             <a href="/changePassword" class="dropdown-item">

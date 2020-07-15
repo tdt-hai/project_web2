@@ -1,29 +1,18 @@
 const {Router} = require('express');
 const router = new Router();
 const User = require('../services/user');
+const Function = require('../services/function');
 const asyncHandler = require('express-async-handler');
+
 router.get('/',asyncHandler(async function profile(req,res){
     const listUser = await User.findAll();
     res.render('user_management', {listUser});
 }));
 
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
- return [year, month, day].join('-');
-}
-
 router.get('/:id',asyncHandler(async function profile(req,res){
     const {id} = req.params;
     const user = await User.findUserById(id);
-    const time = formatDate(user.date_range);
+    const time = Function.formatDate(user.date_range);
     res.render('edituser',{user,time});
 }));
 
@@ -39,10 +28,6 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     await User.updateUser(id,email,displayName,paperType,idNo,issued);
     const listUser = await User.findAll();
     res.redirect('../user_management');
-
-
-
  }));
-
 
 module.exports = router;
