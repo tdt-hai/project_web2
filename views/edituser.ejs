@@ -65,9 +65,11 @@
                                 </div>
                             </div>
 
+
 <div class="container emp-profile">
    <div class="row justify-content-center">
         <div class="col-8">
+
             <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center"> 
                             Id:  <%= user.id %> <br>
@@ -77,8 +79,10 @@
                         </li>
                         
             </ul>
+            <br>
+            <br>
         <form action="/user_management/<%=user.id %>" method="POST">
-            
+            <h2>Edit your information </h2>
             <div class="form-group" id = "example2">
                 <label for="text">Email</label>
                 <input type="text" value="<%= user.email %>" class="form-control" id="email" name="email">
@@ -88,27 +92,25 @@
                 <input type="text"  value="<%= user.displayName %>" class="form-control" id="displayName" name="displayName">
             </div>  
                <!-- paperType-->
+
             <div class="form-group" id = "example2">
-                <select class="browser-default custom-select" name = "paperType">
-                    <option value="CMND">CMND</option>
-                    <option value="CCCD">CCCD</option>
-                    <option value="passPort">Hộ chiếu</option>
-                </select>
+            <label for="text">Indentification (CMND, CCCD, Passport)</label>
+               <input type="text"  value="<%= user.paper_type %>" class="form-control" id="paperType" name="paperType">
             </div>
                  <!-- Id -->
             <div class="form-group" id = "example2">
                 <label for="text">Id no:</label>
-                <input type="text"  value="<%= user.number_paper %>" class="form-control" id="numberPaper" name="numberPaper">
+                <input type="text"  value="<%= user.number_paper %>" class="form-control" id="idNo" name="idNo">
             </div>  
-             <!-- paperType-->
+             <!-- Issued-->
             <div class="form-group" id = "example2">
-                <label for="text">Id no:</label>
-                <input type="text"  value="<%= user.number_paper %>" class="form-control" id="numberPaper" name="numberPaper">
+                <label for="text">Issued:</label>
+                <input type="date"  value="<%= time %>" class="form-control" id="issued" name="issued">
             </div>  
             <button type="submit" class="btn btn-info">Save</button>
         </form>
         </div>
     </div>
 </div>
-
  <%- include('footer'); -%>
+

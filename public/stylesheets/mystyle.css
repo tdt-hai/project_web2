@@ -1,13 +1,16 @@
 body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background-color: #3a3361; 
 }
 .emp-profile{
     padding: 3%;
     margin-top: 3%;
     margin-bottom: 3%;
     border-radius: 0.5rem;
-    background: #fff;
+    background:#7c74a8;
+    
 }
+
+
 .profile-img{
     text-align: center;
 }
@@ -91,5 +94,5 @@ body{
 }
 .profile-tab p{
     font-weight: 600;
-    color: #0062cc;
+    color: #16304d;
 }

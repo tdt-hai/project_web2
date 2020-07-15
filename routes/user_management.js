@@ -9,7 +9,6 @@ router.get('/',asyncHandler(async function profile(req,res){
     res.render('user_management', {listUser});
 }));
 
-
 router.get('/:id',asyncHandler(async function profile(req,res){
     const {id} = req.params;
     const user = await User.findUserById(id);
@@ -29,9 +28,6 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     await User.updateUser(id,email,displayName,paperType,idNo,issued);
     const listUser = await User.findAll();
     res.redirect('../user_management');
-
-
-
  }));
 
 module.exports = router;
