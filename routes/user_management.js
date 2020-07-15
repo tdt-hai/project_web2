@@ -15,5 +15,4 @@ router.get('/:id',asyncHandler(async function(req,res){
     res.render('edituser',{user});
 }));
 
-
 module.exports = router;

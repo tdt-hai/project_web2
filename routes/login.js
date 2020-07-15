@@ -14,12 +14,15 @@ router.post('/',asyncHandler(async function (req,res){
     if(!users || ! user.verifyPassword(req.body.password,users.password )){
         return res.render('login');
     }
-   
-    req.session.userId = users.id;
-    //nếu không phải nhân viên ngân hàng thì trở về trang đổi mật khẩu
+    //nếu không phải nhân viên ngân hàng thì trở về trang mật khẩu
     if(users.adminRole == false){
-        res.redirect('/');
+        req.session.userId = users.id;
+        res.redirect('users');
     }
-    res.redirect('/');
+    else 
+    {
+        req.session.userId = users.id;
+        res.redirect('admin');
+    }
 }));
 module.exports = router;
