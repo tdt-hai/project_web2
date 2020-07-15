@@ -1,13 +1,15 @@
 <%- include('header'); -%>
+<%- include('nav'); %>
+
 <title>Profile</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" href="stylesheets/mystyle.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<h1>Thông tin cá nhân</h1>
-
 <div class="container emp-profile">
+<h2 style="text-align: center">Personal Information</h2>
+<br>
             <form method="post">
                 <div class="row">
                    
@@ -21,9 +23,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                                </li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -126,4 +126,4 @@
             </form>           
         </div>
 
-<%- include('footer'); -%>
+</body>
