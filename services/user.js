@@ -58,6 +58,19 @@ class User extends Model {
     static hashPassword(password){
         return bcrypt.hashSync(password, 10);
     }
+    static async updateUser(id,email,displayName,paperType,idNo,issued){
+      const u = await User.findUserById(id);
+      u.email = email;
+      u.displayName = displayName;
+      u.paper_type = paperType;
+      u.number_paper = idNo;
+      u.date_range = issued;
+
+     console.log(id, u.displayName,u.date_range,u.account_number);
+     (await u).update;
+     await u.save();
+     
+    }
 }
 User.init({
   // attributes

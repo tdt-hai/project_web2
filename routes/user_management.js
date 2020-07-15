@@ -9,7 +9,6 @@ router.get('/',asyncHandler(async function profile(req,res){
     res.render('user_management', {listUser});
 }));
 
-
 router.get('/:id',asyncHandler(async function profile(req,res){
     const {id} = req.params;
     const user = await User.findUserById(id);
