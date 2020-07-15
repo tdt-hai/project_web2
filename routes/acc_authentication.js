@@ -31,9 +31,9 @@ var frontUpload = multer({ storage : storage1 }).array('frontImage',1);
 router.post('/frontUpload',function(req,res){
   frontUpload(req,res,function(err) {  
       if(err) {
-          return res.end("Vui lòng upload 1 ảnh");
+          return res.end("Vui long upload 1 anh");
       }
-     res.end("Upload thành công");
+     res.end("Upload thanh cong");
   });
 });
 //upload mặt sau cmnd
@@ -41,9 +41,9 @@ var backsideUpload = multer({ storage : storage2 }).array('backImage',1);
 router.post('/backsideUpload',function(req,res){
   backsideUpload(req,res,function(err) {  
         if(err) {
-            return res.end("Vui lòng upload 1 ảnh");
+            return res.end("Vui long upload 1 anh");
         }
-        res.end("Upload thành công");
+        res.end("Upload thanh cong");
     });
   });
 module.exports = router;

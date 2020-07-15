@@ -50,5 +50,39 @@
     <script src="javascripts/js/quixnav-init.js"></script>
     <script src="javascripts/js/styleSwitcher.js"></script>
 <!-- Mirrored from quixlab.com/demo/elaenia/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jul 2020 02:37:22 GMT -->
+<script>
+    $(document).ready(function() {
+      $('#uploadForm').submit(function() {
+          $("#status").empty().text("File is uploading...");
+          $(this).ajaxSubmit({
+              error: function(xhr) {
+            status('Error: ' + xhr.status);
+              },
+              success: function(response) {
+          console.log(response)
+              $("#status").empty().text(response);
+              }
+      });
+      return false;
+      });    
+  });
+  </script>
+<script>
+    $(document).ready(function() {
+      $('#uploadFormBack').submit(function() {
+          $("#statusBack").empty().text("File is uploading...");
+          $(this).ajaxSubmit({
+              error: function(xhr) {
+            status('Error: ' + xhr.status);
+              },
+              success: function(response) {
+          console.log(response)
+              $("#statusBack").empty().text(response);
+              }
+      });
+      return false;
+      });    
+  });
+  </script>
 </body>
 </html>
