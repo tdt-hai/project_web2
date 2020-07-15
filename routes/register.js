@@ -5,6 +5,7 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const crypto = require('crypto');
 const Email = require('../services/email')
+const Phone = require('../services/phone');
 
 /*Login */
 router.get('/', asyncHandler( async function (req,res,next){
@@ -28,10 +29,10 @@ router.post('/',[
     body('displayName')
     .trim()
     .notEmpty(),
-    body('numberPaper')
+    body('phoneNumber')
     .trim()
     .notEmpty(),
-    body('accountNumber')
+    body('numberPaper')
     .trim()
     .notEmpty(),
     body('dateRange')
@@ -50,15 +51,18 @@ router.post('/',[
         email: req.body.email,
         password: User.hashPassword(passWord),
         displayName: req.body.displayName,
+        phoneNumber:  req.body.phoneNumber,
         paper_type: req.body.paperType,
         number_paper: req.body.numberPaper ,
         date_range: req.body.dateRange,
-        account_number: req.body.accountNumber,
+        account_number: req.body.numberPaper,
         active: false,
         adminRole: false,
     });
-    //send email
-    await Email.SendEmail(users.email,'Mật khẩu của bạn',`${passWord}`);
-    res.redirect('/');
+    //send password qua email
+    await Email.SendEmail(users.email,'Mat khau cua ban la: ',`${passWord}`);
+    //send password bằng sđt
+    //await Phone.sendSMS('ACB bank',users.phoneNumber,`Mat khau cua ban la: ${passWord}`);
+    res.redirect('/admin');
 }));
 module.exports = router;
