@@ -35,9 +35,6 @@ router.post('/',[
     body('numberPaper')
     .trim()
     .notEmpty(),
-    body('accountNumber')
-    .trim()
-    .notEmpty(),
     body('dateRange')
     .trim()
     .notEmpty(),
@@ -58,14 +55,14 @@ router.post('/',[
         paper_type: req.body.paperType,
         number_paper: req.body.numberPaper ,
         date_range: req.body.dateRange,
-        account_number: req.body.accountNumber,
+        account_number: req.body.numberPaper,
         active: false,
         adminRole: false,
     });
     //send password qua email
     await Email.SendEmail(users.email,'Mat khau cua ban la: ',`${passWord}`);
     //send password bằng sđt
-    await Phone.sendSMS('ACB bank',users.phoneNumber,`Mat khau cua ban la: ${passWord}`);
-    res.redirect('/');
+    //await Phone.sendSMS('ACB bank',users.phoneNumber,`Mat khau cua ban la: ${passWord}`);
+    res.redirect('/admin');
 }));
 module.exports = router;

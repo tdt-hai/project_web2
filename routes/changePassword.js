@@ -7,8 +7,7 @@ const { body, validationResult } = require('express-validator');
 router.get('/', asyncHandler( async function (req,res,next){
     res.render('changePassword');
 }));
-
-
+//reset password 
 router.get('/:id',async function (req,res){
     const id = req.params.id ;
     console.log(id);
@@ -20,6 +19,7 @@ router.get('/:id',async function (req,res){
     return res.redirect('/changePassword');
    
 });
+// change password
 
 router.post('/',[
     body('newPassword')
