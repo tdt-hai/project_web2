@@ -56,6 +56,7 @@ app.use('/reset_password',reset_password);
 
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
+app.use('/user_management',require('./routes/user_management'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

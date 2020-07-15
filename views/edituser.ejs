@@ -1,0 +1,54 @@
+<%- include('header'); -%>
+<title>Edit User</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="stylesheets/mystyle.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container emp-profile">
+   <div class="row justify-content-center">
+        <div class="col-8">
+            <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"> 
+                            Id:  <%= user.id %> <br>
+                            Email: <%= user.email %> <br>
+                            Name: <%= user.displayName %>
+                            Account : <%= user.account_number %>
+                        </li>
+                        
+            </ul>
+        <form action="/user_management/<%=user.id %>" method="POST">
+            
+            <div class="form-group" id = "example2">
+                <label for="text">Email</label>
+                <input type="text" value="<%= user.email %>" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group" id = "example2">
+                <label for="text">Display name</label>
+                <input type="text"  value="<%= user.displayName %>" class="form-control" id="displayName" name="displayName">
+            </div>  
+               <!-- paperType-->
+            <div class="form-group" id = "example2">
+                <select class="browser-default custom-select" name = "paperType">
+                    <option value="CMND">CMND</option>
+                    <option value="CCCD">CCCD</option>
+                    <option value="passPort">Hộ chiếu</option>
+                </select>
+            </div>
+                 <!-- Id -->
+            <div class="form-group" id = "example2">
+                <label for="text">Id no:</label>
+                <input type="text"  value="<%= user.number_paper %>" class="form-control" id="numberPaper" name="numberPaper">
+            </div>  
+             <!-- paperType-->
+            <div class="form-group" id = "example2">
+                <label for="text">Id no:</label>
+                <input type="text"  value="<%= user.number_paper %>" class="form-control" id="numberPaper" name="numberPaper">
+            </div>  
+            <button type="submit" class="btn btn-info">Save</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+ <%- include('./footer'); -%>
