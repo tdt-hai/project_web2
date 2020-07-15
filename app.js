@@ -34,7 +34,9 @@ app.use(cookieSession({
   name: 'session',
   keys: ['123456']
 }))
+//Cấp quyền sử dụng thư mục public
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'user_management')));
 //middleware
 app.use(require('./middleware/auth'));
 //router
