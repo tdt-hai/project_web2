@@ -20,6 +20,7 @@ router.get('/:id',async function (req,res){
    
 });
 // change password
+
 router.post('/',[
     body('newPassword')
     .isLength({min: 6}),

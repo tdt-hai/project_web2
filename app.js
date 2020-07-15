@@ -53,6 +53,7 @@ app.use('/changePassword',changePasswordRouter);
 app.use('/acc_authentication',acc_authenticationRouter);  
 app.use('/reset_password',reset_password);  
 
+
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
 // catch 404 and forward to error handler
