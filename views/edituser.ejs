@@ -26,9 +26,15 @@
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Loại giấy tờ</label>
                                                     <select class="form-control" name = "paperType">
-                                                          <option value="CMND">CMND</option>
-                                                          <option value="CCCD">CCCD</option>
-                                                          <option value="passPort">Hộ chiếu</option>
+                                                          <option value="CMND" <% if(user.paper_type == 'CMND'){ %>
+                                                                                selected="selected"
+                                                                                <% } %>>CMND</option>
+                                                          <option value="CCCD" <% if(user.paper_type == 'CCCD'){ %>
+                                                                                selected="selected"
+                                                                                <% } %>>CCCD</option>
+                                                          <option value="passport" <% if(user.paper_type == 'passport'){ %>
+                                                                                selected="selected"
+                                                                                <% } %>>Hộ chiếu</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-xl-6">
