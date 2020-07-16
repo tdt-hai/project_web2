@@ -18,6 +18,8 @@ var findUser = require('./routes/findUser');
 var acc_authenticationRouter = require('./routes/acc_authentication');
 var user_managementRouter = require('./routes/user_management');
 var reset_password = require('./routes/reset_password');
+const transferring_money = require('./routes/transferring_money');
+const confirm_transferring_money = require('./routes/confirm_transferring_money');
 
 var app = express();
 
@@ -56,6 +58,8 @@ app.use('/reset_password',reset_password);
 
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
+app.use('/transferring_money',transferring_money);
+app.use('/confirm_transferring_money',confirm_transferring_money);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

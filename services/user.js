@@ -90,3 +90,5 @@ User.init({
 });
 
 module.exports = User;
+
+//$2b$10$MsA5N/jTpEFOSUhsgjNuweKcpu2RtGnCK2fFc0pwILQsUvfZI.Eye
