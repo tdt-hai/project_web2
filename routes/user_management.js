@@ -5,7 +5,7 @@ const Function = require('../services/function');
 const asyncHandler = require('express-async-handler');
 
 router.get('/',asyncHandler(async function profile(req,res){
-    const listUser = await User.findAll();
+    const listUser = await User.findAllUser();
     res.render('user_management', {listUser});
 }));
 
@@ -25,7 +25,7 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     const paperType = req.body.paperType;
     const idNo = req.body.idNo;
     const issued = req.body.issued;
-    console.log(id,issued,paperType);
+    //console.log(idNo);
     await User.updateUser(id,email,displayName,phoneNumber,paperType,idNo,issued);
     const listUser = await User.findAll();
     res.redirect('../user_management');

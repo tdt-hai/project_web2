@@ -23,10 +23,15 @@ class User extends Model {
             }
         });
     }
+    //Hàm tìm kiếm người dùng
     static async findAllUser(){
-      return User.findAll();
+      return User.findAll({
+        where: {
+          adminRole: false
+        }
+      });
     }
-
+    //tìm kiếm người dùng
     static  async findUserByContent(content){
       return User.findAll({
         where : {
@@ -34,10 +39,12 @@ class User extends Model {
            { email: { [Op.like]: '%' + content + '%' } },
            { displayName: { [Op.like]: '%' + content + '%' } },
            { account_number: { [Op.like]: '%' + content + '%' } }
-         ]
+         ],
+         adminRole: false
        }
       });
   }
+  //update tài khoản người dùng
   static async updateUser(id,email,displayName,phoneNumber,paperType,idNo,issued){
     const u = await User.findUserById(id);
     u.email = email;
@@ -52,24 +59,21 @@ class User extends Model {
    await u.save();
    
   }
+  //Update trạng thái người dùng
+  static async updateStatus(id,status){
+    return User.update({
+      active: status,
+    },{
+      where: {
+        id: id,
+      }
+    });
+  }
     static verifyPassword(password,passhash){
         return bcrypt.compareSync(password, passhash);
     }
     static hashPassword(password){
         return bcrypt.hashSync(password, 10);
-    }
-    static async updateUser(id,email,displayName,paperType,idNo,issued){
-      const u = await User.findUserById(id);
-      u.email = email;
-      u.displayName = displayName;
-      u.paper_type = paperType;
-      u.number_paper = idNo;
-      u.date_range = issued;
-
-     console.log(id, u.displayName,u.date_range,u.account_number);
-     (await u).update;
-     await u.save();
-     
     }
 }
 User.init({
