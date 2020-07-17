@@ -5,7 +5,7 @@
 <%- include('nav'); %>
 <!------ Include the above in your HEAD tag ---------->
 <div class="container emp-profile">
-<h2 style="text-align: center">Personal Information</h2>
+<h2 style="text-align: center " class="profile-title">Thông tin cá nhân</h2>
 <br>
             <form method="post">
                 <div class="row">
@@ -44,7 +44,7 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Email</label>
+                                                <label>Email:</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p> <%= currentUser.email%> </p>
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Identity paper</label>
+                                                <label>Loại giấy tờ:</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p> <%= currentUser.paper_type %> </p>
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Issued:</label>
+                                                <label>Ngày sinh:</label>
                                             </div>
                                             <div class="col-md-6">
                                                <p> <%= currentUser.date_range %> </p>
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Account number</label>
+                                                <label>Số tài khoản:</label>
                                             </div>
                                             <div class="col-md-6">
                                                <p> <%= currentUser.account_number %> </p>
@@ -85,7 +85,7 @@
                                         </div>
                                          <div class="row">
                                             <div class="col-md-6">
-                                                <label>Active status</label>
+                                                <label>Trạng thái hoạt động:</label>
                                             </div>
                                             <div class="col-md-6">
                                                <p> <%= currentUser.active %> </p>
@@ -93,7 +93,7 @@
                                         </div>
                                          <div class="row">
                                             <div class="col-md-6">
-                                                <label>Admin role</label>
+                                                <label>Admin role:</label>
                                             </div>
                                             <div class="col-md-6">
                                                <p> <%= currentUser.adminRole %> </p>
