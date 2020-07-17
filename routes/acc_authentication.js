@@ -6,7 +6,8 @@ const fs = require("fs");
 const asyncHandler = require('express-async-handler');
 
 router.get('/', asyncHandler (async function(req,res){
-    res.render('acc_authentication');
+    const id = req.session.userId;
+    res.render('acc_authentication',{id});
 }))
 
 
