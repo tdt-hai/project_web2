@@ -17,8 +17,9 @@ var changePasswordRouter = require('./routes/changePassword');
 var findUser = require('./routes/findUser');
 var acc_authenticationRouter = require('./routes/acc_authentication');
 var user_managementRouter = require('./routes/user_management');
-
-
+var reset_password = require('./routes/reset_password');
+var admin_auth = require('./routes/admin_auth');
+var user_account= require('./routes/user_account');
 var app = express();
 
 // view engine setup
@@ -34,7 +35,9 @@ app.use(cookieSession({
   name: 'session',
   keys: ['123456']
 }))
+//Cấp quyền sử dụng thư mục public
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'user_management')));
 //middleware
 app.use(require('./middleware/auth'));
 //router
@@ -51,10 +54,14 @@ app.use('/user_management',user_managementRouter);
 
 app.use('/changePassword',changePasswordRouter); 
 app.use('/acc_authentication',acc_authenticationRouter);  
+app.use('/reset_password',reset_password);  
+app.use('/admin_auth',admin_auth);  
+app.use('/user_account',user_account);  
 
 
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
+app.use('/user_management',require('./routes/user_management'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

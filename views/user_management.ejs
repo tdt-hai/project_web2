@@ -1,2 +1,33 @@
 <%- include('header'); -%>
+<%- include('nav'); -%>
+<title>User management</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="/stylesheets/mystyle.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<br>
+<br>
+<div class="container emp-profile">
+   <div class="row justify-content-center">
+        <div class="col-8">
+        <h1 style ="text-align: center">Danh sách người dùng</h1>
+            <ul style = "background-color: black" >
+                <% if (listUser) { %>
+                    <% listUser.forEach(u => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: lightgray"> 
+                            <%=u.id%> -- <%= u.email %> <br>
+                            <%= u.displayName %> <br>   
+                            Account number: <%= u.account_number %> 
+                            <a href="/user_management/<%= u.id %>" class="btn btn-outline-secondary" type="button" style = "color: black">Edit</a>
+                            
+                        </li>
+                        
+                        <% }); %>
+                        <% } %>
+                </ul>
+        </div>
+    </div>
+     
+</div>
+</body>
 <%- include('footer'); -%>

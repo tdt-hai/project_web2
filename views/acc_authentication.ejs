@@ -1,75 +1,39 @@
 <%- include('header'); -%>
 <%- include('nav'); -%>
-
-<div class="verification section-padding">
-        <div class="container h-100">
-            <div class="row justify-content-center h-100 align-items-center">
-                <div class="col-xl-5 col-md-6">
-                    <div class="auth-form card">
-<!-- <div class="card"> -->
-        <div class="identity-content">
-                <h4></h4>
-                <h4>Xác thực tài khoản</h4>
-                <span>CMND (Hộ Chiếu hoặc Căn Cước)</span>
-
-                <p>Tải lên ảnh CMND (Hộ Chiếu hoặc Căn Cước) của bạn giúp đảm bảo an toàn và bảo mật cho tài khoản của bạn</p>
-        </div>
-        <div class="card-body">
-                <label class="mr-sm-2">Ảnh mặt trước </label>
-                <span class="float-right">Giới hạn tối đa của file là 2Mb</span>
-                <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/frontUpload"method="post">
-                        <input type="file" name="frontImage" multiple />
-                        <button type="submit" value="Upload Image" name="submit" class="btn btn-success pl-5 pr-5">Upload ảnh</button>
-                        <span id = "status"></span></br>
-                </form>
-        </div>
-        <div class="card-body">
-                <label class="mr-sm-2">Ảnh mặt sau </label>
-                <span class="float-right">Giới hạn tối đa của file là 2Mb</span>
-                <form id="uploadFormBack" enctype="multipart/form-data"action="/acc_authentication/backsideUpload"method="post">
-                        <input type="file" name="backImage" multiple />
-                        <button type="submit" value="Upload Image" name="submit" class="btn btn-success pl-5 pr-5">Upload ảnh</button>
-                        <span id = "statusBack"></span></br>
-                </form>
-        </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- <div class="card-body">
-        <form action="" class="identity-upload">
-
-            <div class="identity-content">
-                <h4>Xác thực tài khoản</h4>
-                <span>CMND (Hộ Chiếu hoặc Căn Cước)</span>
-
-                <p>Tải lên ảnh CMND (Hộ Chiếu hoặc Căn Cước) của bạn giúp đảm bảo an toàn và bảo mật cho tài khoản của bạn</p>
-            </div>
-
-            <div class="form-group">
-                <label class="mr-sm-2">Ảnh mặt trước </label>
-                <span class="float-right">Giới hạn tối đa của file là 2Mb</span>
-                <div class="form-group" id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/frontUpload"method="post">
-                        <input type="file" name="frontImage" multiple />
-                        <input type="submit" value="Upload Image" name="submit">
-                        <span id = "status"></span></br>
+ <div class="verification section-padding">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-xl-5 col-md-6">
+                        <div class="auth-form card">
+                            <div class="card-body">
+                                    <div class="identity-content">
+                                        <h4>Upload your ID card</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mr-sm-2">Ảnh cmnd mặt trước</label>
+                                        <span class="float-right">Tối đa 2mb</span>
+                                        <form id="uploadForm" enctype="multipart/form-data"action="/acc_authentication/frontUpload"method="post">
+                                                <input class="file-upload-field" type="file" name="frontImage" multiple />
+                                                <input type="submit" value="Upload Image" name="submit">
+                                                <span id = "status"></span></br>
+                                                <img src="/images/<%=id%>-frontImage.png" alt="Ảnh CMND mặt trước" width= "200" height= "150">
+                                        </form>
+                                     </div>
+                                    <div class="form-group">
+                                        <label class="mr-sm-2">Ảnh cmnd mặt sau</label>
+                                        <span class="float-right">Tối đa 2mb</span>
+                                        <form id="uploadFormBack" enctype="multipart/form-data"action="/acc_authentication/backsideUpload"method="post">
+                                                <input class="file-upload-field" type="file" name="backImage" multiple />
+                                                <input type="submit" value="Upload Image" name="submit">
+                                                <span id = "statusBack"></span></br>
+                                                <img src="/images/<%=id%>-backImage.png" alt="Ảnh CMND mặt sau" width="200" height="150">
+                                     </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="mr-sm-2">Ảnh mặt sau </label>
-                <span class="float-right">Giới hạn tối đa của file là 2Mb</span>
-                <div class="file-upload-wrapper" data-text="back.jpg">
-                    <input name="file-upload-field" type="file" class="file-upload-field"
-                        value="">
-                </div>
-            </div>
-
-            <div class="text-center">
-                <button type="submit" class="btn btn-success pl-5 pr-5">Submit</button>
-            </div>
-        </form>
-    </div> -->
+        </div>
 
 <%- include('footer'); -%>
