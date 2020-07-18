@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 
 /* GET home page. */
 router.get('/', asyncHandler(async function(req, res, next) {
-  res.render('index');
+  res.render('login');
 }));
 
 module.exports = router;
