@@ -6,7 +6,8 @@ const { body, validationResult } = require('express-validator');
 const crypto = require('crypto');
 const Email = require('../services/email')
 const Phone = require('../services/phone');
-
+const Account = require('../services/account');
+const Func = require('../services/function');
 /*Login */
 router.get('/', asyncHandler( async function (req,res,next){
     res.render('register');
@@ -59,6 +60,17 @@ router.post('/',[
         active: false,
         adminRole: false,
     });
+    
+    //create default account(type_acount = TKTT) when register a new user
+   const ac =  await Account.create({
+        account_number : req.body.numberPaper,
+        type_account : 'TKTT',
+        current_balance : 0,
+        currency : 'VND',
+        open_day : Func.getDateNow(),
+        userId : users.id,
+    })
+
     //send password qua email
     await Email.SendEmail(users.email,'Mat khau cua ban la: ',`${passWord}`);
     //send password bằng sđt

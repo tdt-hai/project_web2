@@ -14,23 +14,25 @@ class Account extends Model {
    static async findAllAccount(){
       return Account.findAll();
    }
+   
 }
 
 Account.init({
     // attributes
     account_number: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false,
         references: {
           model: User,
           key: 'account_number',
-        }
+        },
+        primaryKey: true
 
     },
     type_account: {
       type: Sequelize.STRING,
       allowNull: false,
+      primaryKey: true,
     },
     current_balance:{
       type: Sequelize.DECIMAL,
