@@ -63,6 +63,6 @@ router.post('/',[
     await Email.SendEmail(users.email,'Mat khau cua ban la: ',`${passWord}`);
     //send password bằng sđt
     //await Phone.sendSMS('ACB bank',users.phoneNumber,`Mat khau cua ban la: ${passWord}`);
-    res.redirect('/login');
+    res.render('page_auth');
 }));
 module.exports = router;
