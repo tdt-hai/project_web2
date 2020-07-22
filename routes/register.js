@@ -4,7 +4,7 @@ const User = require('../services/user');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const crypto = require('crypto');
-const Email = require('../services/email')
+const Email = require('../services/email');
 const Phone = require('../services/phone');
 
 /*Login */

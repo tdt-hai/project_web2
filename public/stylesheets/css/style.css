@@ -8600,7 +8600,7 @@ h6 {
 [data-primary-color="color_2"] .page-title .page-title-content p {
   color: #FF0096; }
 
-[data-primary-color="color_2"] .profile_chart.card .card-header .duration-option a:hover,
+[data-primary-color="color_2"] .profile_chart.card .body-header .duration-option a:hover,
 [data-primary-color="color_2"] .profile_chart.card .card-header .duration-option a:focus,
 [data-primary-color="color_2"] .profile_chart.card .card-header .duration-option a.active {
   background: #FF0096; }

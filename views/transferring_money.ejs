@@ -1,12 +1,11 @@
 <%- include('header'); -%>
 
-
 <div class="content-body">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-xl-5 col-md-6">
                 <div class="card">
-                    <div class="card-body ">
+                    <div class="card-body">
                         <div class="buy-sell-widget">
                             <div class="tab-content tab-content-default">
                                 <div class="card-header justify-content-center">
@@ -16,11 +15,11 @@
                                 <div class="tab-pane fade show active" id="buy" role="tabpanel">
                                     <form method="POST" class="currency_validate" novalidate="novalidate">
                                         <div class="form-group">
-                                            <h2 class="mr-sm-2">Tài khoản trích (VND) :  <%= currentUser.account_number %> -  <%= currentUser.displayName %>   </h2>
+                                            <h2 class="mr-sm-2">Tài khoản trích (VND) : <%= currentUser.account_number %> - <%= currentUser.displayName %></h2>
                                         </div>
 
                                         <div class="form-group">
-                                            <h2 class="mr-sm-2">Thông tin người nhận </h2>
+                                            <h2 class="mr-sm-2">Thông tin người nhận</h2>
                                         </div>
 
                                         <div class="form-group">
@@ -43,7 +42,7 @@
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text"><i class="fa fa-credit-card-alt"></i></label>
                                                 </div>
-                                                <input type="number" name="destinationAccount" class="form-control" placeholder="1212554" min="1">
+                                                <input type="number" name="destinationAccountId" class="form-control" placeholder="1212554" min="1" />
                                             </div>
                                         </div>
 
@@ -53,7 +52,7 @@
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text"><i class="fa fa-usd"></i></label>
                                                 </div>
-                                                <input type="number" name="amount" class="form-control" value="10000" min="10000" max="100000000" step="10000" data-number-to-fixed="2" data-number-stepfactor="100">
+                                                <input type="number" name="amount" class="form-control" value="10000" min="10000" max="100000000" data-number-to-fixed="2" data-number-stepfactor="100" />
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text">VND</label>
                                                 </div>
@@ -70,7 +69,7 @@
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text"><i class="fa fa-pencil-square-o"></i></label>
                                                 </div>
-                                                <input type="text" name="note" class="form-control" placeholder="hihi">
+                                                <input type="text" name="note" class="form-control" placeholder="hihi" />
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-success btn-block waves-effect">Tiếp tục</button>
@@ -78,7 +77,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

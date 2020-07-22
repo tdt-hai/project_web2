@@ -19,6 +19,15 @@ class User extends Model {
         });
     }
 
+    static  async findUserByAccountNumber(account_number){
+      return User.findOne({
+          where: {
+              account_number,
+              adminRole : false,
+          }
+    });
+  }
+
     static  async findUserByContent(content){
       return User.findAll({
         where : {
