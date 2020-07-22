@@ -11,6 +11,21 @@ function formatDate(date) {
  return [year, month, day].join('-');
 }
 
+function formatDateToShow(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+ return [day, month, year].join('-');
+}
+function formattingCurrency(money){
+     return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+}
 function getDateNow(){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -21,4 +36,4 @@ function getDateNow(){
     return today;
 }
 
-module.exports= { formatDate, getDateNow };
+module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow };

@@ -14,6 +14,22 @@ class Account extends Model {
    static async findAllAccount(){
       return Account.findAll();
    }
+   static async findSavingsAccountById(id){
+     return Account.findOne({
+        where:{
+          userId: id,
+          type_account: "TKTK",
+        }
+     });
+   }
+   static async findCheckingAccountById(id){
+     return Account.findOne({
+       where :{
+         userId: id,
+         type_account: "TKTT",
+       }
+     });
+   }
    
 }
 

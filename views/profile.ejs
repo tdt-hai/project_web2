@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="stylesheets/mystyle.css">
 <%- include('nav'); %>
 <!------ Include the above in your HEAD tag ---------->
-<div class="container emp-profile">
+<div class="container emp-profile" style = "margin-top: 110px;">
+<br><br>
 <h2 style="text-align: center">Personal Information</h2>
 <br>
             <form method="post">
@@ -18,7 +19,7 @@
                                  
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a class="nav-link active" style ="background-color: #a896c7" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                                
                             </ul>
@@ -71,7 +72,7 @@
                                                 <label>Issued:</label>
                                             </div>
                                             <div class="col-md-6">
-                                               <p> <%= currentUser.date_range %> </p>
+                                               <p> <%= getdate %> </p>
                                             </div>
 
                                         </div>
