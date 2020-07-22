@@ -23,6 +23,14 @@ class User extends Model {
             }
         });
     }
+    static  async findUserByAccountNumber(account_number){
+      return User.findOne({
+          where: {
+              account_number,
+              adminRole : false,
+          }
+    });
+  }
     //Hàm tìm kiếm người dùng
     static async findAllUser(){
       return User.findAll({
@@ -129,3 +137,5 @@ User.init({
 });
 
 module.exports = User;
+
+//$2b$10$MsA5N/jTpEFOSUhsgjNuweKcpu2RtGnCK2fFc0pwILQsUvfZI.Eye
