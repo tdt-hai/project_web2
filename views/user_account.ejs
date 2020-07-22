@@ -1,0 +1,25 @@
+<%- include('header')-%>
+<%- include('nav')-%>
+<style>
+    h1.name{
+    position: absolute;
+    left: 200px;
+    top: 150px;
+    }
+    h1.accountNumber{
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    }
+    h1.currentBalance{
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    }
+</style>
+<div>
+    <h1 class="name">Họ và tên: <%= user.displayName %></h1>
+    <h1> <% JSON.stringify(TKTT) %></h1>
+    <h1 class="accountNumber">Số tài khoản: <%=  TKTT[0]['account_number'] %></h1>
+</div>
+<%- include('footer')-%>

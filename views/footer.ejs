@@ -1,54 +1,60 @@
 
-<div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-md-6">
-                        <div class="footer-link text-left">
-                            <a href="#" class="m_logo"><img src="images/ACB_Logo.png" alt="" style=" height: 30px;width: 60px;"></a>
-                            <a href="about.html">About</a>
-                            <a href="privacy-policy.html">Privacy Policy</a>
-                            <a href="term-condition.html">Term & Service</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6 text-lg-right text-center">
-                        <div class="social">
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-xl-12 text-center text-lg-right">
-                        <div class="copy_right text-center text-lg-center">
-                            Copyright © 2020 by DHHN. All Rights Reserved.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-   <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/waves/waves.min.js"></script>
 
-    <script src="vendor/owlcarousel/js/owl.carousel.min.js"></script>
-    <script src="javascripts/js/plugins/owl-carousel-init.js"></script>
-    <script src="vendor/scrollit/scrollIt.js"></script>
-    <script src="javascripts/js/plugins/scrollit-init.js"></script>
+   <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/waves/waves.min.js"></script>
+
+    <script src="/vendor/owlcarousel/js/owl.carousel.min.js"></script>
+    <script src="/javascripts/js/plugins/owl-carousel-init.js"></script>
+    <script src="/vendor/scrollit/scrollIt.js"></script>
+    <script src="/javascripts/js/plugins/scrollit-init.js"></script>
 
     <!-- Chart sparkline plugin files -->
-    <script src="vendor/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <script src="javascripts/js/plugins/sparkline-init.js"></script>
+    <script src="/vendor/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="/javascripts/js/plugins/sparkline-init.js"></script>
 
-    <script src="vendor/validator/jquery.validate.js"></script>
-    <script src="vendor/validator/validator-init.js"></script>
-    <script src="javascripts/js/scripts.js"></script>
+    <script src="/vendor/validator/jquery.validate.js"></script>
+    <script src="/vendor/validator/validator-init.js"></script>
+    <script src="/javascripts/js/scripts.js"></script>
 
-    <script src="javascripts/js/settings.js"></script>
-    <script src="javascripts/js/quixnav-init.js"></script>
-    <script src="javascripts/js/styleSwitcher.js"></script>
+    <script src="/javascripts/js/settings.js"></script>
+    <script src="/javascripts/js/quixnav-init.js"></script>
+    <script src="/javascripts/js/styleSwitcher.js"></script>
 <!-- Mirrored from quixlab.com/demo/elaenia/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jul 2020 02:37:22 GMT -->
+<script>
+    $(document).ready(function() {
+      $('#uploadForm').submit(function() {
+          $("#status").empty().text("File is uploading...");
+          $(this).ajaxSubmit({
+              error: function(xhr) {
+            status('Error: ' + xhr.status);
+              },
+              success: function(response) {
+          console.log(response)
+              $("#status").empty().text(response);
+              }
+      });
+      return false;
+      });    
+  });
+  </script>
+<script>
+    $(document).ready(function() {
+      $('#uploadFormBack').submit(function() {
+          $("#statusBack").empty().text("File is uploading...");
+          $(this).ajaxSubmit({
+              error: function(xhr) {
+            status('Error: ' + xhr.status);
+              },
+              success: function(response) {
+          console.log(response)
+              $("#statusBack").empty().text(response);
+              }
+      });
+      return false;
+      });    
+  });
+  </script>
 </body>
 </html>

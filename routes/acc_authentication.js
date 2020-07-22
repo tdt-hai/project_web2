@@ -6,7 +6,8 @@ const fs = require("fs");
 const asyncHandler = require('express-async-handler');
 
 router.get('/', asyncHandler (async function(req,res){
-    res.render('acc_authentication');
+    const id = req.session.userId;
+    res.render('acc_authentication',{id});
 }))
 
 
@@ -31,9 +32,11 @@ var frontUpload = multer({ storage : storage1 }).array('frontImage',1);
 router.post('/frontUpload',function(req,res){
   frontUpload(req,res,function(err) {  
       if(err) {
-          return res.end("Vui lòng upload 1 ảnh");
+        res.redirect('/acc_authentication');
+       return res.end();
       }
-     res.end("Upload thành công");
+      res.redirect('/users')
+      res.end();
   });
 });
 //upload mặt sau cmnd
@@ -41,9 +44,11 @@ var backsideUpload = multer({ storage : storage2 }).array('backImage',1);
 router.post('/backsideUpload',function(req,res){
   backsideUpload(req,res,function(err) {  
         if(err) {
-            return res.end("Vui lòng upload 1 ảnh");
+          res.redirect('/acc_authentication');
+          return res.end();
         }
-        res.end("Upload thành công");
+        res.redirect('/users')
+        res.end();
     });
   });
 module.exports = router;

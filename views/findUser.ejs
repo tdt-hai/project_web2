@@ -29,7 +29,12 @@
                                                 <td><%= t.email %></td>
                                                 <td><%= t.displayName %> </td>
                                                 <td><%= t.account_number %> </td>
-                                                <td class="text-danger"><%= t.active %> </td>
+                                                <% if(t.active == false){ %>
+                                                <td class="text-danger">Chưa xác thực</td>
+                                                <% } else{ %>  
+                                                <td>Đã xác thực</td>
+                                                <% } %>
+                                                </td>
                                             </tr>
                                             <% }) %>
                                         </tbody>

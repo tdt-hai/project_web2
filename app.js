@@ -36,7 +36,9 @@ app.use(cookieSession({
   name: 'session',
   keys: ['123456']
 }))
+//Cấp quyền sử dụng thư mục public
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'user_management')));
 //middleware
 app.use(require('./middleware/auth'));
 //router
@@ -54,6 +56,8 @@ app.use('/user_management',user_managementRouter);
 app.use('/changePassword',changePasswordRouter); 
 app.use('/acc_authentication',acc_authenticationRouter);  
 app.use('/reset_password',reset_password);  
+app.use('/admin_auth',admin_auth);  
+app.use('/user_account',user_account);  
 
 
 app.use('/changePassword',changePasswordRouter);  
