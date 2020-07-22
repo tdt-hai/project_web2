@@ -11,26 +11,30 @@ const Op = Sequelize.Op;
 const Model = Sequelize.Model;
 
 class Account extends Model {
-   static async findAllAccount(){
-      return Account.findAll();
+   static async findAccountTKTT(accountNumber){
+     return Account.findAll({
+        where: {
+          account_number: accountNumber,
+          type_account: 'TKTT'
+        }
+      });
    }
 }
-
 Account.init({
     // attributes
     account_number: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: false,
-        references: {
-          model: User,
-          key: 'account_number',
-        }
-
+      type: Sequelize.STRING,
+      allowNull: false,
+      references: {
+        model: User,
+        key: 'account_number',
+      },
+      primaryKey: true
     },
     type_account: {
       type: Sequelize.STRING,
       allowNull: false,
+      primaryKey: true,
     },
     current_balance:{
       type: Sequelize.DECIMAL,
@@ -68,4 +72,5 @@ Account.init({
   
 User.hasMany(Account);
 Account.belongsTo(User) ;
-  module.exports = Account;
+
+module.exports = Account;
