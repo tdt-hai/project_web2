@@ -19,6 +19,7 @@ class Account extends Model {
         }
       });
    }
+   
 }
 Account.init({
     // attributes

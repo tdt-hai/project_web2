@@ -19,4 +19,4 @@ function getDateNow(){
     today = [yyyy, mm, dd].join('-');
     return today;
 }
-module.exports= { formatDate,getDateNow };
+module.exports= { formatDate, getDateNow };

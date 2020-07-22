@@ -8,7 +8,6 @@ const crypto = require('crypto');
 const Email = require('../services/email')
 const Phone = require('../services/phone');
 const Func = require('../services/function');
-
 /*Login */
 router.get('/', asyncHandler( async function (req,res,next){
     res.render('register');
