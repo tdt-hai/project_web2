@@ -20,6 +20,8 @@ var user_managementRouter = require('./routes/user_management');
 var reset_password = require('./routes/reset_password');
 const transferring_money = require('./routes/transferring_money');
 const confirm_transferring_money = require('./routes/confirm_transferring_money');
+const admin_auth = require('./routes/admin_auth');
+const user_account = require('./routes/user_account');
 
 var app = express();
 
