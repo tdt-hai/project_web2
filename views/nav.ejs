@@ -34,7 +34,7 @@
                                         <div class="dashboard_log my-2">
                                         <div class="d-flex align-items-center">
                                    <% } else if(!currentUser.adminRole) {%>
-                                   <ul style="margin-right: auto;">
+                                   <ul style="margin-right: auto; margin-top: 1px;">
                                         <li class="nav-item">
                                                 <a class="nav-link fa fa-user" href="/user_account"> Tài khoản</a>
                                     </li>
@@ -44,11 +44,11 @@
                                             <div class="account_money">
                                                 <ul>
                                                     <li class="crypto">
-                                                        <span>0.0025</span>
+                                                        <span><%=transfer%></span>&nbsp;USD
                                                         <i class="cc BTC-alt"></i>
                                                     </li>
                                                     <li class="usd">
-                                                        <span>19.93 USD</span>
+                                                        <span class="money"><%= accountNumber.current_balance %></span>&nbsp;VND
                                                     </li>
                                                 </ul>
                                             </div>

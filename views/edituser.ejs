@@ -47,6 +47,15 @@
                                                     <input  type="date"  value="<%= time %>"  class="form-control" 
                                                         id="issued" name="issued">
                                                 </div>
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Số dư khả dụng</label>
+                                                    <div class="input-group">
+                                                    <input type="text" value="<%= account.current_balance %>" class="form-control money" name="currentBalance">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">VND</div>
+                                                    </div>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group col-12">
                                                     <button class="btn btn-success pl-5 pr-5" style ="margin-left: 250px">Save</button>
                                                 </div>
