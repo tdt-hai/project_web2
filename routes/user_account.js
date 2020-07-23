@@ -11,7 +11,11 @@ router.get('/',asyncHandler (async function(req,res,next){
         res.render('page404');
     }
     else{
+        //const test =  User.findUserByIdAndAccount(user.account_number)
         const TKTT = await Account.findAccountTKTT(user.account_number);
+       // res.json(TKTT);
+        console.log(TKTT);
+       // res.json(test);
         res.render('user_account',{TKTT,user});
     }
 }));

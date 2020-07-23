@@ -4,6 +4,7 @@ const User = require('../services/user');
 const Function = require('../services/function');
 const asyncHandler = require('express-async-handler');
 const Account = require('../services/account');
+
 router.get('/',asyncHandler(async function profile(req,res){
     const listUser = await User.findAllUser();
     res.render('user_management', {listUser});

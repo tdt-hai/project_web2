@@ -11,15 +11,20 @@ const Op = Sequelize.Op;
 const Model = Sequelize.Model;
 
 class Account extends Model {
-   static async findAccountTKTT(accountNumber){
-     return Account.findAll({
-        where: {
-          account_number: accountNumber,
-          type_account: 'TKTT'
-        }
-      });
-   }
-   
+  static async findAccountTKTT(accountNumber){
+    return Account.findAll({
+       where: {
+         type_account: 'TKTT',
+         account_number: accountNumber
+       },
+       include: [{
+        model: User,
+        where: {account_number: accountNumber},
+        required: true,
+       }]
+     });
+  }
+  
 }
 Account.init({
     // attributes
@@ -71,7 +76,7 @@ Account.init({
   });
   
   
-User.hasMany(Account);
-Account.belongsTo(User) ;
+  User.hasMany(Account);
+  Account.belongsTo(User) ;
 
 module.exports = Account;
