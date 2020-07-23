@@ -1,0 +1,100 @@
+<%- include('header'); -%>
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="buy-sell-widget">
+                            <div class="tab-content tab-content-default">
+                                <div class="card-header justify-content-center">
+                                    <h3 class="card-title">Xác nhận</h3>
+                                </div>
+
+                                <div class="tab-pane fade show active" id="buy" role="tabpanel">
+                                    <form method="POST" class="currency_validate" novalidate="novalidate">
+                                        <div class="form-group">
+                                            <div class="auth-form card" style="text-align: center;">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <h1 class="mr-sm-2"><%= amount %> VND</h1>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <h1 class="mr-sm-2"><%= vnd %> đồng</h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
+                                                <h1 class="mr-sm-2"><i class="fa fa-paper-plane"></i> Bên chuyển</h1>
+                                            </div>
+                                            <div class="auth-form card">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label class="mr-sm-2">Tên người gửi : <%= currentUser.displayName %> </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="mr-sm-2">Số tài khoản : <%= currentUser.account_number %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <h1 class="mr-sm-2"><i class="fa fa-bank"></i> Bên nhận</h1>
+                                                </div>
+                                            </div>
+                                            <div class="auth-form card">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label class="mr-sm-2">Tên người nhận : <%= user.displayName %> </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="mr-sm-2">Ngân hàng : <%= destinationBankId %> </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="mr-sm-2">Số tài khoản : <%= destinationAccountId %> </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="auth-form card">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <h2 class="mr-sm-2">Nội dung</h2>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="mr-sm-2"><%= note %> </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="mr-sm-2">Your OTP Code</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text"><i class="fa fa-check-square"></i></label>
+                                                </div>
+                                                <input type="number" name="otp_code" class="form-control" placeholder="2565" min="0000" max="9999" />
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-block waves-effect">Xác nhận</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('footer'); -%>

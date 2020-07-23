@@ -23,6 +23,7 @@
     <script src="/javascripts/js/styleSwitcher.js"></script>
 <!-- Mirrored from quixlab.com/demo/elaenia/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jul 2020 02:37:22 GMT -->
 <script>
+//Show image front
     $(document).ready(function() {
       $('#uploadForm').submit(function() {
           $("#status").empty().text("File is uploading...");
@@ -38,8 +39,7 @@
       return false;
       });    
   });
-  </script>
-<script>
+//Show image back
     $(document).ready(function() {
       $('#uploadFormBack').submit(function() {
           $("#statusBack").empty().text("File is uploading...");
@@ -55,6 +55,21 @@
       return false;
       });    
   });
+//Show or hide password
+  $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
   </script>
 </body>
 </html>

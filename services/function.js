@@ -10,7 +10,6 @@ function formatDate(date) {
         day = '0' + day;
  return [year, month, day].join('-');
 }
-
 function formatDateToShow(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -35,5 +34,5 @@ function getDateNow(){
     today = [yyyy, mm, dd].join('-');
     return today;
 }
-
 module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow };
+
