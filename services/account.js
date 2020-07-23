@@ -11,6 +11,26 @@ const Op = Sequelize.Op;
 const Model = Sequelize.Model;
 
 class Account extends Model {
+   static async findAllAccount(){
+      return Account.findAll();
+   }
+   static async findSavingsAccountById(id){
+     return Account.findOne({
+        where:{
+          userId: id,
+          type_account: "TKTK",
+        }
+     });
+   }
+   static async findCheckingAccountById(id){
+     return Account.findOne({
+       where :{
+         userId: id,
+         type_account: "TKTT",
+       }
+     });
+   }
+   
   static async findAccountTKTT(accountNumber){
     return Account.findAll({
        where: {

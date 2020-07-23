@@ -26,8 +26,6 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     const paperType = req.body.paperType;
     const idNo = req.body.idNo;
     const issued = req.body.issued;
-    //console.log(idNo);
-    await Account.findAllAccount();
     await User.updateUser(id,email,displayName,phoneNumber,paperType,idNo,issued);
     const listUser = await User.findAll();
     res.redirect('../user_management');

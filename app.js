@@ -64,6 +64,8 @@ app.use('/user_account',user_account);
 
 app.use('/changePassword',changePasswordRouter);  
 app.use('/profile',require('./routes/profile'));
+app.use('/user_management',require('./routes/user_management'));
+app.use('/savings_account',require('./routes/savings_account'));
 app.use('/transferring_money',transferring_money);
 app.use('/confirm_transferring_money',confirm_transferring_money);
 // catch 404 and forward to error handler
