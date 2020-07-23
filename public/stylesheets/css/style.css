@@ -3068,7 +3068,8 @@ input[type="button"].btn-block {
   display: none; }
 
 .tab-content > .active {
-  display: block; }
+  display: block;
+  color: blue; }
 
 .navbar {
   position: relative;
