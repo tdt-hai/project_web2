@@ -3,10 +3,15 @@ body{
 }
 .emp-profile{
     padding: 3%;
+    
     margin-top: 3%;
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background:#7c74a8;
+    
+}
+.frmrgtaccount{
+    width:500px;
     
 }
 .ulcustom{
@@ -16,8 +21,38 @@ body{
 }
 .licustom{
     margin-bottom: 5px;
-    border-radius: 5px;
+    border-radius: 5    px;
 }
+.labelcustom{
+    color:black
+}
+.buttontk{
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #954e97;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .buttontk:hover {
+      background-color: #a73259;
+      color: white;
+    }
+  
+  .buttontk:active {
+    background-color: #a73259;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    
+  }
+
 .profile-img{
     text-align: center;
 }

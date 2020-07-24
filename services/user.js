@@ -3,14 +3,15 @@ const db = require('./db');
 const Sequelize = require('sequelize');
 const { or } = require('sequelize');
 const Op = Sequelize.Op;
+//const Account = require('../services/account');
 
 /*model user*/
 const Model = Sequelize.Model;
 
 class User extends Model {
+   
     static async findUserById(id){
-        // return User.findByPk(id);
-        return User.findOne({
+         return User.findOne({
           where:{
             id,
           }

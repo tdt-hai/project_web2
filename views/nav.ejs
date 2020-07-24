@@ -28,27 +28,33 @@
                                     <ul class="navbar-nav ml-auto nav-flex-icons">
                                         <form class="form-inline" method="POST" action="/findUser">
                                             <div class="md-form my-0">
-                                                <input class="form-control mr-sm-2 " type="text" placeholder="Search" name="contentSearch" aria-label="Search">
+                                                <input style="background-color: #4e4a61" class="form-control mr-sm-2 " type="text" placeholder="Search" name="contentSearch" aria-label="Search">
                                             </div>
                                         </form>
                                         <div class="dashboard_log my-2">
                                         <div class="d-flex align-items-center">
                                    <% } else if(!currentUser.adminRole) {%>
-                                   <ul style="margin-right: auto;">
+                                   <ul style="margin-right: auto; margin-top: 1px;">
                                         <li class="nav-item">
                                                 <a class="nav-link fa fa-user" href="/user_account"> Tài khoản</a>
-                                    </li>
+                                         </li>
                                     </ul>
+                                   <ul style="margin-right: auto; margin-top: 1px;">
+                                        <li class="nav-item">
+                                                <a class="nav-link fa fa-user" href="/transferring_money"> Chuyển khoản</a>
+                                         </li>
+                                    </ul>
+                                       
                                     <div class="dashboard_log my-2">
                                         <div class="d-flex align-items-center">
                                             <div class="account_money">
                                                 <ul>
                                                     <li class="crypto">
-                                                        <span>0.0025</span>
+                                                        <span><%=transfer%></span>&nbsp;USD
                                                         <i class="cc BTC-alt"></i>
                                                     </li>
                                                     <li class="usd">
-                                                        <span>19.93 USD</span>
+                                                        <span class="money"><%= accountNumber.current_balance %></span>&nbsp;VND
                                                     </li>
                                                 </ul>
                                             </div>
