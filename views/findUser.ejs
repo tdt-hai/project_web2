@@ -16,22 +16,21 @@
                                           <tr>
                                             <th scope="col">#</th>
                                             <th scope="col"> Email</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Acount Number</th>
-                                            <th scope="col">Acive</th>
+                                            <th scope="col">Họ và tên</th>
+                                            <th scope="col">Số tài khoản</th>
+                                            <th scope="col">Trạng thái</th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                             <% var i = 1 ; users.forEach(function (t) { %>
-                                              
                                             <tr>
-                                                <td><%- i++ %> </td>
-                                                <td><%= t.email %></td>
-                                                <td><%= t.displayName %> </td>
-                                                <td><%= t.account_number %> </td>
+                                                <td><%- i++%></td>
+                                                <td><%= t.email%></td>
+                                                <td><%= t.displayName%></td>
+                                                <td><%= t.account_number%></td>
                                                 <% if(t.active == false){ %>
                                                 <td class="text-danger">Chưa xác thực</td>
-                                                <% } else{ %>  
+                                                <% }else{ %>
                                                 <td>Đã xác thực</td>
                                                 <% } %>
                                                 </td>

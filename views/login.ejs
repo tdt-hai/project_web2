@@ -1,5 +1,4 @@
 <%- include('header'); -%>
-
 <!-- Default form login -->
 <div class="authincation section-padding">
             <div class="container h-100">
@@ -18,13 +17,20 @@
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                         <label>Email</label>
                                             <!-- Email -->
-                                         <input type="email" id="email" name="email" class="form-control" placeholder="Email" value = "geket91392@xenzld.com">
+                                         <input type="email" id="email" name="email" class="form-control" placeholder="Email" value = "hai@gmail.com">
                                     </div>
+
                                     <div class="form-group">
                                         <i class="fa fa-key" aria-hidden="true"></i>
                                         <label>Mật khẩu</label>
-                                         <input type="password" id="password" name="password" class="form-control" placeholder="Mật khẩu" value = "123456">
+                                        <div class="input-group"  id="show_hide_password">
+                                         <input type="password" name="password" class="form-control" placeholder="Mật khẩu" value = "123456">
+                                          <div class="input-group-prepend">
+                                            <div class="input-group-text"><a href="#"><i class="fa fa-eye-slash" aria-hidden="true"></i></a></div>
+                                         </div>
+                                        </div>
                                     </div>
+                                    
                                     <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                         <div class="form-group mb-0">
                                             <label class="toggle">

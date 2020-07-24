@@ -1,15 +1,17 @@
 const {Router} = require('express');
 const router = new Router();
-
-router.get('/', function profile(req,res){
+const Function = require('../services/function');
+const asyncHandler = require('express-async-handler');
+router.get('/', asyncHandler(async function profile(req,res){
     if(req.currentUser){
-        res.render('profile');
+        const getdate = await Function.formatDate(req.currentUser.date_range);
+        res.render('profile',{getdate});
     }
     else{
         
         res.redirect('/');
     }
-});
+}));
 
 
 module.exports = router;

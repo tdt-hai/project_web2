@@ -1445,7 +1445,7 @@ pre {
     border: 0; }
   .form-control:focus {
     color: #495057;
-    background-color: #fff;
+    background-color: rgb(63, 33, 68);
     border-color: #f0efff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(123, 111, 255, 0.25); }
@@ -1520,7 +1520,9 @@ textarea.form-control {
   height: auto; }
 
 .form-group {
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  padding-left: 10px;
+  padding-right: 10px; }
 
 .form-text {
   display: block;
@@ -3066,7 +3068,8 @@ input[type="button"].btn-block {
   display: none; }
 
 .tab-content > .active {
-  display: block; }
+  display: block;
+  color: #770000; }
 
 .navbar {
   position: relative;
@@ -4239,16 +4242,16 @@ a.close.disabled {
       content: none; }
 
 .modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  pointer-events: auto;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
-  outline: 0; }
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #673ab7;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0; }
 
 .modal-backdrop {
   position: fixed;
@@ -7428,7 +7431,9 @@ button.bg-dark:focus {
   color: #fff !important; }
 
 .text-primary {
-  color: #7B6FFF !important; }
+  /* color: black !important;  */
+  color: #d0ff0b !important;
+}
 
 a.text-primary:hover, a.text-primary:focus {
   color: #3523ff !important; }
@@ -8086,14 +8091,16 @@ h6 {
     color: #fff; }
 
 .header {
+  border-radius: 25px;
+  margin-top: 5px;
   padding: 0px 0px;
   position: fixed;
   top: 0;
-  left: 75px;
-  right: 0;
+  left: 10px;
+  right: 10px;
   z-index: 999;
   transition: all 0.3s ease-in;
-  background: #3A3361;
+  background: #4e4a61;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
   .header .navbar-brand {
     margin-right: 30px;
@@ -9377,7 +9384,11 @@ button,
     .table tr th:last-child {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px; }
-
+    .table tr h4{
+      color:black;
+      text-align:center;
+      float: left;
+    }
 .intro {
   min-height: 100vh;
   position: relative;
