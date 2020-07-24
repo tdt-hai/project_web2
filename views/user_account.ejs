@@ -15,17 +15,19 @@
                     <div class="d-flex justify-content-between mb-3">
                             <div class="media">
                                 <div class="media-body">
-                                    <h2>Thông tin tài khoản</h2>
-                                    <h4 style="color:black"><%= currentUser.displayName %></h4>
-                                     <h4 style="color:black"><%= currentUser.email %></h4>
+                                    
+                                    <h1>Thông tin tài khoản</h1>
+                                    
+                                    <h4 style="color:black"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= currentUser.displayName %></h4>
+                                    <h4 style="color:black"><i class="fa fa-envelope" aria-hidden="true"></i> <%= currentUser.email %></h4>
                                 </div>
                             </div>
                         
                     </div>
-                      <% if(tktk == null) { %>
+                    <% if(tktk == null) { %>
                         <a href="./savings_account" class="buttontk">Đăng kí tài khoản tiết kiệm</a>
-                     <% } %>
-                     <br><br>
+                    <% } %>
+                    <br><br>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
@@ -34,7 +36,7 @@
                                     <td><span class="text-primary"><i class="fa fa-id-card" aria-hidden="true"></i> Số tài khoản</span></td>
                                     <td><span class="text-primary"><%= currentUser.account_number %></span></td>
                                 </tr>
-                                 <tr >
+                                <tr >
                                     <td><span class="text-primary"><i class="fa fa-calendar" aria-hidden="true"></i> Ngày mở</span></td>
                                     <td><span class="text-primary"><%= openDay %></span></td>
                                 </tr>
