@@ -3068,7 +3068,8 @@ input[type="button"].btn-block {
   display: none; }
 
 .tab-content > .active {
-  display: block; }
+  display: block;
+  color: #770000; }
 
 .navbar {
   position: relative;
@@ -7430,7 +7431,9 @@ button.bg-dark:focus {
   color: #fff !important; }
 
 .text-primary {
-  color: black !important; }
+  /* color: black !important;  */
+  color: #d0ff0b !important;
+}
 
 a.text-primary:hover, a.text-primary:focus {
   color: #3523ff !important; }
