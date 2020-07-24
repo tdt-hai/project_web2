@@ -5,7 +5,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <div class="container emp-profile" style = "margin-top: 110px;">
 <br><br>
-<h2 style="text-align: center; color: black;">Thông tin cá nhân</h2>
+<h1 style="text-align: center; color: white;">Thông tin tài khoản</h1>
 
 <br>
         <form method="post">
@@ -54,6 +54,15 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            <label>Số điện thoại:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p> <%= currentUser.phoneNumber%> </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             <i class="fa fa-credit-card" aria-hidden="true"></i>
                                             <label>Loại giấy tờ:</label>
                                         </div>
@@ -64,7 +73,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                                            <label>ID No:</label>
+                                            <label>Số giấy tờ:</label>
                                         </div>
                                         <div class="col-md-6">
                                                 <p> <%= currentUser.number_paper %> </p>

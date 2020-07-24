@@ -15,11 +15,10 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center licustom" style="background-color: lightgray"> 
                         Email: <%= u.email %> <br>
                         Tên người dùng: <%= u.displayName %> <br>   
-                        Account number: <%= u.account_number %> 
+                        Số tài khoản: <%= u.account_number %> 
                         <a href="/user_management/<%= u.id %>" class="btn btn-outline-secondary" type="button" style = "color: black">Edit</a>
                         
                     </li>
-                    
                     <% }); %>
                     <% } %>
             </ul>
