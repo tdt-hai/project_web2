@@ -10,16 +10,6 @@ const Op = Sequelize.Op;
 const Model = Sequelize.Model;
 
 class Account extends Model {
-<<<<<<< HEAD
-    static async findAccountTKTT(accountNumber) {
-        return Account.findOne({
-            where: {
-                account_number: accountNumber,
-                type_account: "TKTT",
-            },
-        });
-    }
-
     static async addMoney(accountNumber, money) {
         return Account.update(
             {
@@ -45,8 +35,6 @@ class Account extends Model {
             }
         );
     }
-=======
-  
    static async findAllAccount(){
       return Account.findAll();
    }
@@ -87,7 +75,6 @@ class Account extends Model {
     await u.save();
   }
   
->>>>>>> refs/remotes/origin/Duong
 }
 Account.init(
     {
@@ -133,7 +120,6 @@ Account.init(
             // allowNull defaults to true
         },
     },
-<<<<<<< HEAD
     {
         sequelize: db,
         modelName: "account",
@@ -143,34 +129,5 @@ Account.init(
 
 User.hasMany(Account);
 Account.belongsTo(User);
-=======
-    interest_rate: {
-      type: Sequelize.FLOAT,
-      allowNull: true,
-    },
-    open_day:{
-      type: Sequelize.DATE,
-      allowNull: true,
-    },
-    close_day:{
-      type: Sequelize.DATE,
-      allowNull: true,
-    },
-    term:{
-      type: Sequelize.INTEGER,
-      allowNull: true,
-      // allowNull defaults to true
-    },
-    
-  }, {
-    sequelize: db,
-    modelName: 'account'
-    // options
-  });
-  
-  
-  User.hasMany(Account);
-  Account.belongsTo(User) ;
->>>>>>> refs/remotes/origin/Duong
 
 module.exports = Account;
