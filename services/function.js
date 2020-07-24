@@ -10,6 +10,11 @@ function formatDate(date) {
         day = '0' + day;
  return [year, month, day].join('-');
 }
+function addedDate(days){
+    var d = new Date();
+    d.setDate(d.getDate() + days*30);
+    return d;
+}
 
 function formatDateToShow(date) {
     var d = new Date(date),
@@ -36,4 +41,4 @@ function getDateNow(){
     return today;
 }
 
-module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow };
+module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate };

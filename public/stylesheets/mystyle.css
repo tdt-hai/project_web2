@@ -14,6 +14,18 @@ body{
     width:500px;
     
 }
+.showinfo{
+    margin-top: 50px;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.btnreg{
+    background-color: #566ba0;
+    color: #ffffff;
+    width: 250px;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px #000000;
+}
 .ulcustom{
     background-color: #7c74a8;
     /* border: 2px solid red; */
@@ -40,15 +52,30 @@ body{
     border-radius: 15px;
     box-shadow: 0 9px #999;
   }
-  
+.btnconfirm{
+    margin-left: 100px;
+    width: 300px;
+    background-color: #566ba0;
+    text-shadow: 2px 2px 5px #000000;
+}
+.textaleart{
+    color: #ffbfbf;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
+}
   .buttontk:hover {
       background-color: #a73259;
       color: white;
+      box-shadow: 0 9px #999;
     }
-  
+  .buttontk:disabled{
+    background-color: #050404;
+    color: white;
+    box-shadow: 0 9px #999;
+  }
   .buttontk:active {
     background-color: #a73259;
-    box-shadow: 0 5px #666;
+    box-shadow: 0 10px #666;
     transform: translateY(4px);
     
   }
@@ -137,4 +164,8 @@ body{
 .profile-tab p{
     font-weight: 600;
     color: #16304d;
+}
+.h3info{
+    margin-top: 20px;    
+    margin-left: 20px;
 }

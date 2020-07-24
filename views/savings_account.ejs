@@ -1,5 +1,57 @@
 <%- include('header'); -%>
 <%- include('nav'); -%>
+
+<script>
+ 
+        function getInfo() { 
+            var x = document.getElementById("term").value; 
+            var mTktk = document.getElementById("money").value;
+            //Lấy giá trị số tiền hiện tài ở tài khoản thanh toán
+            var mCurrent = document.getElementById("moneycurrent").innerHTML;
+            
+            if(mTktk >= 100000 && mTktk < Number(mCurrent) && x>=1){
+                document.getElementById("showTerm").innerHTML = x; 
+                document.getElementById("showMoney").innerHTML =mTktk; 
+                var d = new Date();
+                d.setDate(d.getDate() + x*30);
+                const getDate = d; 
+                const date = formatDateToShow(d);
+                document.getElementById("showDate").innerHTML = date; 
+                //hien thi lai suat
+                const rate = x *0.2;
+                document.getElementById("interestRate").innerHTML = rate; 
+                document.getElementById("confirm").disabled = false;
+                document.getElementById("checkmoney").innerHTML = ""; 
+            }
+            else{
+                //Xoa thông tin khi nhập mới
+                document.getElementById("confirm").disabled = true;
+                document.getElementById("checkmoney").innerHTML = "Số tiền nhập vào không hợp lệ <br> (Vui lòng nhập số tiền tối thiểu 100,000 VND và nhỏ hơn số dư hiện tại) <br>"; 
+                 document.getElementById("interestRate").innerHTML = ""; 
+                 document.getElementById("showTerm").innerHTML = " "; 
+                 document.getElementById("showMoney").innerHTML =" "; 
+                 document.getElementById("showDate").innerHTML = " "; 
+
+            }
+            
+        } 
+        function formatDateToShow(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) 
+                month = '0' + month;
+            if (day.length < 2) 
+                day = '0' + day;
+        return [day, month, year].join('-');
+        }
+
+        
+
+
+</script>
 <link rel="stylesheet" href="stylesheets/mystyle.css">
  <div class="authincation section-padding">
             <div class="container h-100">
@@ -10,54 +62,45 @@
                         </div>
                         <div class="auth-form card frmrgtaccount" >
                             <div class="card-header justify-content-center ">
-                                <h4 class="card-title">Đăng kí tài khoản người dùng</h4>
+                                <h4 class="card-title">Đăng kí tài khoản tiết kiệm</h4>
                             </div>
+                            <h3 class = "h3info">Số tài khoản: <%= currentUser.account_number %> </h3>
+                            <h3 style = "margin-left : 20px">Số dư hiện tại: <h3>
+                            <h3 id = "moneycurrent" class = "h3info"><%= tktt.current_balance %> </h3>
+                            <h3 class = "h3info">Ngày mở: <%= openDay %> </h3>
                             <div class="card-body">
+                            
                                 <form method="post" name="myform" class="signup_validate">
                                     <div class="form-group ">
-                                        <label>Kỳ hạn</label>
-                                        <input type="email" class="form-control " placeholder="abc@gmail.com" name = "email">
+                                        <label>Kỳ hạn (số tháng)</label>
+                                        <input type="number" class="form-control" name ="term" id="term">
                                     </div>
-                                    <div class="form-group">
-                                        <i class="fa fa-address-book" aria-hidden="true"></i>
-                                        <label>Tên hiển thị</label>
-                                        <input type="text" class="form-control" placeholder="Nguyen Van A"
-                                             name = "displayName">
+                                      <div class="form-group ">
+                                        <label>Số tiền gửi: </label>
+                                        <input type="number" class="form-control" name ="money" id="money">
                                     </div>
-                                    <div class="form-group">
-                                        <i class="fa fa-phone" aria-hidden="true"></i>
-                                        <label>Số điện thoại</label>
-                                        <input type="text" class="form-control" placeholder="84...."
-                                           name = "phoneNumber">
+                                     <div class="text-center mt-4">
+                                        <button type="button" onclick ="getInfo()" class = "btnreg" >Kiểm tra</button>
                                     </div>
-                                    <div class="form-group">
-                                    <i class="fa fa-address-card" aria-hidden="true"></i>
-                                    <label>Loại giấy tờ</label>
-                                    <select class="browser-default custom-select" name = "paperType">
-                                        <option selected value="CMND">CMND</option>
-                                        <option value="CCCD">CCCD</option>
-                                        <option value="passPort">Hộ chiếu</option>
-                                    </select>
+                                   
+                                    <div class="showinfo">
+                                        <h3  class= "textaleart" name = "checkmoney" id="checkmoney"> </h3>
+                                        <span>Tiền gửi:	&nbsp</span>
+                                        <span name = "showMoney" id="showMoney"> </span>
+                                        <br><br>
+                                        <span> Kỳ hạn:	&nbsp</span>
+                                        <span name = "showTerm" id="showTerm"> </span>
+                                        <span> tháng</span>
+                                        <br><br>
+                                        <span> Ngày đóng: &nbsp </span>
+                                        <span id = "showDate"> </span>
+                                        <br><br>
+                                        <span> Lãi suất: </span>
+                                        <span name = "interestRate" id ="interestRate"></span>
+                                        <br><br>
                                     </div>
-                                    <div class="form-group">
-                                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                                        <label>Số giấy tờ</label>
-                                        <input type="text" class="form-control" placeholder="0123.."
-                                           name = "numberPaper">
-                                    </div>
-                                     <div class="md-form md-outline input-with-post-icon datepicker form-group" id="customDays">
-                                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                                      <label>Ngày cấp</label>
-                                        <input placeholder="Ngày cấp" type="date" name="dateRange" id="Customization" class="form-control">
-                                        <i class=" input-prefix " tabindex=0></i>
-                                    </div>
-                                    <div class="text-center mt-4">
-                                        <button type="submit" class="btn btn-success btn-block">Đăng kí</button>
-                                    </div>
-                                      <div class="new-account mt-3">
-                                            <p>Đã có tài khoản? <a class="text-primary" href="/login">Đăng nhập</a>
-                                            </p>
-                                      </div>
+                                      <input type ="submit" id = "confirm" disabled  class="buttontk btnconfirm" value = "Xác nhận">
+                                     
                                 </form>
                             </div>
                         </div>

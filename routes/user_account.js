@@ -19,7 +19,7 @@ router.get('/',asyncHandler (async function(req,res,next){
         const money = await Function.formattingCurrency(tktt.current_balance);
         //Formatting type date
         const openDay = await Function.formatDateToShow(tktt.open_day);
-        const closeDay = null;
+        var closeDay = null;
         if(tktk){
              closeDay = await Function.formatDateToShow(tktk.close_day);
         }
