@@ -31,19 +31,31 @@ class Account extends Model {
      });
    }
    
+  static async findAccountTKTT(accountNumber){
+    return Account.findAll({
+       where: {
+         type_account: 'TKTT',
+         account_number: accountNumber
+       },
+       include: [{
+        model: User,
+        where: {account_number: accountNumber},
+        required: true,
+       }]
+     });
+  }
+  
 }
-
 Account.init({
     // attributes
     account_number: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        references: {
-          model: User,
-          key: 'account_number',
-        },
-        primaryKey: true
-
+      type: Sequelize.STRING,
+      allowNull: false,
+      references: {
+        model: User,
+        key: 'account_number',
+      },
+      primaryKey: true
     },
     type_account: {
       type: Sequelize.STRING,
@@ -84,6 +96,7 @@ Account.init({
   });
   
   
-User.hasMany(Account);
-Account.belongsTo(User) ;
-  module.exports = Account;
+  User.hasMany(Account);
+  Account.belongsTo(User) ;
+
+module.exports = Account;

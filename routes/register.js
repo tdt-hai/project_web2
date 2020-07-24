@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../services/user');
+const Account = require('../services/account');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const crypto = require('crypto');
-const Email = require('../services/email')
+const Email = require('../services/email');
 const Phone = require('../services/phone');
-const Account = require('../services/account');
 const Func = require('../services/function');
 /*Login */
 router.get('/', asyncHandler( async function (req,res,next){
@@ -48,6 +48,7 @@ router.post('/',[
         return res.status(422).render('register',{errors: errors.array()});
     }
     const passWord = crypto.randomBytes(3).toString('hex').toLowerCase();
+    //Tạo tài khoản
     const users = await User.create({
         email: req.body.email,
         password: User.hashPassword(passWord),
@@ -60,17 +61,16 @@ router.post('/',[
         active: false,
         adminRole: false,
     });
-    
-    //create default account(type_acount = TKTT) when register a new user
-   const ac =  await Account.create({
-        account_number : req.body.numberPaper,
-        type_account : 'TKTT',
-        current_balance : 0,
-        currency : 'VND',
-        open_day : Func.getDateNow(),
-        userId : users.id,
+    //Tạo tài khoản thanh toán
+     //create default account(type_acount = TKTT) when register a new user
+    await Account.create({
+    account_number : req.body.numberPaper,
+    type_account : 'TKTT',
+    current_balance : 0,
+    currency : 'VND',
+    open_day : Func.getDateNow(),
+    userId : users.id,
     })
-
     //send password qua email
     await Email.SendEmail(users.email,'Mat khau cua ban la: ',`${passWord}`);
     //send password bằng sđt

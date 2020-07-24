@@ -35,7 +35,7 @@ router.post('/frontUpload',function(req,res){
         res.redirect('/acc_authentication');
        return res.end();
       }
-      res.redirect('/users')
+      res.redirect('/acc_authentication')
       res.end();
   });
 });
@@ -47,7 +47,7 @@ router.post('/backsideUpload',function(req,res){
           res.redirect('/acc_authentication');
           return res.end();
         }
-        res.redirect('/users')
+        res.redirect('/acc_authentication')
         res.end();
     });
   });
