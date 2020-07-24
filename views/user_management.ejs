@@ -1,7 +1,6 @@
 <%- include('header'); -%>
 <%- include('nav'); -%>
 <title>User management</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="stylesheets/mystyle.css">
 <br>
 <br>
@@ -12,7 +11,7 @@
             <ul class="ulcustom" >
                 <% if (listUser) { %>
                     <% listUser.forEach(u => { %>
-                        <li class="list-group-item d-flex justify-content-between align-items-center licustom" style="background-color: lightgray"> 
+                        <li class="list-group-item d-flex justify-content-between align-items-center licustom" style="background-color: #d3d3d387; color: rgb(16 1 1 / 93%);"> 
                             Email: <%= u.email %> <br>
                            Tên người dùng: <%= u.displayName %> <br>   
                             Account number: <%= u.account_number %> 

@@ -4,6 +4,7 @@ const User = require('../services/user');
 const Function = require('../services/function');
 const asyncHandler = require('express-async-handler');
 const Account = require('../services/account');
+const Email = require('../services/email');
 
 router.get('/',asyncHandler(async function profile(req,res){
     const listUser = await User.findAllUser();
@@ -21,6 +22,7 @@ router.get('/:id',asyncHandler(async function profile(req,res){
 //Cập nhật thông tin người dùng và số dư tài khoản
 router.post('/:id',asyncHandler(async function profile(req,res){
     const {id} = req.params;
+    const user = await User.findUserById(id);
     const email = req.body.email;
     const displayName = req.body.displayName;
     const phoneNumber = req.body.phoneNumber;
@@ -33,8 +35,8 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     currentBalance = parseInt(currentBalance,10);
     await User.updateUser(id,email,displayName,phoneNumber,paperType,idNo,issued);
     await Account.updateCurrentBalance(id,currentBalance);
+    await Email.SendEmail(user.email,"Số dư bạn vừa được thêm vào là",`<>`)
     res.redirect('../user_management');
-    // #$2b$10$2cPbkBkeKkqf/7sx1kS46On7yQxSMqwxoPZtaB969KCDoBVuMClki
  }));
 
 module.exports = router;
