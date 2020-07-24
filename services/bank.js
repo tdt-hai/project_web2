@@ -1,30 +1,31 @@
 const db = require('./db');
 const Sequelize = require('sequelize');
-const { DataTypes, Model } = Sequelize;
+
+/*model user*/
+const Model = Sequelize.Model;
 
 class Bank extends Model {
 
 }
 
-Bank.init(
-	{
-        // attributes
-		BankId: {
-			type: DataTypes.STRING,
-			primaryKey: true
-		},
-		BankName: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		BankKey: {
-			type: DataTypes.STRING,
-			allowNull: false
-		}
+Bank.init({
+	// attributes
+	bankId: {
+		type: Sequelize.STRING,
+		primaryKey: true
 	},
-    { 
-    sequelize: db,
-    modelName: 'bank' 
+	bankName: {
+		type: Sequelize.STRING,
+		allowNull: false
+	},
+	bankKey: {
+		type: Sequelize.STRING,
+		allowNull: false
+	}
+},
+{ 
+sequelize: db,
+modelName: 'bank' 
 });
 
 module.exports = Bank;
