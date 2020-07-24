@@ -7,12 +7,14 @@ const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
 const Email = require("../services/email");
 const Transaction = require("../services/transaction");
+const Account = require("../services/account");
 var user;
 
 router.get(
     "/",
     asyncHandler(async function (req, res, next) {
-        res.render("transferring_money");
+        const user = await Account.findAccountTKTT(req.currentUser.account_number);
+        res.render("transferring_money", { user });
     })
 );
 
@@ -31,13 +33,25 @@ router.post(
                     return true;
                 }
             }),
-        body("amount").trim().notEmpty(),
+        body("amount")
+            .trim()
+            .notEmpty()
+            // .custom(async function (amount, { req }) {
+            //     const user = await Account.findAccountTKTT(req.currentUser.account_number);
+
+            //     if (user.current_balance < amount) {
+            //         throw Error("Your account is not enough");
+            //     } else {
+            //         return true;
+            //     }
+            // })
+            ,
         body("note").trim().notEmpty(),
     ],
     asyncHandler(async function (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).render("transferring_money", { errors: errors.array() });
+            return res.status(422).render("error", { errors: errors.array() });
         }
 
         req.session.destinationBankId = req.body.destinationBankId;
@@ -57,7 +71,7 @@ router.post(
         //send password bằng sđt
         //await Phone.sendSMS('ACB bank',user.phoneNumber,'Your OTP code la: ${OTP}`);
 
-        return res.redirect("confirm_transferring_money");
+        return res.redirect("/confirm_transferring_money");
     })
 );
 module.exports = router;

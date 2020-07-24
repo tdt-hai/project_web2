@@ -6,6 +6,7 @@ const Email = require("../services/email");
 const Transaction = require("../services/transaction");
 const n2vw = require("n2vw");
 const { body, validationResult } = require("express-validator");
+const Account = require("../services/account");
 
 router.get(
     "/",
@@ -59,10 +60,11 @@ router.post(
         const destinationAccountId = req.session.destinationAccountId;
         const note = req.session.note;
 
-        console.log(destinationBankId, destinationAccountId, req.currentUser.account_number);
-
+        //console.log(destinationBankId, destinationAccountId, req.currentUser.account_number);
+        await Account.addMoney(destinationAccountId, amount);
+        await Account.subMoney(sourceAccountId, amount);
         await Transaction.create({ amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note });
-        res.redirect("back");
+        res.redirect("/users.js");
     })
 );
 module.exports = router;
