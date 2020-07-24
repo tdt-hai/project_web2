@@ -6,84 +6,84 @@
 
 <div class = "container emp-profile" style = "margin-top: 110px;">
 <br>
-  
+
 
 <div class="col-xl-7 col-lg-7 col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="buyer-seller">
-                    <div class="d-flex justify-content-between mb-3">
-                            <div class="media">
-                                <div class="media-body">
-                                    
-                                    <h1>Thông tin tài khoản</h1>
-                                    
-                                    <h4 style="color:black"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= currentUser.displayName %></h4>
-                                    <h4 style="color:black"><i class="fa fa-envelope" aria-hidden="true"></i> <%= currentUser.email %></h4>
-                                </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="buyer-seller">
+                <div class="d-flex justify-content-between mb-3">
+                        <div class="media">
+                            <div class="media-body">
+                                
+                                <h1>Thông tin tài khoản</h1>
+                                
+                                <h4 style="color:black"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= currentUser.displayName %></h4>
+                                <h4 style="color:black"><i class="fa fa-envelope" aria-hidden="true"></i> <%= currentUser.email %></h4>
                             </div>
-                        
-                    </div>
-                    <% if(tktk == null) { %>
-                        <a href="./savings_account" class="buttontk">Đăng kí tài khoản tiết kiệm</a>
-                    <% } %>
-                    <br><br>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tbody>
-                                <tr >
-                                    
-                                    <td><span class="text-primary"><i class="fa fa-id-card" aria-hidden="true"></i> Số tài khoản</span></td>
-                                    <td><span class="text-primary"><%= currentUser.account_number %></span></td>
-                                </tr>
-                                <tr >
-                                    <td><span class="text-primary"><i class="fa fa-calendar" aria-hidden="true"></i> Ngày mở</span></td>
-                                    <td><span class="text-primary"><%= openDay %></span></td>
-                                </tr>
-                                <tr style = "background: #655f5f;" >
-                                <td >
-                                    <h4> Tài khoản thanh toán</h4>
-                                </td>
-                                </tr>
-                                <tr>
-                                    
-                                    <td><i class="fa fa-money" aria-hidden="true"></i> Số dư</td>
-                                    <td><%= money %> VNĐ</td>
-                                </tr>
-                              
-                                <tr style = "background: #655f5f;" >
-                                <td >
-                                    <h4> Tài khoản tiết kiệm </h4>
-                                    <% if(tktk ==null){ %>
-                                        <h4>(Chưa đăng kí) </h4>
-                                    <%} %>
-                                </td>
+                        </div>
+                    
+                </div>
+                <% if(tktk == null) { %>
+                    <a href="./savings_account" class="buttontk">Đăng kí tài khoản tiết kiệm</a>
+                <% } %>
+                <br><br>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr >
+                                
+                                <td><span class="text-primary"><i class="fa fa-id-card" aria-hidden="true"></i> Số tài khoản</span></td>
+                                <td><span class="text-primary"><%= currentUser.account_number %></span></td>
+                            </tr>
+                            <tr >
+                                <td><span class="text-primary"><i class="fa fa-calendar" aria-hidden="true"></i> Ngày mở</span></td>
+                                <td><span class="text-primary"><%= openDay %></span></td>
+                            </tr>
+                            <tr style = "background: #655f5f;" >
+                            <td >
+                                <h4> Tài khoản thanh toán</h4>
+                            </td>
+                            </tr>
+                            <tr>
+                                
+                                <td><i class="fa fa-money" aria-hidden="true"></i> Số dư</td>
+                                <td><%= money %> VNĐ</td>
+                            </tr>
+                            
+                            <tr style = "background: #655f5f;" >
+                            <td >
+                                <h4> Tài khoản tiết kiệm </h4>
+                                <% if(tktk ==null){ %>
+                                    <h4>(Chưa đăng kí) </h4>
+                                <%} %>
+                            </td>
 
-                                </tr>
-                                <% if(tktk) { %>
-                                 <tr>
-                                    <td>Lãi suất</td>
-                                    <td><%= tktk.interest_rate %> %</td>
-                                </tr>
+                            </tr>
+                            <% if(tktk) { %>
                                 <tr>
-                                    <td>Kỳ hạn</td>
-                                    <td><%= tktk.term%> ngày</td>
-                                </tr>
-                                <tr>
-                                    <td>Ngày đóng</td>
-                                    <td><%= closeDay %> </td>
-                                </tr>
-                              
-                                <% } %>
+                                <td>Lãi suất</td>
+                                <td><%= tktk.interest_rate %> %</td>
+                            </tr>
+                            <tr>
+                                <td>Kỳ hạn</td>
+                                <td><%= tktk.term%> ngày</td>
+                            </tr>
+                            <tr>
+                                <td>Ngày đóng</td>
+                                <td><%= closeDay %> </td>
+                            </tr>
+                            
+                            <% } %>
 
 
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 </div>

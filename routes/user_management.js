@@ -35,6 +35,6 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     await Account.updateCurrentBalance(id,currentBalance);
     res.redirect('../user_management');
     // #$2b$10$2cPbkBkeKkqf/7sx1kS46On7yQxSMqwxoPZtaB969KCDoBVuMClki
- }));
+}));
 
 module.exports = router;
