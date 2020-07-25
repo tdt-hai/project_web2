@@ -2,53 +2,60 @@
 <%- include('nav'); -%>
 
 <script>
- 
-        function getInfo() { 
-            var x = document.getElementById("term").value; 
+        function getInfo() {
+            var x = document.getElementById("term").value;
             var mTktk = document.getElementById("money").value;
-            //Lấy giá trị số tiền hiện tài ở tài khoản thanh toán
+            var showmTktk = mTktk;
+                mTktk = formattingCurrency(mTktk);
+            //Lấy giá trị số tiền hiện tại ở tài khoản thanh toán
             var mCurrent = document.getElementById("moneycurrent").innerHTML;
-            
+                mCurrent = formattingCurrency(mCurrent);
+     
             if(mTktk >= 100000 && mTktk < Number(mCurrent) && x>=1){
-                document.getElementById("showTerm").innerHTML = x; 
-                document.getElementById("showMoney").innerHTML =mTktk; 
+                document.getElementById("showTerm").innerHTML = x;
+                document.getElementById("showMoney").innerHTML =showmTktk;
                 var d = new Date();
                 d.setDate(d.getDate() + x*30);
-                const getDate = d; 
+                const getDate = d;
                 const date = formatDateToShow(d);
-                document.getElementById("showDate").innerHTML = date; 
+                document.getElementById("showDate").innerHTML = date;
                 //hien thi lai suat
                 const rate = x *0.2;
-                document.getElementById("interestRate").innerHTML = rate; 
+                document.getElementById("interestRate").innerHTML = rate;
                 document.getElementById("confirm").disabled = false;
-                document.getElementById("checkmoney").innerHTML = ""; 
+                document.getElementById("checkmoney").innerHTML = "";
             }
             else{
                 //Xoa thông tin khi nhập mới
                 document.getElementById("confirm").disabled = true;
-                document.getElementById("checkmoney").innerHTML = "Số tiền nhập vào không hợp lệ <br> (Vui lòng nhập số tiền tối thiểu 100,000 VND và nhỏ hơn số dư hiện tại) <br>"; 
-                 document.getElementById("interestRate").innerHTML = ""; 
-                 document.getElementById("showTerm").innerHTML = " "; 
-                 document.getElementById("showMoney").innerHTML =" "; 
-                 document.getElementById("showDate").innerHTML = " "; 
+                document.getElementById("checkmoney").innerHTML ="Số tiền nhập vào không hợp lệ <br> (Vui lòng nhập số tiền tối thiểu 100,000 VND và nhỏ hơn số dư hiện tại) <br>" ;
+                 document.getElementById("interestRate").innerHTML = "";
+                 document.getElementById("showTerm").innerHTML = " ";
+                 document.getElementById("showMoney").innerHTML =" ";
+                 document.getElementById("showDate").innerHTML = " ";
 
             }
-            
-        } 
+
+        }
+        function formattingCurrency(money){
+            var m = money.replace(/\,/g,'');
+            m = Number(m);
+            return m;
+        }
         function formatDateToShow(date) {
             var d = new Date(date),
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();
 
-            if (month.length < 2) 
+            if (month.length < 2)
                 month = '0' + month;
-            if (day.length < 2) 
+            if (day.length < 2)
                 day = '0' + day;
         return [day, month, year].join('-');
         }
 
-        
+
 
 
 </script>
@@ -64,12 +71,17 @@
                             <div class="card-header justify-content-center ">
                                 <h4 class="card-title">Đăng kí tài khoản tiết kiệm</h4>
                             </div>
-                            <h3 class = "h3info">Số tài khoản: <%= currentUser.account_number %> </h3>
-                            <h3 style = "margin-left : 20px">Số dư hiện tại: <h3>
-                            <h3 id = "moneycurrent" class = "h3info"><%= tktt.current_balance %> </h3>
-                            <h3 class = "h3info">Ngày mở: <%= openDay %> </h3>
+                            <div class = "showinfo">
+                            <span class = "h3title">Số tài khoản:</span>
+                            <span class = "h3info"> <%= currentUser.account_number %> </span><br><br>
+                            <span class = "h3title" >Số dư hiện tại: <span>
+                            <span class= "h3info money" id = "moneycurrent" ><%= tktt.current_balance %></span><br>
+                            <span class = "h3info" style ="font-size: medium;"> VNĐ</span><br><br>
+                            <span class = "h3title">Ngày mở:  </span>
+                            <span class = "h3info"><%= openDay %> </h3>
+                            </div>
                             <div class="card-body">
-                            
+
                                 <form method="post" name="myform" class="signup_validate">
                                     <div class="form-group ">
                                         <label>Kỳ hạn (số tháng)</label>
@@ -77,30 +89,32 @@
                                     </div>
                                       <div class="form-group ">
                                         <label>Số tiền gửi: </label>
-                                        <input type="number" class="form-control" name ="money" id="money">
+                                        <input type="text" class="form-control money" name ="money" id="money">
                                     </div>
                                      <div class="text-center mt-4">
                                         <button type="button" onclick ="getInfo()" class = "btnreg" >Kiểm tra</button>
                                     </div>
-                                   
+
                                     <div class="showinfo">
                                         <h3  class= "textaleart" name = "checkmoney" id="checkmoney"> </h3>
                                         <span>Tiền gửi:	&nbsp</span>
-                                        <span name = "showMoney" id="showMoney"> </span>
+                                        <span style ="margin-left:35px;" name = "showMoney" id="showMoney"> </span>
+                                        <span >VNĐ</span>
                                         <br><br>
                                         <span> Kỳ hạn:	&nbsp</span>
-                                        <span name = "showTerm" id="showTerm"> </span>
+                                        <span style ="margin-left:40px;"name = "showTerm" id="showTerm"> </span>
                                         <span> tháng</span>
                                         <br><br>
                                         <span> Ngày đóng: &nbsp </span>
                                         <span id = "showDate"> </span>
                                         <br><br>
                                         <span> Lãi suất: </span>
-                                        <span name = "interestRate" id ="interestRate"></span>
+                                        <span style ="margin-left:40px;"name = "interestRate" id ="interestRate"></span>
+                                        <span>%</span>
                                         <br><br>
                                     </div>
                                       <input type ="submit" id = "confirm" disabled  class="buttontk btnconfirm" value = "Xác nhận">
-                                     
+
                                 </form>
                             </div>
                         </div>

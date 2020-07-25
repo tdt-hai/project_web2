@@ -33,6 +33,12 @@ function formatDateToShow(date) {
 function formattingCurrency(money){
      return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
+function formattingCurrencyToDatabase(money){
+    money = money.replace(/\,/g,'');
+    money = Number(money);
+    return money;
+}
+
 function getDateNow(){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -43,4 +49,4 @@ function getDateNow(){
     return today;
 }
 
-module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate };
+module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase };

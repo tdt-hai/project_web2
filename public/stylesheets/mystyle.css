@@ -1,6 +1,7 @@
 body{
     background-color: #3a3361; 
 }
+
 .emp-profile{
     padding: 3%;
     
@@ -33,7 +34,7 @@ body{
 }
 .licustom{
     margin-bottom: 5px;
-    border-radius: 5    px;
+    border-radius: 5px;
 }
 .labelcustom{
     color:black
@@ -165,7 +166,15 @@ body{
     font-weight: 600;
     color: #16304d;
 }
-.h3info{
-    margin-top: 20px;    
+.h3title,  .h3info{
+    color:white;
+    font-size: 27px;
+      
     margin-left: 20px;
+  
+}
+
+.h3info{
+    float:right;
+    margin-right: 20px;
 }

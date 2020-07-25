@@ -20,10 +20,12 @@ router.get('/',asyncHandler (async function(req,res,next){
         //Formatting type date
         const openDay = await Function.formatDateToShow(tktt.open_day);
         var closeDay = null;
+        var moneyInSavingsAc = null;
         if(tktk){
-             closeDay = await Function.formatDateToShow(tktk.close_day);
+            closeDay = await Function.formatDateToShow(tktk.close_day);
+             moneyInSavingsAc = await Function.formattingCurrency(tktk.current_balance);
         }
-        res.render('user_account',{tktk,tktt,money,openDay,closeDay});
+        res.render('user_account',{tktk,tktt,money,openDay,closeDay,moneyInSavingsAc});
             //const test =  User.findUserByIdAndAccount(user.account_number)
             ////const TKTT = await Account.findAccountTKTT(user.account_number);
         // res.json(TKTT);

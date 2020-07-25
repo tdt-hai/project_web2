@@ -26,7 +26,7 @@ router.post('/',asyncHandler(async function (req,res){
         const ac = await Account.create({
                 account_number: req.currentUser.account_number,
                 type_account: "TKTK",
-                current_balance: req.body.money,
+                current_balance: Function.formattingCurrencyToDatabase(req.body.money),
                 currency : "VND",
                 interest_rate: interest_rate,
                 open_day: tktt.open_day,
