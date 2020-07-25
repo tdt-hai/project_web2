@@ -145,9 +145,9 @@ body{
     margin-top: -15%;
 }
 .profile-work p{
-    font-size: 12px;
+    font-size: 20px;
     color: #818182;
-    font-weight: 600;
+    
     margin-top: 10%;
 }
 .profile-work a{
@@ -161,10 +161,17 @@ body{
 }
 .profile-tab label{
     font-weight: 600;
+    font-size: 20px;
+
+    color: black;
+    text-shadow: 1px 1px 5px #ffffffe6;
+
 }
 .profile-tab p{
     font-weight: 600;
-    color: #16304d;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
 }
 .h3title,  .h3info{
     color:white;
