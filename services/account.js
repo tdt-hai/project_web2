@@ -51,7 +51,7 @@ class Account extends Model {
    (await u).update;
     await u.save();
   }
-  
+ 
 }
 Account.init({
     // attributes

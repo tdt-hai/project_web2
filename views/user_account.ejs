@@ -38,32 +38,45 @@
                                     <td><span class="text-primary"><%= openDay %></span></td>
                                 </tr>
                                 <tr style = "background: #655f5f;" >
-                                <td >
+                                <td style = "width:200px;">
                                     <h4> Tài khoản thanh toán</h4>
                                 </td>
                                 </tr>
                                 <tr>
                                     <td>Số dư</td>
-                                    <td><%= money %> VNĐ</td>
+                                    <td>
+                                    <%= money %> VNĐ
+                                    <br>
+                                    <span><%= tkttvnd %> đồng</span>
+                                    </td>
                                 </tr>
                               
-                                <tr style = "background: #655f5f;" >
-                                <td >
-                                    <h4> Tài khoản tiết kiệm </h4>
+                                <tr style = "margin-left:100px;background: #655f5f;" >
+                                <td style = "width:200px;">
+                                    <h4> Tài khoản tiết kiệm 
+
                                     <% if(tktk ==null){ %>
-                                        <h4>(Chưa đăng kí) </h4>
+                                        &nbsp (Chưa đăng kí) 
                                     <%} %>
+                                     </h4>
                                 </td>
 
                                 </tr>
                                 <% if(tktk) { %>
+                                <tr>
+                                <td>Số dư tiết kiệm:</td>
+                                <td> <%= moneyInSavingsAc %> VNĐ <br>
+                                <span><%= tktkvnd %> đồng</span>
+                                 </td>
+
+                                </tr>
                                  <tr>
                                     <td>Lãi suất</td>
                                     <td><%= tktk.interest_rate %> %</td>
-                                </tr>
+                                 </tr>
                                 <tr>
                                     <td>Kỳ hạn</td>
-                                    <td><%= tktk.term%> ngày</td>
+                                    <td><%= tktk.term%> tháng</td>
                                 </tr>
                                 <tr>
                                     <td>Ngày đóng</td>
