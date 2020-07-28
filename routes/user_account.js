@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const User = require('../services/user');
 const Account = require('../services/account');
 const Function = require('../services/function');
-//const { formatDate } = require('../services/function');
+const n2vw = require('n2vw');
 
 //Thông tin tài khoản ngân hàng
 router.get('/',asyncHandler (async function(req,res,next){
@@ -15,6 +15,10 @@ router.get('/',asyncHandler (async function(req,res,next){
         res.render('page404');
     }
     else{
+        //In ra so tien bang chu
+        const converter = new n2vw();
+        const tkttvnd = converter.getFullText(tktt.current_balance);
+        var tktkvnd = null;
         //Formatting currency
         const money = await Function.formattingCurrency(tktt.current_balance);
         //Formatting type date
@@ -22,16 +26,12 @@ router.get('/',asyncHandler (async function(req,res,next){
         var closeDay = null;
         var moneyInSavingsAc = null;
         if(tktk){
+            tktkvnd = converter.getFullText(tktk.current_balance);
             closeDay = await Function.formatDateToShow(tktk.close_day);
-             moneyInSavingsAc = await Function.formattingCurrency(tktk.current_balance);
+            moneyInSavingsAc = await Function.formattingCurrency(tktk.current_balance);
+
         }
-        res.render('user_account',{tktk,tktt,money,openDay,closeDay,moneyInSavingsAc});
-            //const test =  User.findUserByIdAndAccount(user.account_number)
-            ////const TKTT = await Account.findAccountTKTT(user.account_number);
-        // res.json(TKTT);
-            //console.log(TKTT);
-        // res.json(test);
-        //  res.render('user_account',{TKTT,user});
+        res.render('user_account',{tktk,tktt,money,openDay,closeDay,moneyInSavingsAc,tktkvnd,tkttvnd});
     }
 }));
 

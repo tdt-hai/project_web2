@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler');
 const Account = require('../services/account');
 const User = require('../services/user');
 const Function = require('../services/function');
+const { update } = require('../services/user');
 router.get('/',asyncHandler(async function profile(req,res){
         //Kiem tra da tồn tại tài khoản chưa
         const checkAccount = await Account.findSavingsAccountById(req.currentUser.id);
@@ -37,6 +38,9 @@ router.post('/',asyncHandler(async function (req,res){
                 userId: req.currentUser.id,
 
         });
+        const updateBalance =  tktt.current_balance -  Function.formattingCurrencyToDatabase(req.body.money);
+        await Account.updateCurrentBalance(req.currentUser.id,updateBalance);
+
         res.redirect('user_account');
 }));
 
