@@ -1,6 +1,7 @@
 body{
     background-color: #3a3361; 
 }
+
 .emp-profile{
     padding: 3%;
     
@@ -14,6 +15,18 @@ body{
     width:500px;
     
 }
+.showinfo{
+    margin-top: 50px;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.btnreg{
+    background-color: #566ba0;
+    color: #ffffff;
+    width: 250px;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px #000000;
+}
 .ulcustom{
     background-color: #7c74a8;
     /* border: 2px solid red; */
@@ -21,7 +34,7 @@ body{
 }
 .licustom{
     margin-bottom: 5px;
-    border-radius: 5    px;
+    border-radius: 5px;
 }
 .labelcustom{
     color:black
@@ -40,15 +53,30 @@ body{
     border-radius: 15px;
     box-shadow: 0 9px #999;
   }
-  
+.btnconfirm{
+    margin-left: 100px;
+    width: 300px;
+    background-color: #566ba0;
+    text-shadow: 2px 2px 5px #000000;
+}
+.textaleart{
+    color: #ffbfbf;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
+}
   .buttontk:hover {
       background-color: #a73259;
       color: white;
+      box-shadow: 0 9px #999;
     }
-  
+  .buttontk:disabled{
+    background-color: #050404;
+    color: white;
+    box-shadow: 0 9px #999;
+  }
   .buttontk:active {
     background-color: #a73259;
-    box-shadow: 0 5px #666;
+    box-shadow: 0 10px #666;
     transform: translateY(4px);
     
   }
@@ -117,9 +145,9 @@ body{
     margin-top: -15%;
 }
 .profile-work p{
-    font-size: 12px;
+    font-size: 20px;
     color: #818182;
-    font-weight: 600;
+    
     margin-top: 10%;
 }
 .profile-work a{
@@ -133,8 +161,27 @@ body{
 }
 .profile-tab label{
     font-weight: 600;
+    font-size: 20px;
+
+    color: black;
+    text-shadow: 1px 1px 5px #ffffffe6;
+
 }
 .profile-tab p{
     font-weight: 600;
-    color: #16304d;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+}
+.h3title,  .h3info{
+    color:white;
+    font-size: 27px;
+      
+    margin-left: 20px;
+  
+}
+
+.h3info{
+    float:right;
+    margin-right: 20px;
 }

@@ -10,6 +10,14 @@ function formatDate(date) {
         day = '0' + day;
  return [year, month, day].join('-');
 }
+
+function addedDate(days){
+    var d = new Date();
+    d.setDate(d.getDate() + days*30);
+    return d;
+}
+
+
 function formatDateToShow(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -25,6 +33,12 @@ function formatDateToShow(date) {
 function formattingCurrency(money){
      return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
+function formattingCurrencyToDatabase(money){
+    money = money.replace(/\,/g,'');
+    money = Number(money);
+    return money;
+}
+
 function getDateNow(){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -34,5 +48,5 @@ function getDateNow(){
     today = [yyyy, mm, dd].join('-');
     return today;
 }
-module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow };
 
+module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase };
