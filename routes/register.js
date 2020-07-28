@@ -72,7 +72,7 @@ router.post('/',[
     userId : users.id,
     })
     //send password qua email
-    await Email.SendEmail(users.email,'Mat khau cua ban la: ',`${passWord}`);
+    await Email.SendEmail(users.email,'Mat khau cua ban la: ',`${passWord}`,null);
     //send password bằng sđt
     //await Phone.sendSMS('ACB bank',users.phoneNumber,`Mat khau cua ban la: ${passWord}`);
     res.render('page_auth');
