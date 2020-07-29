@@ -13,6 +13,7 @@ router.get(
     "/",
     asyncHandler(async function (req, res, next) {
         const sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
+       // res.json(sourceAccount);
         res.render("transferring_money", { sourceAccount });
     })
 );
