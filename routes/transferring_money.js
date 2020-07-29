@@ -6,13 +6,14 @@ const Bank = require("../services/bank");
 const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
 const Email = require("../services/email");
-const Transaction = require("../services/transaction");
-var user;
+const Account = require("../services/account");
+var destinationAccount;
 
 router.get(
     "/",
     asyncHandler(async function (req, res, next) {
-        res.render("transferring_money");
+        const sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
+        res.render("transferring_money", { sourceAccount });
     })
 );
 
@@ -23,15 +24,24 @@ router.post(
             .trim()
             .notEmpty()
             .custom(async function (destinationAccountId, { req }) {
-                user = await User.findUserByAccountNumber(destinationAccountId);
+                destinationAccount = await Account.findAccountTKTT(destinationAccountId);
 
-                if (!user) {
+                if (!destinationAccount) {
                     throw Error("Destination account not Exist");
                 } else {
                     return true;
                 }
             }),
         body("amount").trim().notEmpty(),
+        // .custom(async function (amount, { req }) {
+        //     const user = await Account.findAccountTKTT(req.currentUser.account_number);
+
+        //     if (user.current_balance < amount) {
+        //         throw Error("Your account is not enough");
+        //     } else {
+        //         return true;
+        //     }
+        // })
         body("note").trim().notEmpty(),
     ],
     asyncHandler(async function (req, res) {
@@ -51,13 +61,16 @@ router.post(
         });
 
         req.session.OTP = OTP;
+        // console.log('OTP' + OTP);
+        // console.log(user);
 
         //send password qua email
-        await Email.SendEmail(user.email, "Your OTP code la: ", `${OTP}`,null);
+        await Email.SendEmail(req.currentUser.email, "Your OTP code la: ", `${OTP}`);
+
         //send password bằng sđt
         //await Phone.sendSMS('ACB bank',user.phoneNumber,'Your OTP code la: ${OTP}`);
 
-        return res.redirect("confirm_transferring_money");
+        return res.redirect("/confirm_transferring_money");
     })
 );
 module.exports = router;
