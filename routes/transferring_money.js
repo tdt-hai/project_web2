@@ -66,6 +66,7 @@ router.post(
 
         //send password qua email
         await Email.SendEmail(req.currentUser.email, "Your OTP code la: ", `${OTP}`);
+
         //send password bằng sđt
         //await Phone.sendSMS('ACB bank',user.phoneNumber,'Your OTP code la: ${OTP}`);
 
