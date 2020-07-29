@@ -11,70 +11,55 @@ const Model = Sequelize.Model;
 
 class Account extends Model {
     static async addMoney(accountNumber, money) {
-        return Account.update(
-            {
-                current_balance: current_balance + money,
-            },
-            {
-                where: {
-                    account_number: accountNumber,
-                },
-            }
-        );
+
+        return Account.increment({'current_balance': money }, { where: { account_number: accountNumber } });
     }
 
     static async subMoney(accountNumber, money) {
-        return Account.update(
-            {
-                current_balance: current_balance - money,
-            },
-            {
-                where: {
-                    account_number: accountNumber,
-                },
-            }
-        );
+
+        return Account.decrement({'current_balance': money }, { where: { account_number: accountNumber } });
     }
-   static async findAllAccount(){
-      return Account.findAll();
-   }
-   static async findSavingsAccountById(id){
-     return Account.findOne({
-        where:{
-          userId: id,
-          type_account: "TKTK",
-        }
-     });
-   }
-   static async findCheckingAccountById(id){
-     return Account.findOne({
-       where :{
-         userId: id,
-         type_account: "TKTT",
-       }
-     });
-   }
-   
-  static async findAccountTKTT(accountNumber){
-    return Account.findAll({
-       where: {
-         type_account: 'TKTT',
-         account_number: accountNumber
-       },
-       include: [{
-        model: User,
-        where: {account_number: accountNumber},
-        required: true,
-       }]
-     });
-  }
-  static async updateCurrentBalance(id,currentBalance){
-    const u = await Account.findCheckingAccountById(id);
-    u.current_balance = currentBalance;
-   (await u).update;
-    await u.save();
-  }
-  
+    static async findAllAccount() {
+        return Account.findAll();
+    }
+    static async findSavingsAccountById(id) {
+        return Account.findOne({
+            where: {
+                userId: id,
+                type_account: "TKTK",
+            },
+        });
+    }
+    static async findCheckingAccountById(id) {
+        return Account.findOne({
+            where: {
+                userId: id,
+                type_account: "TKTT",
+            },
+        });
+    }
+
+    static async findAccountTKTT(accountNumber) {
+        return Account.findOne({
+            where: {
+                type_account: "TKTT",
+                account_number: accountNumber,
+            },
+            include: [
+                {
+                    model: User,
+                    where: { account_number: accountNumber },
+                    required: true,
+                },
+            ],
+        });
+    }
+    static async updateCurrentBalance(id, currentBalance) {
+        const u = await Account.findCheckingAccountById(id);
+        u.current_balance = currentBalance;
+        (await u).update;
+        await u.save();
+    }
 }
 Account.init(
     {

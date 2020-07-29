@@ -6,15 +6,14 @@ const Bank = require("../services/bank");
 const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
 const Email = require("../services/email");
-const Transaction = require("../services/transaction");
 const Account = require("../services/account");
-var user;
+var destinationAccount;
 
 router.get(
     "/",
     asyncHandler(async function (req, res, next) {
-        const user = await Account.findAccountTKTT(req.currentUser.account_number);
-        res.render("transferring_money", { user });
+        const sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
+        res.render("transferring_money", { sourceAccount });
     })
 );
 
@@ -25,33 +24,30 @@ router.post(
             .trim()
             .notEmpty()
             .custom(async function (destinationAccountId, { req }) {
-                user = await User.findUserByAccountNumber(destinationAccountId);
+                destinationAccount = await Account.findAccountTKTT(destinationAccountId);
 
-                if (!user) {
+                if (!destinationAccount) {
                     throw Error("Destination account not Exist");
                 } else {
                     return true;
                 }
             }),
-        body("amount")
-            .trim()
-            .notEmpty()
-            // .custom(async function (amount, { req }) {
-            //     const user = await Account.findAccountTKTT(req.currentUser.account_number);
+        body("amount").trim().notEmpty(),
+        // .custom(async function (amount, { req }) {
+        //     const user = await Account.findAccountTKTT(req.currentUser.account_number);
 
-            //     if (user.current_balance < amount) {
-            //         throw Error("Your account is not enough");
-            //     } else {
-            //         return true;
-            //     }
-            // })
-            ,
+        //     if (user.current_balance < amount) {
+        //         throw Error("Your account is not enough");
+        //     } else {
+        //         return true;
+        //     }
+        // })
         body("note").trim().notEmpty(),
     ],
     asyncHandler(async function (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).render("error", { errors: errors.array() });
+            return res.status(422).render("transferring_money", { errors: errors.array() });
         }
 
         req.session.destinationBankId = req.body.destinationBankId;
@@ -65,9 +61,11 @@ router.post(
         });
 
         req.session.OTP = OTP;
+        // console.log('OTP' + OTP);
+        // console.log(user);
 
         //send password qua email
-        await Email.SendEmail(user.email, "Your OTP code la: ", `${OTP}`);
+        await Email.SendEmail(req.currentUser.email, "Your OTP code la: ", `${OTP}`);
         //send password bằng sđt
         //await Phone.sendSMS('ACB bank',user.phoneNumber,'Your OTP code la: ${OTP}`);
 

@@ -13,20 +13,22 @@ router.get(
     asyncHandler(async function (req, res, next) {
         const destinationBankId = req.session.destinationBankId;
         const destinationAccountId = req.session.destinationAccountId;
-        const amount = req.session.amount;
+        var amount = req.session.amount;
+        amount = amount.replace(/\,/g, "");
+        amount = parseInt(amount, 10);
         const note = req.session.note;
         const converter = new n2vw();
 
         const vnd = converter.getFullText(amount);
         console.log(vnd);
 
-        const user = await User.findUserByAccountNumber(destinationAccountId);
+        const destinationAccount = await User.findUserByAccountNumber(destinationAccountId);
         res.render("confirm_transferring_money", {
             destinationBankId,
             destinationAccountId,
             amount,
             note,
-            user,
+            destinationAccount,
             vnd,
         });
     })
@@ -52,7 +54,9 @@ router.post(
             return res.status(422).render("confirm_transferring_money", { errors: errors.array() });
         }
 
-        const amount = req.session.amount;
+        var amount = req.session.amount;
+        amount = amount.replace(/\,/g, "");
+        amount = parseInt(amount, 10);
         const sourceAccountId = req.currentUser.account_number;
         const currency = "VND";
         const sourceBankId = "ACB";
@@ -60,11 +64,16 @@ router.post(
         const destinationAccountId = req.session.destinationAccountId;
         const note = req.session.note;
 
-        //console.log(destinationBankId, destinationAccountId, req.currentUser.account_number);
+        //giao dich
         await Account.addMoney(destinationAccountId, amount);
         await Account.subMoney(sourceAccountId, amount);
-        await Transaction.create({ amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note });
-        res.redirect("/users.js");
+        await Transaction.saveTransactionHistory(amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note);
+        // phi giao dich 
+        //const fee = amount * 0.0007;
+        //login.jsawait Account.subMoney(sourceAccountId, fee);
+        
+
+        res.redirect("/users");
     })
 );
 module.exports = router;
