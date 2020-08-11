@@ -64,22 +64,22 @@ body{
     font-weight: bold;
     text-shadow: 2px 2px 5px black;
 }
-  .buttontk:hover {
-      background-color: #a73259;
-      color: white;
-      box-shadow: 0 9px #999;
-    }
-  .buttontk:disabled{
-    background-color: #050404;
+.buttontk:hover {
+    background-color: #a73259;
     color: white;
     box-shadow: 0 9px #999;
-  }
-  .buttontk:active {
-    background-color: #a73259;
-    box-shadow: 0 10px #666;
-    transform: translateY(4px);
-    
-  }
+}
+.buttontk:disabled{
+background-color: #050404;
+color: white;
+box-shadow: 0 9px #999;
+}
+.buttontk:active {
+background-color: #a73259;
+box-shadow: 0 10px #666;
+transform: translateY(4px);
+
+}
 
 .profile-img{
     text-align: center;
@@ -174,7 +174,7 @@ body{
     font-size: 20px;
 }
 .h3title,  .h3info{
-    color:white;
+    color:white;    
     font-size: 27px;
       
     margin-left: 20px;
