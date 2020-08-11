@@ -7,16 +7,18 @@ const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
 const Email = require("../services/email");
 const Account = require("../services/account");
-var destinationAccount;
 
-router.get(
-    "/",
-    asyncHandler(async function (req, res, next) {
+router.get("/",asyncHandler(async function (req, res, next) {
+    const user = await User.findUserById(req.session.userId);
+    if(user.active == false){
+        res.render('page404');
+    }
+    else{
         const sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
        // res.json(sourceAccount);
         res.render("transferring_money", { sourceAccount });
-    })
-);
+    }
+}));
 
 router.post(
     "/",

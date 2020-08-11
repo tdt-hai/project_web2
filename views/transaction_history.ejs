@@ -1,0 +1,68 @@
+<%- include('header'); -%>
+<%- include('nav'); -%>
+
+ <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <h4 class="card-title">Users Lists</h4>
+                            </div>
+                            <div class="card-body pt-0">
+                                <h1>Số tài khoản: <%= accountNumber.account_number%> <br></h1>
+                                <div class="card-body">
+                                <div class="input-group" >
+                                    <form action="/transaction_history" method="POST">
+                                            <input class="form-control" type="date" value="<%= datenow%>" name="date1" ><br/>
+                                            <input class="form-control"type="date"value="<%= datenow%>" name="date2" >
+                                            <div class="text-center mt-4">
+                                                <button type="submit" class="btn btn-success btn-block">Tìm kiếm</button>
+                                            </div>
+                                    </form>
+                                </div>
+                                </div>
+                                    <div class="table-responsive">
+                                        <table class="table mb-0 table-responsive-sm">
+                                         <thead>
+                                          <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Ngày</th>
+                                            <th scope="col">Tên giao dịch</th>
+                                            <th scope="col">Số tiền</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                           <% var i = 1 ; tranHis.forEach(function (t) { %>
+                                            <tr>
+                                                <td><%- i++%></td>
+                                                <td class="longDateFormat"><%= t.createdAt%></td>
+                                                <td><%= t.note%></td>
+                                                <td class="money"><%= t.amount%></td> 
+                                            </tr>
+                                            <% }) %>
+                                        </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<%- include('footer'); -%>
+ <script>
+   jQuery(function() {
+      var longDateFormat  = 'dd/MM/yyyy HH:mm:ss';
+      jQuery(".longDateFormat").each(function (idx, elem) {
+          if (jQuery(elem).is(":input")) {
+              jQuery(elem).val($.format.toBrowserTimeZone(jQuery(elem).val(), longDateFormat));
+          } else {
+              jQuery(elem).text($.format.toBrowserTimeZone(jQuery(elem).text(), longDateFormat));
+          }
+      });
+  });
+ 
+ </script>

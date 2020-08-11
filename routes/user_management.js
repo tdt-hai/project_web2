@@ -6,6 +6,7 @@ const asyncHandler = require('express-async-handler');
 const Account = require('../services/account');
 const Email = require('../services/email');
 const ejs = require('ejs');
+const Transaction = require('../services/transaction');
 
 router.get('/',asyncHandler(async function profile(req,res){
     const listUser = await User.findAllUser();
@@ -35,11 +36,10 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     const issued = req.body.issued;
     var currentBalance = req.body.currentBalance;
     currentBalance = currentBalance.replace(/\,/g,'');
-    currentBalance = parseInt(currentBalance,10);
-    var Total = parseInt(currentBalance) + parseInt(account.current_balance);
+    await Transaction.saveTransactionHistory(currentBalance,'VND',account.account_number,'ACB','ACB',null,"Nạp tiền vào tài khoản");
+    await Account.addMoney(account.account_number,currentBalance);
     await User.updateUser(id,email,displayName,phoneNumber,paperType,idNo,issued);
     //Gửi email về biến động số dư
-    await Account.updateCurrentBalance(id,Total); //Số dư cuối
     var accountBack = await Account.findCheckingAccountById(id);
     accountBack = Function.formattingCurrency(accountBack.current_balance);
     currentBalance = Function.formattingCurrency(currentBalance);

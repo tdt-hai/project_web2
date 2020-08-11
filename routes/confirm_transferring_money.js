@@ -20,7 +20,6 @@ router.get(
         const converter = new n2vw();
 
         const vnd = converter.getFullText(amount);
-        console.log(vnd);
 
         const destinationAccount = await User.findUserByAccountNumber(destinationAccountId);
         res.render("confirm_transferring_money", {
@@ -37,7 +36,7 @@ router.get(
 router.post(
     "/",
     [
-        body("otp_code")
+        body('otp_code')
             .trim()
             .notEmpty()
             .custom(async function (otp_code, { req }) {
@@ -53,7 +52,6 @@ router.post(
         if (!errors.isEmpty()) {
             return res.status(422).render("confirm_transferring_money", { errors: errors.array() });
         }
-
         var amount = req.session.amount;
         amount = amount.replace(/\,/g, "");
         amount = parseInt(amount, 10);

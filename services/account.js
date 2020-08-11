@@ -54,12 +54,12 @@ class Account extends Model {
             ],
         });
     }
-    static async updateCurrentBalance(id, currentBalance) {
-        const u = await Account.findCheckingAccountById(id);
-        u.current_balance = currentBalance;
-        (await u).update;
-        await u.save();
-    }
+    // static async updateCurrentBalance(id, currentBalance) {
+    //     const u = await Account.findCheckingAccountById(id);
+    //     u.current_balance = currentBalance;
+    //     (await u).update;
+    //     await u.save();
+    // }
 }
 Account.init(
     {
