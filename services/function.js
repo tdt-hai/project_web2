@@ -48,5 +48,20 @@ function getDateNow(){
     today = [yyyy, mm, dd].join('-');
     return today;
 }
+function getDateNow2(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
 
-module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase };
+    today = [dd, mm, yyyy].join('/');
+    return today;
+}
+function getFullDayNow(){
+   var today = new Date();
+   var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+   var dateTime = date+' '+time;
+   return dateTime;
+}
+module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase,getFullDayNow };

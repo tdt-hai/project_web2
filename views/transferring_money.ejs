@@ -1,5 +1,4 @@
-<%- include('header'); -%>
-<%- include('nav'); -%>
+<%- include('header'); -%> <%- include('nav'); -%>
 
 <div class="content-body">
     <div class="container-fluid">
@@ -17,6 +16,12 @@
                                     <form method="POST" class="currency_validate" novalidate="novalidate">
                                         <div class="form-group">
                                             <h2 class="mr-sm-2">Tài khoản trích (VND) : <%= currentUser.account_number %> - <%= currentUser.displayName %></h2>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <h1 class="mr-sm-2 money"><%= sourceAccount.current_balance %></h1>
+                                                <h1 class="mr-sm-2">VND</h1>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
@@ -53,7 +58,7 @@
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text"><i class="fa fa-usd"></i></label>
                                                 </div>
-                                                <input type="number" name="amount" class="form-control" value="10000" min="10000" max="100000000" data-number-to-fixed="2" data-number-stepfactor="100" />
+                                                <input type="text" name="amount" class="form-control money" value="10000" min="10000" max="100000000" />
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text">VND</label>
                                                 </div>

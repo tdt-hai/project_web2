@@ -5,9 +5,12 @@ const Function = require('../services/function');
 const asyncHandler = require('express-async-handler');
 const Account = require('../services/account');
 const Email = require('../services/email');
+const ejs = require('ejs');
+const Transaction = require('../services/transaction');
 
 router.get('/',asyncHandler(async function profile(req,res){
     const listUser = await User.findAllUser();
+    const accountNumber = Account
     res.render('user_management', {listUser});
 }));
 
@@ -23,7 +26,9 @@ router.get('/:id',asyncHandler(async function profile(req,res){
 //Cập nhật thông tin người dùng và số dư tài khoản
 router.post('/:id',asyncHandler(async function profile(req,res){
     const {id} = req.params;
+    const func = Function.getFullDayNow();
     const user = await User.findUserById(id);
+    const account = await Account.findCheckingAccountById(id);
     const email = req.body.email;
     const displayName = req.body.displayName;
     const phoneNumber = req.body.phoneNumber;
@@ -31,12 +36,16 @@ router.post('/:id',asyncHandler(async function profile(req,res){
     const idNo = req.body.idNo;
     const issued = req.body.issued;
     var currentBalance = req.body.currentBalance;
-
     currentBalance = currentBalance.replace(/\,/g,'');
-    currentBalance = parseInt(currentBalance,10);
+    await Transaction.saveTransactionHistory(currentBalance,'VND',account.account_number,'ACB','ACB',null,"Nạp tiền vào tài khoản");
+    await Account.addMoney(account.account_number,currentBalance);
     await User.updateUser(id,email,displayName,phoneNumber,paperType,idNo,issued);
-    await Account.updateCurrentBalance(id,currentBalance);
-    await Email.SendEmail(user.email,"Số dư bạn vừa được thêm vào là",`<>`)
+    //Gửi email về biến động số dư
+    var accountBack = await Account.findCheckingAccountById(id);
+    accountBack = Function.formattingCurrency(accountBack.current_balance);
+    currentBalance = Function.formattingCurrency(currentBalance);
+    const data = await ejs.renderFile(__dirname + `/balanceNotice.ejs`,{account,currentBalance,accountBack,func});
+    await Email.SendEmail(user.email,"ACB: Biến động số dư",null,data);
     res.redirect('../user_management');
  }));
 

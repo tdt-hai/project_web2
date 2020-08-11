@@ -16,7 +16,6 @@
                                 <% } else if (!currentUser.adminRole) {%>
                                 <a class="navbar-brand"  href="/users"><img src="/images/images/w_logo.png" alt="">
                                     <span>ACB</span></a>
-                               
                                 <% }%>
                                  <% if (currentUser.adminRole) { %>
                                     <li class="nav-item">
@@ -42,6 +41,11 @@
                                    <ul style="margin-right: auto; margin-top: 1px;">
                                         <li class="nav-item">
                                                 <a class="nav-link fa fa-user" href="/transferring_money"> Chuyển khoản</a>
+                                         </li>
+                                    </ul>
+                                   <ul style="margin-right: auto; margin-top: 1px;">
+                                        <li class="nav-item">
+                                                <a class="nav-link fa fa-user" href="/transaction_history"> Lịch sử GD</a>
                                          </li>
                                     </ul>
                                        
