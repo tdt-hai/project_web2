@@ -4,14 +4,22 @@ const Sequelize = require('sequelize');
 const { or } = require('sequelize');
 const User = require('../services/user');
 const Op = Sequelize.Op;
-
+const Function = require('../services/function');
 /*model user*/
 
 
 const Model = Sequelize.Model;
 
 class Account extends Model {
-  
+  static async returnMoneyToCheckingAccount(){
+    const datenow = Function.getDateNow();
+    return Account.findAll({
+      where:{
+          close_day: datenow,
+          type_account: "TKTK",
+      }
+    });
+  }
    static async findAllAccount(){
       return Account.findAll();
    }

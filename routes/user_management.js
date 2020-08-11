@@ -19,6 +19,7 @@ router.get('/:id',asyncHandler(async function profile(req,res){
     //res.json(account);
     res.render('edituser',{user,time,account});
 }));
+
 //Cập nhật thông tin người dùng và số dư tài khoản
 router.post('/:id',asyncHandler(async function profile(req,res){
     const {id} = req.params;
