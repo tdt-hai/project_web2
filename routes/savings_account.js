@@ -23,11 +23,15 @@ router.post('/',asyncHandler(async function (req,res){
         const term =  req.body.term;
         const tktt = await Account.findCheckingAccountById(req.currentUser.id);
         const close_day = await Function.addedDate(term);
-        const interest_rate = term * 0.2;
+        var interest_rate = (term * (7/12)).toFixed(2);
+
+        var money = Function.formattingCurrencyToDatabase(req.body.money);
+                money = (money + (money * (interest_rate/100))).toFixed(2);
+                money = parseInt(money);
         const ac = await Account.create({
                 account_number: req.currentUser.account_number,
                 type_account: "TKTK",
-                current_balance: Function.formattingCurrencyToDatabase(req.body.money),
+                current_balance: money,
                 currency : "VND",
                 interest_rate: interest_rate,
                 open_day: tktt.open_day,
@@ -38,7 +42,7 @@ router.post('/',asyncHandler(async function (req,res){
                 userId: req.currentUser.id,
 
         });
-        const updateBalance =  tktt.current_balance -  Function.formattingCurrencyToDatabase(req.body.money);
+        const updateBalance =  tktt.current_balance - Function.formattingCurrencyToDatabase(req.body.money);
         await Account.updateCurrentBalance(req.currentUser.id,updateBalance);
 
         res.redirect('user_account');
