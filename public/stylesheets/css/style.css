@@ -3069,7 +3069,7 @@ input[type="button"].btn-block {
 
 .tab-content > .active {
   display: block;
-  color: blue; }
+  color: #770000; }
 
 .navbar {
   position: relative;
@@ -7431,7 +7431,9 @@ button.bg-dark:focus {
   color: #fff !important; }
 
 .text-primary {
-  color: black !important; }
+  /* color: black !important;  */
+  color: white !important;
+}
 
 a.text-primary:hover, a.text-primary:focus {
   color: #3523ff !important; }

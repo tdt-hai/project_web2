@@ -1,58 +1,61 @@
 <%-  include('header')-%>
 <%-  include('nav')-%>
 <title>Edit User</title>
-<div class="col-xl-6 justify-content-center  " style = "margin: auto">
-                            <div class="card">
-                                <div class="card-header">
-                                </div>
-                                <div class="card-body">
-                                    <form method="post" name="myform" class="personal_validate" action="/user_management/<%=user.id %>">
-                                        <div class="form-row">
-                                            <div class="form-group col-xl-6">
-                                                <label class="mr-sm-2">Email</label>
-                                                <input type="email" class="form-control"
-                                                    value="<%= user.email %>" name="email">
-                                            </div>
-                                            <div class="form-group col-xl-6">
-                                                <label class="mr-sm-2">Tên hiển thị</label>
-                                                <input type="text" class="form-control" 
-                                                    value="<%= user.displayName %>" name="displayName">
-                                            </div>
-                                            <div class="form-group col-xl-6">
-                                                <label class="mr-sm-2">Số điện thoại</label>
-                                                <input type="text" class="form-control" 
-                                                    value="<%= user.phoneNumber %>" name="phoneNumber">
-                                            </div>
-                                            <div class="form-group col-xl-6">
-                                                <label class="mr-sm-2">Loại giấy tờ</label>
-                                                <select class="form-control" name = "paperType">
-                                                        <option value="CMND" <% if(user.paper_type == 'CMND'){ %>
-                                                                            selected="selected"
-                                                                            <% } %>>CMND</option>
-                                                        <option value="CCCD" <% if(user.paper_type == 'CCCD'){ %>
-                                                                            selected="selected"
-                                                                            <% } %>>CCCD</option>
-                                                        <option value="passport" <% if(user.paper_type == 'passport'){ %>
-                                                                            selected="selected"
-                                                                            <% } %>>Hộ chiếu</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-xl-6">
-                                                <label class="mr-sm-2">Số giấy tờ</label>
-                                                <input type="text" value="<%= user.number_paper %>" class="form-control" 
-                                                        name="idNo">
-                                            </div>
-                                            <div class="form-group col-xl-6">
-                                                <label class="mr-sm-2">Ngày cấp</label>
-                                                <input  type="date"  value="<%= time %>"  class="form-control" 
-                                                    id="issued" name="issued">
-                                            </div>
-                                            <div class="form-group col-xl-6">
-                                                <label class="mr-sm-2">Số dư khả dụng</label>
-                                                <div class="input-group">
-                                                <input type="text" value="<%= account.current_balance %>" class="form-control money" name="currentBalance">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">VND</div>
+  <div class="col-xl-6 justify-content-center  " style = "margin: auto">
+                                <div class="card">
+                                    <div class="card-header">
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="post" name="myform" class="personal_validate" action="/user_management/<%=user.id %>">
+                                            <div class="form-row">
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Email</label>
+                                                    <input type="email" class="form-control"
+                                                        value="<%= user.email %>" name="email">
+                                                </div>
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Tên hiển thị</label>
+                                                    <input type="text" class="form-control" 
+                                                       value="<%= user.displayName %>" name="displayName">
+                                                </div>
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Số điện thoại</label>
+                                                    <input type="text" class="form-control" 
+                                                       value="<%= user.phoneNumber %>" name="phoneNumber">
+                                                </div>
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Loại giấy tờ</label>
+                                                    <select class="form-control" name = "paperType">
+                                                          <option value="CMND" <% if(user.paper_type == 'CMND'){ %>
+                                                                                selected="selected"
+                                                                                <% } %>>CMND</option>
+                                                          <option value="CCCD" <% if(user.paper_type == 'CCCD'){ %>
+                                                                                selected="selected"
+                                                                                <% } %>>CCCD</option>
+                                                          <option value="passport" <% if(user.paper_type == 'passport'){ %>
+                                                                                selected="selected"
+                                                                                <% } %>>Hộ chiếu</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Số giấy tờ</label>
+                                                    <input type="text" value="<%= user.number_paper %>" class="form-control" 
+                                                          name="idNo">
+                                                </div>
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Ngày cấp</label>
+                                                    <input  type="date"  value="<%= time %>"  class="form-control" 
+                                                        id="issued" name="issued">
+                                                </div>
+                                                <div class="form-group col-xl-6">
+                                                    <label class="mr-sm-2">Thêm tiền vào tài khoản</label>
+                                                    <div class="input-group">
+                                                        <input type="text" value="0" class="form-control money" name="currentBalance">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">VND</div>
+                                                        </div>
+                                                    </div>
+                                                        <label class="input-group-prepend">Số dư khả dụng:&nbsp <label> <label class="money" style="color: yellow"><%= account.current_balance%></label>&nbsp VND<label></label>
                                                 </div>
                                                 </div>
                                             </div>

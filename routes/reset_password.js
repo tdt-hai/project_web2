@@ -21,7 +21,7 @@ router.post('/',asyncHandler(async function (req,res){
         return res.render('reset_password');
     }
 
-    await Email.SendEmail(user.email,'Đặt lại mật khẩu',`http://localhost:3000/changePassword/${user.id}`);
+    await Email.SendEmail(user.email,'Đặt lại mật khẩu',`http://localhost:3000/changePassword/${user.id}`,null);
     return res.render('login');
     
 }));

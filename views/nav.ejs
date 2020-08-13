@@ -16,18 +16,63 @@ padding: 0;
                             <% } else if (!currentUser.adminRole) {%>
                             <a class="navbar-brand"  href="/users"><img src="images/ACB_Logo.png" alt="">
                                 <span>ACB</span></a>
-                            <% }%>
-                                <% if (currentUser.adminRole) { %>
-                                <li class="nav-item">
-                                            <a class="nav-link fa fa-users" href="/user_management"> Quản lý người dùng</a>
-                                </li>
-                                <li class="nav-item">
-                                            <a class="nav-link fa fa-users" href="/admin_auth"> Xác thực người dùng</a>
-                                </li>
-                                <ul class="navbar-nav ml-auto nav-flex-icons">
-                                    <form class="form-inline" method="POST" action="/findUser">
-                                        <div class="md-form my-0">
-                                            <input style="background-color: #4e4a61" class="form-control mr-sm-2 " type="text" placeholder="Search" name="contentSearch" aria-label="Search">
+                                <% } else if (!currentUser.adminRole) {%>
+                                <a class="navbar-brand"  href="/users"><img src="/images/images/w_logo.png" alt="">
+                                    <span>ACB</span></a>
+                                <% }%>
+                                 <% if (currentUser.adminRole) { %>
+                                    <li class="nav-item">
+                                                <a class="nav-link fa fa-users" href="/user_management"> Quản lý người dùng</a>
+                                    </li>
+                                    <li class="nav-item">
+                                                <a class="nav-link fa fa-users" href="/admin_auth"> Xác thực người dùng</a>
+                                    </li>
+                                    <ul class="navbar-nav ml-auto nav-flex-icons">
+                                        <form class="form-inline" method="POST" action="/findUser">
+                                            <div class="md-form my-0">
+                                                <input style="background-color: #4e4a61" class="form-control mr-sm-2 " type="text" placeholder="Search" name="contentSearch" aria-label="Search">
+                                            </div>
+                                        </form>
+                                        <div class="dashboard_log my-2">
+                                        <div class="d-flex align-items-center">
+                                   <% } else if(!currentUser.adminRole) {%>
+                                   <ul style="margin-right: auto; margin-top: 1px;">
+                                        <li class="nav-item">
+                                                <a class="nav-link fa fa-user" href="/user_account"> Tài khoản</a>
+                                         </li>
+                                    </ul>
+                                   <ul style="margin-right: auto; margin-top: 1px;">
+                                        <li class="nav-item">
+                                                <a class="nav-link fa fa-user" href="/transferring_money"> Chuyển khoản</a>
+                                         </li>
+                                    </ul>
+                                   <ul style="margin-right: auto; margin-top: 1px;">
+                                        <li class="nav-item">
+                                                <a class="nav-link fa fa-user" href="/transaction_history"> Lịch sử GD</a>
+                                         </li>
+                                    </ul>
+                                       
+                                    <div class="dashboard_log my-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="account_money">
+                                                <ul>
+                                                    <li class="crypto">
+                                                        <span><%=transfer%></span>&nbsp;USD
+                                                        <i class="cc BTC-alt"></i>
+                                                    </li>
+                                                    <li class="usd">
+                                                        <span class="money"><%= accountNumber.current_balance %></span>&nbsp;VND
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                             <div class="dashboard_log my-2">
+                                        <div class="d-flex align-items-center">
+                                    <% }%>
+                                    <div class="profile_log dropdown">
+                                        <div class="user" data-toggle="dropdown">
+                                            <span class="thumb"><i class="fa fa-user"></i></span>
+                                            <span class="name"><%= currentUser.displayName %></span>
+                                            <span class="arrow"><i class="la la-angle-down"></i></span>
                                         </div>
                                     </form>
                                     <div class="dashboard_log my-2">
