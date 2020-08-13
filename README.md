@@ -2,8 +2,8 @@
 -<h1> Register </h1></br>
 ![Thumbnail](https://i.imgur.com/JTidEjZ.png)
 
--<h1> After sendMail </h1></br>
-![Thumbnail](https://i.imgur.com/KbtqwcM.png)
+-<h1> After login </h1></br>
+![Thumbnail](https://i.imgur.com/PabgObW.png)
 
 ## Demo
 
