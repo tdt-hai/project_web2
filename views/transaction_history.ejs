@@ -12,15 +12,17 @@
                             <div class="card-body pt-0">
                                 <h1>Số tài khoản: <%= accountNumber.account_number%> <br></h1>
                                 <div class="card-body">
-                                <div class="input-group" >
-                                    <form action="/transaction_history" method="POST">
-                                            <input class="form-control" type="date" value="<%= datenow%>" name="date1" ><br/>
-                                            <input class="form-control"type="date"value="<%= datenow%>" name="date2" >
-                                            <div class="text-center mt-4">
-                                                <button type="submit" class="btn btn-success btn-block">Tìm kiếm</button>
-                                            </div>
-                                    </form>
-                                </div>
+                                    <div class="input-group" >
+                                        <form action="/transaction_history" method="POST">
+                                                <div >
+                                                    <input class="form-control" type="date" value="<%= datenow%>" name="date1" ><br/>
+                                                    <input class="form-control"type="date"value="<%= datenow%>" name="date2" >
+                                                </div>
+                                                <div class="text-center mt-4">
+                                                    <button type="submit" class="btn btn-success btn-block">Tìm kiếm</button>
+                                                </div>
+                                        </form>
+                                    </div>
                                 </div>
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-responsive-sm">

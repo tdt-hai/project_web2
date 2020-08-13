@@ -8,7 +8,7 @@ const Account = require('../services/account');
 const Function = require('../services/function');
 router.get('/',asyncHandler(async function (req,res){
     const user = await User.findUserById(req.session.userId);
-    const tranHis = await Transaction.findTransactionAccount(null,null);
+    var tranHis = await Transaction.findTransactionAccount(null,null,null,null);
     if(user.active == false){
         res.render('page404');
     }
@@ -18,10 +18,11 @@ router.get('/',asyncHandler(async function (req,res){
     }
 }));
 router.post('/',asyncHandler(async function(req,res){
+    const user = await User.findUserById(req.session.userId);
     var date1= req.body.date1;
     var date2= req.body.date2;
     //res.json(date1);
-    var tranHis = await Transaction.findTransactionAccount(date1,date2);
+    var tranHis = await Transaction.findTransactionAccount(date1,date2,user.account_number,user.account_number);
     var datenow = await Function.getDateNow();
     res.render('transaction_history',{tranHis,datenow});
 }))
