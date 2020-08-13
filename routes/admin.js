@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 /* GET users listing. */
 router.get('/', asyncHandler(async function(req, res, next) {
   if(req.currentUser){
-    const allUser = await User.findAllUser();
+    var allUser = await User.findAllUser();
     res.render('admin',{allUser});
 }
 else{

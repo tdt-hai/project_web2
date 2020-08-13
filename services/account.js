@@ -10,6 +10,7 @@ const Function = require('../services/function');
 const Model = Sequelize.Model;
 
 class Account extends Model {
+   
     static async addMoney(accountNumber, money) {
 
         return Account.increment({'current_balance': money }, { where: { account_number: accountNumber ,type_account: 'TKTT'  } });
@@ -21,6 +22,23 @@ class Account extends Model {
     }
     static async findAllAccount() {
         return Account.findAll();
+    }
+    static async findAllSavingsAccounts(){
+        return Account.findAll({
+            where: {
+                type_account: "TKTK",
+            }
+        })
+    }
+    static async DeleteSavingsAccountsByAccountNumber(accountnumber){
+        console.log('da xoa');
+        return Account.destroy({
+            where:{
+                type_account : 'TKTK',
+                account_number : accountnumber,
+            }
+              
+        });
     }
     static async findSavingsAccountById(id) {
         return Account.findOne({
@@ -54,20 +72,23 @@ class Account extends Model {
             ],
         });
     }
-    // static async updateCurrentBalance(id, currentBalance) {
-    //     const u = await Account.findCheckingAccountById(id);
-    //     u.current_balance = currentBalance;
-    //     (await u).update;
-    //     await u.save();
-    // }
+    static async updateCurrentBalance(id, currentBalance) {
+        const u = await Account.findCheckingAccountById(id);
+        u.current_balance = currentBalance;
+        (await u).update;
+        await u.save();
+    }
   static async returnMoneyToCheckingAccount(){
     const datenow = Function.getDateNow();
-    return Account.findAll({
+    console.log(datenow);
+    const listSavings = Account.findAll({
       where:{
-          close_day: '2020-08-28 20:10:42.352+07',
-          type_account: "TKTK",
+        // close_day: {[Op.startsWith]: '2020/08/19',},
+        close_day:datenow,
+          type_account: 'TKTK',
       }
     });
+    return listSavings;
   }
 
 }
