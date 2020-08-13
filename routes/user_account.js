@@ -30,18 +30,10 @@ router.get('/',asyncHandler (async function(req,res,next){
             tktkvnd = tktkvnd[0].toUpperCase() + tktkvnd.substring(1)
             closeDay = await Function.formatDateToShow(tktk.close_day);
             moneyInSavingsAc = await Function.formattingCurrency(tktk.current_balance);
-
         }
         res.render('user_account',{tktk,tktt,money,openDay,closeDay,moneyInSavingsAc,tktkvnd,tkttvnd});
     }
     res.render('user_account',{tktk,tktt,money,openDay,closeDay});
-        //const test =  User.findUserByIdAndAccount(user.account_number)
-        ////const TKTT = await Account.findAccountTKTT(user.account_number);
-    // res.json(TKTT);
-        //console.log(TKTT);
-    // res.json(test);
-    //  res.render('user_account',{TKTT,user});
-}
 }));
 
 module.exports = router
