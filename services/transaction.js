@@ -10,6 +10,21 @@ class Transaction extends Model {
     static async saveTransactionHistory(amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note) {
         return Transaction.create({ amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note });
     }
+    static async findTransaction(sourceAccountId,destinationAccountId){
+        return Transaction.findAll({
+                where: {
+                    sourceAccountId: sourceAccountId,
+                    destinationAccountId: destinationAccountId,
+                },
+            })
+    }
+    static async findTransactionAccount(date1,date2,sourceAccountId,destinationAccountId){
+        return Transaction.findAll({
+            where: {
+                [Op.or]: [{ createdAt: { [Op.between]: [date1,date2] },sourceAccountId: sourceAccountId},{ createdAt: { [Op.between]: [date1,date2] },destinationAccountId: destinationAccountId}]
+            }
+        })
+    }
 }
 Transaction.init(
     {

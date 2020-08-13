@@ -29,11 +29,14 @@
                 <div class="row">
                   <div class="col-md-4">
                        <div class="profile-img">
-                            <img src="https://i.pinimg.com/originals/ce/66/bf/ce66bf8fe79baa1cb75dee5c35444224.jpg" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+                            <img src="https://media.techz.vn/resize_x355x/media2019/source/Nhung-do/A-Son-Tung-MTP/Son-Tung-MTP-lo-anh-dung-do-doi-voi-Thieu-Bao-Tram-9.jpg" alt="profile"/>
+                              <form id="uploadForm" enctype="multipart/form-data" action="/profile/upload" method="POST">
+                                                <div class="file btn btn-lg btn-primary">
+                                                    <input class="file-upload-field" type="file" name="userProfile" multiple />
+                                                    <input type="submit" value="Upload Image" name="submit">
+                                                    <span id = "status"></span></br>
+                                                </div>
+                              </form>
                         </div>
                         <div class="profile-work">
                                 <p>BANK</p>

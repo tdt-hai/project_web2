@@ -48,6 +48,7 @@ function getDateNow(){
     today = [yyyy, mm, dd].join('-');
     return today;
 }
+
 function getFullDayNow(){
    var today = new Date();
    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
@@ -55,4 +56,4 @@ function getFullDayNow(){
    var dateTime = date+' '+time;
    return dateTime;
 }
-module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase };
+module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase,getFullDayNow };
