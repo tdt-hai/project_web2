@@ -5,25 +5,26 @@
 <!------ Include the above in your HEAD tag ---------->
 <div class="container emp-profile" style = "margin-top: 110px;">
 <br><br>
-<h1 style="text-align: center; color: white;">Thông tin tài khoản</h1>
-
+<h2 style="text-align: center; color: black;">Thông tin cá nhân</h2>
 <br>
-        <form method="post">
-            <div class="row">
-                
-                <div class="col-md-6">
-                    <div class="profile-head">
-                                <h2 style="color: #100303">
-                                    <%= currentUser.displayName%>
-                                </h2>
-                                
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" style ="background-color: #a896c7" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                            </li>
-                            
-                        </ul>
+            <form method="post">
+                <div class="row">
+                   
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h2 style="color: #100303">
+                                       <%= currentUser.displayName%>
+                                    </h2>
+                                 
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" style ="background-color: #a896c7" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                               
+                            </ul>
+                        </div>
                     </div>
+                   
                 </div>
                 <div class="row">
                   <div class="col-md-4">
@@ -37,110 +38,93 @@
                                                 </div>
                               </form>
                         </div>
+                        <div class="profile-work">
+                                <p>BANK</p>
+                            </div>
                     </div>
-                    <div class="profile-work">
-                            <p>BANK</p>
-                        </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                            <label>Email:</label>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> <%= currentUser.email%> </p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p> <%= currentUser.email%> </p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Identity paper</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> <%= currentUser.paper_type %> </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <label>Số điện thoại:</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>ID No:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                 <p> <%= currentUser.number_paper %> </p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p> <%= currentUser.phoneNumber%> </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-credit-card" aria-hidden="true"></i>
-                                            <label>Loại giấy tờ:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p> <%= currentUser.paper_type %> </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                                            <label>Số giấy tờ:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                                <p> <%= currentUser.number_paper %> </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-                                            <label>Ngày sinh:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p> <%= getdate %> </p>
-                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Issued:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                               <p> <%= getdate %> </p>
+                                            </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-id-card" aria-hidden="true"></i>
-                                            <label>Số tài khoản:</label>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p> <%= currentUser.account_number %> </p>
-                                        </div>
-                                    </div>
                                         <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                            <label>Trạng thái hoạt động:</label>
+                                            <div class="col-md-6">
+                                                <label>Account number</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                               <p> <%= currentUser.account_number %> </p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p> <%= currentUser.active %> </p>
+                                         <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Active status</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                               <p> <%= currentUser.active %> </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                         <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Admin role</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                               <p> <%= currentUser.adminRole %> </p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                      
                                         <div class="row">
-                                        <div class="col-md-6">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                            <label>Admin role:</label>
+                                            <div class="col-md-6">
+                                                <label></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p> <%= currentUser.adminRole %> </p>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Your Bio</label><br/>
+                                        <p></p>
                                     </div>
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label></label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p></p>
-                                        </div>
-                                    </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br/>
-                                    <p></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>           
-    </div>
+            </form>           
+        </div>
 
 </body>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
