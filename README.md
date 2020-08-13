@@ -1,5 +1,7 @@
 # project_web2_2020(node js)
-![Thumbnail](https://i.imgur.com/oMO5WVY.png)
+-<h1> Register </h1></br>
+![Thumbnail](https://i.imgur.com/JTidEjZ.png)
+
 -<h1> After sendMail </h1></br>
 ![Thumbnail](https://i.imgur.com/KbtqwcM.png)
 
