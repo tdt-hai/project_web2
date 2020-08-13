@@ -7,21 +7,21 @@
 
 <div class = "container emp-profile" style = "margin-top: 110px;">
 <br>
-  
 
+<h1 style="text-align: center; color: white;">Thông tin tài khoản</h1>
 <div class="col-xl-7 col-lg-7 col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="buyer-seller">
-                    <div class="d-flex justify-content-between mb-3">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h2>Thông tin tài khoản</h2>
-                                    <h4 style="color:black"><%= currentUser.displayName %></h4>
-                                     <h4 style="color:black"><%= currentUser.email %></h4>
-                                </div>
+    <div class="card">
+        
+
+        <div class="card-body">
+            
+            <div class="buyer-seller">
+                <div class="d-flex justify-content-between mb-3">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 style="color:black"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= currentUser.displayName %></h4>
+                                <h4 style="color:black"><i class="fa fa-envelope" aria-hidden="true"></i> <%= currentUser.email %></h4>
                             </div>
-                        
                     </div>
                       <% if(tktk == null) { %>
                         <a href="./savings_account" class="buttontk">Đăng kí tài khoản tiết kiệm</a>

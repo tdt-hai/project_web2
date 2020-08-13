@@ -1,68 +1,68 @@
 <%- include('header'); -%>
-
- <div class="authincation section-padding">
-            <div class="container h-100">
-                <div class="row justify-content-center h-100 align-items-center">
-                    <div class="col-xl-5 col-md-6">
-                        <div class="mini-logo text-center my-5">
-                            <img src="images/ACB_Logo.png" alt="" style=" height: 45px">
+<div class="authincation section-padding">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-xl-5 col-md-6">
+                    <div class="mini-logo text-center my-5">
+                        <img src="images/ACB_Logo.png" alt="" style=" height: 45px">
+                    </div>
+                    <div class="auth-form card">
+                        <div class="card-header justify-content-center">
+                            <h4 class="card-title">Đăng kí tài khoản người dùng</h4>
                         </div>
-                        <div class="auth-form card">
-                            <div class="card-header justify-content-center">
-                                <h4 class="card-title">Đăng kí tài khoản người dùng</h4>
-                            </div>
-                            <div class="card-body">
-                                <form method="post" name="myform" class="signup_validate">
-                                    <div class="form-group ">
-                                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                                        <label>Email</label>
-                                        <input type="email" class="form-control " placeholder="abc@gmail.com" name = "email">
+                        <div class="card-body">
+                            <form method="post" name="myform" class="signup_validate">
+                                <div class="form-group ">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <label>Email</label>
+                                    <input type="email" class="form-control " placeholder="abc@gmail.com" name = "email">
+                                </div>
+                                <div class="form-group">
+                                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                                    <label>Tên hiển thị</label>
+                                    <input type="text" class="form-control" placeholder="Nguyen Van A"
+                                            name = "displayName">
+                                </div>
+                                <div class="form-group">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <label>Số điện thoại</label>
+                                    <input type="text" class="form-control" placeholder="84...."
+                                        name = "phoneNumber">
+                                </div>
+                                <div class="form-group">
+                                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                    <label class="mr-sm-2">Loại giấy tờ</label>
+                                    <select class="form-control" name = "paperType">
+                                        <option selected value="CMND">CMND</option>
+                                        <option value="CCCD">CCCD</option>
+                                        <option value="passPort">Hộ chiếu</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                    <label>Số giấy tờ</label>
+                                    <input type="text" class="form-control" placeholder="0123.."
+                                        name = "numberPaper">
+                                </div>
+                                    <div class="md-form md-outline input-with-post-icon datepicker form-group" id="customDays">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <label>Ngày cấp</label>
+                                    <input placeholder="Ngày cấp" type="date" name="dateRange" id="Customization" class="form-control">
+                                    <i class=" input-prefix " tabindex=0></i>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-success btn-block">Đăng kí</button>
+                                </div>
+                                    <div class="new-account mt-3">
+                                        <p>Đã có tài khoản? <a class="text-primary" href="/login">Đăng nhập</a>
+                                        </p>
                                     </div>
-                                    <div class="form-group">
-                                        <i class="fa fa-address-book" aria-hidden="true"></i>
-                                        <label>Tên hiển thị</label>
-                                        <input type="text" class="form-control" placeholder="Nguyen Van A"
-                                             name = "displayName">
-                                    </div>
-                                    <div class="form-group">
-                                        <i class="fa fa-phone" aria-hidden="true"></i>
-                                        <label>Số điện thoại</label>
-                                        <input type="text" class="form-control" placeholder="84...."
-                                           name = "phoneNumber">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="mr-sm-2">Loại giấy tờ</label>
-                                        <select class="form-control" name = "paperType">
-                                            <option selected value="CMND">CMND</option>
-                                            <option value="CCCD">CCCD</option>
-                                            <option value="passPort">Hộ chiếu</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                                        <label>Số giấy tờ</label>
-                                        <input type="text" class="form-control" placeholder="0123.."
-                                           name = "numberPaper">
-                                    </div>
-                                     <div class="md-form md-outline input-with-post-icon datepicker form-group" id="customDays">
-                                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                                      <label>Ngày cấp</label>
-                                        <input placeholder="Ngày cấp" type="date" name="dateRange" id="Customization" class="form-control">
-                                        <i class=" input-prefix " tabindex=0></i>
-                                    </div>
-                                    <div class="text-center mt-4">
-                                        <button type="submit" class="btn btn-success btn-block">Đăng kí</button>
-                                    </div>
-                                      <div class="new-account mt-3">
-                                            <p>Đã có tài khoản? <a class="text-primary" href="/login">Đăng nhập</a>
-                                            </p>
-                                      </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 <%- include('footer'); -%>
