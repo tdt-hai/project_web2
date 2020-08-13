@@ -64,7 +64,7 @@ class Account extends Model {
     const datenow = Function.getDateNow();
     return Account.findAll({
       where:{
-          close_day: datenow,
+          close_day: '2020-08-28 20:10:42.352+07',
           type_account: "TKTK",
       }
     });

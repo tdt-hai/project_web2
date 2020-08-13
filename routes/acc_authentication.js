@@ -47,8 +47,9 @@ router.post('/backsideUpload',function(req,res){
           res.redirect('/acc_authentication');
           return res.end();
         }
-        res.redirect('/acc_authentication')
-        res.end();
+        // res.redirect('/acc_authentication')
+        // res.end();
+        console.log(req.file,req.body);
     });
   });
 module.exports = router;

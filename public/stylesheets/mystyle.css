@@ -91,18 +91,24 @@ transform: translateY(4px);
 .profile-img .file {
     position: relative;
     overflow: hidden;
-    margin-top: -20%;
+    margin-top: 0%;
     width: 70%;
     border: none;
     border-radius: 0;
     font-size: 15px;
     background: #212529b8;
 }
-.profile-img .file input {
+/* .profile-img .file input {
     position: absolute;
     opacity: 0;
     right: 0;
     top: 0;
+} */
+.profile-img .file input {
+    position: absolute;
+    opacity: 2;
+    right: -1px;
+    top: 22px;
 }
 .profile-head h5{
     color: #333;

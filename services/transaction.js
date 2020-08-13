@@ -18,12 +18,10 @@ class Transaction extends Model {
                 },
             })
     }
-    static async findTransactionAccount(date1,date2){
+    static async findTransactionAccount(date1,date2,sourceAccountId,destinationAccountId){
         return Transaction.findAll({
             where: {
-                createdAt: {
-                    [Op.between]: [date1,date2],
-                }
+                [Op.or]: [{ createdAt: { [Op.between]: [date1,date2] },sourceAccountId: sourceAccountId},{ createdAt: { [Op.between]: [date1,date2] },destinationAccountId: destinationAccountId}]
             }
         })
     }
