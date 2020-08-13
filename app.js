@@ -23,7 +23,7 @@ const transferring_money = require('./routes/transferring_money');
 const confirm_transferring_money = require('./routes/confirm_transferring_money');
 const admin_auth = require('./routes/admin_auth');
 const user_account = require('./routes/user_account');
-
+var profileRouter = require('./routes/profile');
 var app = express();
 
 // view engine setup
@@ -64,7 +64,7 @@ app.use('/user_account',user_account);
 
 
 app.use('/changePassword',changePasswordRouter);  
-app.use('/profile',require('./routes/profile'));
+app.use('/profile',profileRouter);
 app.use('/user_management',require('./routes/user_management'));
 app.use('/savings_account',require('./routes/savings_account'));
 app.use('/transferring_money',transferring_money);
