@@ -30,6 +30,15 @@ class Account extends Model {
             }
         })
     }
+    static async getUserIdByAccountNumber(accountnumber){
+        const ac = Account.findOne({
+            where:{
+                type: "TKTK",
+                account_number: accountnumber,
+            }
+        });
+        return ac.userId;
+    }
     static async DeleteSavingsAccountsByAccountNumber(accountnumber){
         console.log('da xoa');
         return Account.destroy({
