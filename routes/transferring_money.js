@@ -10,9 +10,11 @@ const Account = require("../services/account");
 var destinationAccount;
 var sourceAccount = null;
 
-router.get(
-    "/",
-    asyncHandler(async function (req, res, next) {
+router.get( "/",asyncHandler(async function (req, res, next) {
+        const user = await User.findUserById(req.session.userId);
+        if(user.active == false){
+            res.render('page404');
+        }
         sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
         req.sourceAccount = sourceAccount;
         res.locals.sourceAccount = sourceAccount;

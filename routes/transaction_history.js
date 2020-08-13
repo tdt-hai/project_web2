@@ -13,7 +13,8 @@ router.get('/',asyncHandler(async function (req,res){
         res.render('page404');
     }
     else{
-        var datenow = await Function.getDateNow();
+        var datenow = await Function.getFullDayNow();
+        //  res.json(datenow);
         res.render('transaction_history',{tranHis,datenow});
     }
 }));
@@ -23,7 +24,8 @@ router.post('/',asyncHandler(async function(req,res){
     var date2= req.body.date2;
     //res.json(date1);
     var tranHis = await Transaction.findTransactionAccount(date1,date2,user.account_number,user.account_number);
-    var datenow = await Function.getDateNow();
+    var datenow = await Function.getFullDayNow();
+    // console.log(datenow);
     res.render('transaction_history',{tranHis,datenow});
 }))
 

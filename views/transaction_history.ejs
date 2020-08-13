@@ -15,8 +15,8 @@
                                     <div class="input-group" >
                                         <form action="/transaction_history" method="POST">
                                                 <div >
-                                                    <input class="form-control" type="date" value="<%= datenow%>" name="date1" ><br/>
-                                                    <input class="form-control"type="date"value="<%= datenow%>" name="date2" >
+                                                    <input class="form-control" type="datetime-local" value="<%= datenow%>" name="date1" ><br/>
+                                                    <input class="form-control"type="datetime-local"value="<%= datenow%>" name="date2" >
                                                 </div>
                                                 <div class="text-center mt-4">
                                                     <button type="submit" class="btn btn-success btn-block">Tìm kiếm</button>
@@ -40,7 +40,19 @@
                                                 <td><%- i++%></td>
                                                 <td class="longDateFormat"><%= t.createdAt%></td>
                                                 <td><%= t.note%></td>
-                                                <td class="money"><%= t.amount%></td> 
+                                                <% if(t.destinationAccountId == null){ %>
+                                                     <% if(t.note == 'phi chuyen tien'){ %>
+                                                        <td class="money">-<%= t.amount%></td>
+                                                    <% } else{ %>  
+                                                        <td class="money">+<%= t.amount%></td> 
+                                                    <% } %>
+                                                <% }else{ %>
+                                                     <% if(t.destinationAccountId != accountNumber.account_number){ %>
+                                                        <td class="money">-<%= t.amount%></td>
+                                                    <% } else{ %>  
+                                                        <td class="money">+<%= t.amount%></td> 
+                                                    <% } %>
+                                                <% } %>
                                             </tr>
                                             <% }) %>
                                         </tbody>
