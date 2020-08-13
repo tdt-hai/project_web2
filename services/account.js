@@ -23,6 +23,23 @@ class Account extends Model {
     static async findAllAccount() {
         return Account.findAll();
     }
+    static async findAllSavingsAccounts(){
+        return Account.findAll({
+            where: {
+                type_account: "TKTK",
+            }
+        })
+    }
+    static async DeleteSavingsAccountsByAccountNumber(accountnumber){
+        console.log('da xoa');
+        return Account.destroy({
+            where:{
+                type_account : 'TKTK',
+                account_number : accountnumber,
+            }
+              
+        });
+    }
     static async findSavingsAccountById(id) {
         return Account.findOne({
             where: {

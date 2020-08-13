@@ -48,15 +48,7 @@ function getDateNow(){
     today = [yyyy, mm, dd].join('-');
     return today;
 }
-function getDateNow2(){
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
 
-    today = [dd, mm, yyyy].join('/');
-    return today;
-}
 function getFullDayNow(){
    var today = new Date();
    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
