@@ -12,13 +12,11 @@ const Model = Sequelize.Model;
 class Account extends Model {
    
     static async addMoney(accountNumber, money) {
-
-        return Account.increment({'current_balance': money }, { where: { account_number: accountNumber ,type_account: 'TKTT'  } });
+        return Account.increment({ current_balance: money }, { where: { account_number: accountNumber, type_account: "TKTT" } });
     }
 
     static async subMoney(accountNumber, money) {
-
-        return Account.decrement({'current_balance': money }, { where: { account_number: accountNumber ,type_account: 'TKTT' } });
+        return Account.decrement({ current_balance: money }, { where: { account_number: accountNumber, type_account: "TKTT" } });
     }
     static async findAllAccount() {
         return Account.findAll();

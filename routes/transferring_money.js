@@ -7,18 +7,18 @@ const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
 const Email = require("../services/email");
 const Account = require("../services/account");
+var destinationAccount;
+var sourceAccount = null;
 
-router.get("/",asyncHandler(async function (req, res, next) {
-    const user = await User.findUserById(req.session.userId);
-    if(user.active == false){
-        res.render('page404');
-    }
-    else{
-        const sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
-       // res.json(sourceAccount);
-        res.render("transferring_money", { sourceAccount });
-    }
-}));
+router.get(
+    "/",
+    asyncHandler(async function (req, res, next) {
+        sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
+        req.sourceAccount = sourceAccount;
+        res.locals.sourceAccount = sourceAccount;
+        res.render("transferring_money", { errDestinationAccount: null, errAmount: null, errNote: null });
+    })
+);
 
 router.post(
     "/",
@@ -26,33 +26,55 @@ router.post(
         body("destinationAccountId")
             .trim()
             .notEmpty()
+            .withMessage("Vui lòng nhập số tài khoản chuyển...!")
             .custom(async function (destinationAccountId, { req }) {
                 destinationAccount = await Account.findAccountTKTT(destinationAccountId);
 
                 if (!destinationAccount) {
-                    throw Error("Destination account not Exist");
+                    throw Error("Tài khoản nhận không tồn tại..!");
                 } else {
                     return true;
                 }
             }),
-        body("amount").trim().notEmpty(),
-        // .custom(async function (amount, { req }) {
-        //     const user = await Account.findAccountTKTT(req.currentUser.account_number);
+        body("amount")
+            .notEmpty()
+            .withMessage("Vui lòng nhập số tiền..!")
+            .custom(async function (amount, { req }) {
+                const user = await Account.findAccountTKTT(req.currentUser.account_number);
 
-        //     if (user.current_balance < amount) {
-        //         throw Error("Your account is not enough");
-        //     } else {
-        //         return true;
-        //     }
-        // })
-        body("note").trim().notEmpty(),
+                if (user.current_balance < amount) {
+                    throw Error("Số dư của bạn không đủ...!");
+                } else {
+                    return true;
+                }
+            }),
+        body("note").trim().notEmpty().withMessage("Vui lòng nhập nội dung..!"),
     ],
     asyncHandler(async function (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).render("transferring_money", { errors: errors.array() });
-        }
+            var errDestinationAccount = null;
+            var errAmount = null;
+            var errNote = null;
+            req.sourceAccount = sourceAccount;
+            res.locals.sourceAccount = sourceAccount;
 
+            errors.array().forEach((e) => {
+                if (e.param === "destinationAccountId") {
+                    errDestinationAccount = e.msg;
+                }
+
+                if (e.param === "amount") {
+                    errAmount = e.msg;
+                }
+
+                if (e.param === "note") {
+                    errNote = e.msg;
+                }
+            });
+
+            return res.render("transferring_money", { errDestinationAccount, errAmount, errNote });
+        }
         req.session.destinationBankId = req.body.destinationBankId;
         req.session.destinationAccountId = req.body.destinationAccountId;
         req.session.amount = req.body.amount;
@@ -64,8 +86,6 @@ router.post(
         });
 
         req.session.OTP = OTP;
-        // console.log('OTP' + OTP);
-        // console.log(user);
 
         //send password qua email
         await Email.SendEmail(req.currentUser.email, "Your OTP code la: ", `${OTP}`);
