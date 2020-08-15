@@ -8,13 +8,13 @@ const Email = require('../services/email');
 const ejs = require('ejs');
 const Transaction = require('../services/transaction');
 
-router.get('/',asyncHandler(async function profile(req,res){
+router.get('/',Function.checkLogin,Function.checkAdmin,asyncHandler(async function profile(req,res){
     const listUser = await User.findAllUser();
     const accountNumber = Account
     res.render('user_management', {listUser});
 }));
 
-router.get('/:id',asyncHandler(async function profile(req,res){
+router.get('/:id',Function.checkLogin,Function.checkAdmin,asyncHandler(async function profile(req,res){
     const {id} = req.params;
     const user = await User.findUserById(id);
     const time = Function.formatDate(user.date_range);
@@ -26,7 +26,6 @@ router.get('/:id',asyncHandler(async function profile(req,res){
 //Cập nhật thông tin người dùng
 router.post('/:id',asyncHandler(async function profile(req,res){
     const {id} = req.params;
-   
     const email = req.body.email;
     const displayName = req.body.displayName;
     const phoneNumber = req.body.phoneNumber;

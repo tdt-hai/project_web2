@@ -59,4 +59,20 @@ function getFullDayNow(){
    var dateTime = date+'T'+time;
    return dateTime;
 }
-module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase,getFullDayNow };
+function checkLogin(req,res,next){
+    if(!req.session.userId){
+        res.redirect("/login");
+    }
+    else{
+      next();
+    }
+};
+function checkAdmin(req,res,next){
+    if(!req.currentUser.adminRole){
+        res.redirect("/login");
+    }
+    else{
+      next();
+    }
+};
+module.exports= { formatDate, getDateNow,formattingCurrency,formatDateToShow,addedDate,formattingCurrencyToDatabase,getFullDayNow,checkLogin,checkAdmin };

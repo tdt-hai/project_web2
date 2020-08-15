@@ -6,11 +6,12 @@ const Bank = require("../services/bank");
 const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
 const Email = require("../services/email");
+const Function = require('../services/function');
 const Account = require("../services/account");
 var destinationAccount;
 var sourceAccount = null;
 
-router.get( "/",asyncHandler(async function (req, res, next) {
+router.get( "/",Function.checkLogin,asyncHandler(async function (req, res, next) {
         const user = await User.findUserById(req.session.userId);
         if(user.active == false){
             res.render('page404');

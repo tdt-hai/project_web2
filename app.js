@@ -44,6 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static(path.join(__dirname, 'user_management')));
 //middleware
 app.use(require('./middleware/auth'));
+//CheckUser
+// app.use(require('./middleware/checkUser'));
 //router
 app.use(bodyParser.json());
 app.use('/', indexRouter);

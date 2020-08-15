@@ -4,12 +4,12 @@ const user = require('../services/user');
 const multer = require('multer');
 const fs = require("fs");
 const asyncHandler = require('express-async-handler');
+const Function = require('../services/function');
 
-router.get('/', asyncHandler (async function(req,res){
+router.get('/',Function.checkLogin,asyncHandler (async function(req,res){
   const id = req.session.userId;
   res.render('acc_authentication',{id});
 }))
-
 
 var storage1 = multer.diskStorage({
 destination: function (req, file, callback) {

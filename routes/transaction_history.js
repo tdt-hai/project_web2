@@ -6,7 +6,7 @@ const Transaction = require('../services/transaction');
 const User = require('../services/user');
 const Account = require('../services/account');
 const Function = require('../services/function');
-router.get('/',asyncHandler(async function (req,res){
+router.get('/',Function.checkLogin,asyncHandler(async function (req,res){
     const user = await User.findUserById(req.session.userId);
     var tranHis = await Transaction.findTransactionAccount(null,null,null,null);
     if(user.active == false){

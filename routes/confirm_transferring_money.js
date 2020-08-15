@@ -7,6 +7,7 @@ const Transaction = require("../services/transaction");
 const n2vw = require("n2vw");
 const { body, validationResult } = require("express-validator");
 const Account = require("../services/account");
+const Function = require('../services/function');
 
 var destinationBankId;
 var destinationAccountId;
@@ -17,7 +18,7 @@ var vnd;
 var destinationAccount;
 
 router.get(
-    "/",
+    "/",Function.checkLogin,
     asyncHandler(async function (req, res, next) {
         destinationBankId = req.session.destinationBankId;
         destinationAccountId = req.session.destinationAccountId;

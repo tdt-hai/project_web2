@@ -7,7 +7,7 @@ const Function = require('../services/function');
 const n2vw = require('n2vw');
 
 //Thông tin tài khoản ngân hàng
-router.get('/',asyncHandler (async function(req,res,next){
+router.get('/',Function.checkLogin,asyncHandler (async function(req,res,next){
     const user = await User.findUserById(req.session.userId);
     const tktt  = await Account.findCheckingAccountById(req.currentUser.id);
     const tktk  = await Account.findSavingsAccountById(req.currentUser.id);

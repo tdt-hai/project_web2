@@ -7,7 +7,7 @@ const fs = require("fs");
 const asyncHandler = require('express-async-handler');
 const account = require('../services/account');
 
-router.get('/', asyncHandler(async function profile(req, res) {
+router.get('/',Function.checkLogin,asyncHandler(async function profile(req, res) {
   const id = req.session.userId;
   if (req.currentUser) {
     const getdate = await Function.formatDate(req.currentUser.date_range);

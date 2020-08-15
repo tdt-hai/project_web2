@@ -5,7 +5,7 @@ const User = require('../services/user');
 const Function = require('../services/function');
 
 //Xác thực tài khoản người dùng
-router.get('/', asyncHandler( async function (req,res,next){
+router.get('/',Function.checkLogin,Function.checkAdmin,asyncHandler( async function (req,res,next){
     const listUsers = await User.findAllUser();
     res.render('admin_auth', {listUsers});
 }));
