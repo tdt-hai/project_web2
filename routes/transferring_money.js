@@ -18,7 +18,7 @@ router.get(
         sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
         totalAmountTransaction = await Transaction.getTransactionOfUserInToDay(req.currentUser.account_number);
 
-        console.log("reload");
+        console.log("reload1");
         console.log(totalAmountTransaction);
         req.sourceAccount = sourceAccount;
         res.locals.sourceAccount = sourceAccount;

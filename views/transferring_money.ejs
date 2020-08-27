@@ -46,11 +46,14 @@
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text"><i class="fa fa-credit-card-alt"></i></label>
                                                 </div>
-                                                <div class="form-group">
-                                                    <h4 style="color: red; text-align: end"><%= errDestinationAccount %></h4>
-                                                </div>
+                                                <input type="number" name="destinationAccountId" class="form-control" placeholder="1212554" min="1" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h4 style="color: red; text-align: end"><%= errDestinationAccount %></h4>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <label class="mr-sm-2">Nhập số tiền</label>
                                             <div class="input-group mb-3">
@@ -85,13 +88,14 @@
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text"><i class="fa fa-pencil-square-o"></i></label>
                                                 </div>
-                                                <div class="form-group">
-                                                    <h4 style="color: red; text-align: end"><%= errNote %></h4>
-                                                </div>
+                                                <input type="text" name="note" class="form-control" placeholder="hihi" />
                                             </div>
-
-                                            <button type="submit" class="btn btn-success btn-block waves-effect">Tiếp tục</button>
+                                            <div class="form-group">
+                                                <h4 style="color: red; text-align: end"><%= errNote %></h4>
+                                            </div>
                                         </div>
+
+                                        <button type="submit" class="btn btn-success btn-block waves-effect">Tiếp tục</button>
                                     </form>
                                 </div>
                             </div>
