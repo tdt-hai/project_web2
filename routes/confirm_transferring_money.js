@@ -87,6 +87,13 @@ router.post(
         await Account.subMoney(sourceAccountId, fee);
         await Transaction.saveTransactionHistory(fee, currency, sourceAccountId, sourceBankId, destinationBankId, null, "phi chuyen tien");
 
+        //Thông bào cho người chuyển
+        await Email.SendEmail(`${req.currentUser.email}`,`ACB biến động số dư`,`Bạn vừa chuyển vào số tài khoản ${destinationAccountId} với số tiền ${amount} VND`);
+
+        //Thông báo cho người nhận
+
+        await Email.SendEmail(`${destinationAccount.email}`,`ACB biến động số dư`,`Bạn vừa nhận được ${amount} VND từ số tài khoản ${req.currentUser.account_number}`)
+
         res.redirect("/users");
     })
 );
