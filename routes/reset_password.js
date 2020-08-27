@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../services/user');
 const asyncHandler = require('express-async-handler');
 const Email = require('../services/email');
+const Function = require('../services/function');
 /*Reset password*/
 
 

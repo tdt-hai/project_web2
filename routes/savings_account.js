@@ -5,7 +5,7 @@ const Account = require('../services/account');
 const User = require('../services/user');
 const Function = require('../services/function');
 const { update } = require('../services/user');
-router.get('/',asyncHandler(async function profile(req,res){
+router.get('/',Function.checkLogin,asyncHandler(async function profile(req,res){
         //Kiem tra da tồn tại tài khoản chưa
         const checkAccount = await Account.findSavingsAccountById(req.currentUser.id);
         if(checkAccount){

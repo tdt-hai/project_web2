@@ -7,35 +7,32 @@
 <br><br>
 <h2 style="text-align: center; color: black;">Thông tin cá nhân</h2>
 <br>
-            <form method="post">
                 <div class="row">
-                   
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h2 style="color: #100303">
                                        <%= currentUser.displayName%>
                                     </h2>
-                                 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" style ="background-color: #a896c7" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
-                               
                             </ul>
                         </div>
                     </div>
-                   
                 </div>
                 <div class="row">
                   <div class="col-md-4">
                        <div class="profile-img">
-                            <img src="https://media.techz.vn/resize_x355x/media2019/source/Nhung-do/A-Son-Tung-MTP/Son-Tung-MTP-lo-anh-dung-do-doi-voi-Thieu-Bao-Tram-9.jpg" alt="profile"/>
+                            <img src="/images/usersProfile/<%=id%>.png" alt="profile">
+                           
                               <form id="uploadForm" enctype="multipart/form-data" action="/profile/upload" method="POST">
                                                 <div class="file btn btn-lg btn-primary">
-                                                    <input class="file-upload-field" type="file" name="userProfile" multiple />
+                                                    <input type="file" accept="image/*" onchange="loadFile(event)" name="userProfile" />
                                                     <input type="submit" value="Upload Image" name="submit">
                                                     <span id = "status"></span></br>
                                                 </div>
+                                                <img id="output"/>
                               </form>
                         </div>
                         <div class="profile-work">
@@ -55,7 +52,15 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Identity paper</label>
+                                                <label>Số điện thoại</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> <%= currentUser.phoneNumber%> </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Loại giấy tờ</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p> <%= currentUser.paper_type %> </p>
@@ -63,7 +68,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>ID No:</label>
+                                                <label>Số giấy tờ</label>
                                             </div>
                                             <div class="col-md-6">
                                                  <p> <%= currentUser.number_paper %> </p>
@@ -71,7 +76,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Issued:</label>
+                                                <label>Ngày mở</label>
                                             </div>
                                             <div class="col-md-6">
                                                <p> <%= getdate %> </p>
@@ -80,7 +85,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Account number</label>
+                                                <label>Số tài khoản</label>
                                             </div>
                                             <div class="col-md-6">
                                                <p> <%= currentUser.account_number %> </p>
@@ -88,23 +93,30 @@
                                         </div>
                                          <div class="row">
                                             <div class="col-md-6">
-                                                <label>Active status</label>
+                                                <label>Trạng thái</label>
                                             </div>
                                             <div class="col-md-6">
-                                               <p> <%= currentUser.active %> </p>
+                                               <% if(currentUser.active == true){ %>
+                                                <p>Đã kích hoạt</p>
+                                                <% } else{ %>  
+                                                <p>Chưa kích hoạt</p>
+                                                <% } %>
                                             </div>
                                         </div>
                                          <div class="row">
                                             <div class="col-md-6">
-                                                <label>Admin role</label>
+                                                <label>Quản trị viên</label>
                                             </div>
                                             <div class="col-md-6">
-                                               <p> <%= currentUser.adminRole %> </p>
+                                              <% if(currentUser.adminRole == true){ %>
+                                                <p>Là quản trị viên</p>
+                                                <% } else{ %>  
+                                                <p>Không là quản trị viên</p>
+                                                <% } %>
                                             </div>
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                      
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label></label>
@@ -123,10 +135,17 @@
                         </div>
                     </div>
                 </div>
-            </form>           
         </div>
-
 </body>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
 <%- include('footer'); -%>

@@ -6,15 +6,18 @@ const Bank = require("../services/bank");
 const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
 const Email = require("../services/email");
+const Function = require('../services/function');
 const Account = require("../services/account");
 const Transaction = require("../services/transaction");
 var destinationAccount;
 var sourceAccount = null;
 var totalAmountTransaction = null;
 
-router.get(
-    "/",
-    asyncHandler(async function (req, res, next) {
+router.get( "/",Function.checkLogin,asyncHandler(async function (req, res, next) {
+        const user = await User.findUserById(req.session.userId);
+        if(user.active == false){
+            res.render('page404');
+        }
         sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
         totalAmountTransaction = await Transaction.getTransactionOfUserInToDay(req.currentUser.account_number);
 

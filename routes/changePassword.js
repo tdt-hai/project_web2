@@ -3,8 +3,10 @@ var router = express.Router();
 const user = require('../services/user');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
+const Function = require('../services/function');
+
 /*Login */
-router.get('/', asyncHandler( async function (req,res,next){
+router.get('/',Function.checkLogin,asyncHandler( async function (req,res,next){
 res.render('changePassword');
 }));
 //reset password 

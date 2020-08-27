@@ -7,6 +7,7 @@ const Transaction = require("../services/transaction");
 const n2vw = require("n2vw");
 const { body, validationResult } = require("express-validator");
 const Account = require("../services/account");
+const Function = require('../services/function');
 
 var destinationBankId;
 var destinationAccountId;
@@ -17,7 +18,7 @@ var vnd;
 var destinationAccount;
 
 router.get(
-    "/",
+    "/",Function.checkLogin,
     asyncHandler(async function (req, res, next) {
         destinationBankId = req.session.destinationBankId;
         destinationAccountId = req.session.destinationAccountId;
@@ -85,6 +86,13 @@ router.post(
         const fee = amount * 0.0007;
         await Account.subMoney(sourceAccountId, fee);
         await Transaction.saveTransactionHistory(fee, currency, sourceAccountId, sourceBankId, destinationBankId, null, "phi chuyen tien");
+
+        //Thông bào cho người chuyển
+        await Email.SendEmail(`${req.currentUser.email}`,`ACB biến động số dư`,`Bạn vừa chuyển vào số tài khoản ${destinationAccountId} với số tiền ${amount} VND`);
+
+        //Thông báo cho người nhận
+
+        await Email.SendEmail(`${destinationAccount.email}`,`ACB biến động số dư`,`Bạn vừa nhận được ${amount} VND từ số tài khoản ${req.currentUser.account_number}`)
 
         res.redirect("/users");
     })
