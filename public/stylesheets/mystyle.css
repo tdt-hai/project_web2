@@ -64,22 +64,22 @@ body{
     font-weight: bold;
     text-shadow: 2px 2px 5px black;
 }
-  .buttontk:hover {
-      background-color: #a73259;
-      color: white;
-      box-shadow: 0 9px #999;
-    }
-  .buttontk:disabled{
-    background-color: #050404;
+.buttontk:hover {
+    background-color: #a73259;
     color: white;
     box-shadow: 0 9px #999;
-  }
-  .buttontk:active {
-    background-color: #a73259;
-    box-shadow: 0 10px #666;
-    transform: translateY(4px);
-    
-  }
+}
+.buttontk:disabled{
+background-color: #050404;
+color: white;
+box-shadow: 0 9px #999;
+}
+.buttontk:active {
+background-color: #a73259;
+box-shadow: 0 10px #666;
+transform: translateY(4px);
+
+}
 
 .profile-img{
     text-align: center;
@@ -91,18 +91,28 @@ body{
 .profile-img .file {
     position: relative;
     overflow: hidden;
-    margin-top: -20%;
+    margin-top: 0%;
     width: 70%;
     border: none;
     border-radius: 0;
     font-size: 15px;
     background: #212529b8;
 }
+
+.profile-head h2{
+    color:white;
+}
 .profile-img .file input {
     position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
+    opacity: 2;
+    right: -1px;
+    top: 22px;
+} */
+.profile-img .file input {
+    position: absolute;
+    opacity: 2;
+    right: -1px;
+    top: 22px;
 }
 .profile-head h5{
     color: #333;
@@ -174,7 +184,7 @@ body{
     font-size: 20px;
 }
 .h3title,  .h3info{
-    color:white;
+    color:white;    
     font-size: 27px;
       
     margin-left: 20px;

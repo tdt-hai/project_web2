@@ -1,60 +1,59 @@
 <%- include('header')-%>
 <%- include('nav')-%>
 <div class="content-body">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header border-0">
-                                <h4 class="card-title">Users Lists</h4>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="transaction-table">
-                                    <div class="table-responsive">
-                                        <table class="table mb-0 table-responsive-sm">
-                                         <thead>
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Họ và tên</th>
-                                            <th scope="col">Số CMND</th>
-                                            <th scope="col">Ảnh CMND trước</th>
-                                            <th scope="col">Ảnh CMND sau</th>
-                                            <th scope="col">Trạng thái</th>
-                                            <th scope="col">Tình trạng</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% var i = 1 ; listUsers.forEach(function (t) { %>
-                                            <tr>
-                                              <form  action="/admin_auth/<%= t.id%>" method="POST">
-                                                <td><%- i++ %> </td>
-                                                <td><%= t.displayName %> </td>
-                                                <td><%= t.number_paper %></td>
-                                                <td><img src="/images/<%=t.id%>-frontImage.png" alt="Ảnh CMND mặt trước" width= "200" height= "150"></td>
-                                                <td><img src="/images/<%=t.id%>-backImage.png" alt="Ảnh CMND mặt sau" width="200" height="150"></td>
-                                                <% if(t.active == false){ %>
-                                                <td class="text-danger">Chưa xác thực</td>
-                                                <% } else{ %>  
-                                                <td>Đã xác thực</td>
-                                                <% } %>
-                                                <td class="text-danger"> 
-                                                    <select class="form-control" name = "status">
-                                                          <option value="true" <% if(t.active == true){ %>
-                                                                                selected="selected"
-                                                                                <% } %>> Mở</option>
-                                                          <option value="false" <% if(t.active == false){ %>
-                                                                                selected="selected"
-                                                                                <% } %>>Khóa</option>
-                                                    </select>
-                                                </td>
-                                                 <td><button class="btn btn-outline-secondary" type="submit" style = "color: while">Save</button></td>
-                                            </form>
-                                            </tr>
-                                            <% }) %>
-                                        </tbody>
-            
-                                        </table>
-                                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <h4 class="card-title">Users Lists</h4>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="transaction-table">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-responsive-sm">
+                                        <thead>
+                                        <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Họ và tên</th>
+                                        <th scope="col">Số CMND</th>
+                                        <th scope="col">Ảnh CMND trước</th>
+                                        <th scope="col">Ảnh CMND sau</th>
+                                        <th scope="col">Trạng thái</th>
+                                        <th scope="col">Tình trạng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% var i = 1 ; listUsers.forEach(function (t) { %>
+                                        <tr>
+                                            <form  action="/admin_auth/<%= t.id%>" method="POST">
+                                            <td><%- i++ %> </td>
+                                            <td><%= t.displayName %> </td>
+                                            <td><%= t.number_paper %></td>
+                                            <td><img src="/images/<%=t.id%>-frontImage.png" alt="Ảnh CMND mặt trước" width= "200" height= "150"></td>
+                                            <td><img src="/images/<%=t.id%>-backImage.png" alt="Ảnh CMND mặt sau" width="200" height="150"></td>
+                                            <% if(t.active == false){ %>
+                                            <td class="text-danger">Chưa xác thực</td>
+                                            <% } else{ %>  
+                                            <td>Đã xác thực</td>
+                                            <% } %>
+                                            <td class="text-danger"> 
+                                                <select class="form-control" name = "status">
+                                                        <option value="true" <% if(t.active == true){ %>
+                                                                            selected="selected"
+                                                                            <% } %>> Mở</option>
+                                                        <option value="false" <% if(t.active == false){ %>
+                                                                            selected="selected"
+                                                                            <% } %>>Khóa</option>
+                                                </select>
+                                            </td>
+                                                <td><button class="btn btn-outline-secondary" type="submit" style = "color: while">Save</button></td>
+                                        </form>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+        
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -62,4 +61,5 @@
                 </div>
             </div>
         </div>
+    </div>
 <%- include('footer')-%>

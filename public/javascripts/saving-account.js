@@ -8,6 +8,10 @@ function getInfo() {
         mCurrent = formattingCurrency(mCurrent);
 
     if(mTktk >= 100000 && mTktk < Number(mCurrent) && x>=1){
+        //Tính tiền vào tài khoản tiết kiệm
+        const rate = (x *(7 / 12)).toFixed(2);
+        var sMoney =mTktk+(mTktk * (rate/100));
+        showmTktk = sMoney.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
         document.getElementById("showTerm").innerHTML = x;
         document.getElementById("showMoney").innerHTML =showmTktk;
         var d = new Date();
@@ -16,7 +20,6 @@ function getInfo() {
         const date = formatDateToShow(d);
         document.getElementById("showDate").innerHTML = date;
         //hien thi lai suat
-        const rate = x *0.2;
         document.getElementById("interestRate").innerHTML = rate;
         document.getElementById("confirm").disabled = false;
         document.getElementById("checkmoney").innerHTML = "";
@@ -29,6 +32,7 @@ function getInfo() {
          document.getElementById("showTerm").innerHTML = " ";
          document.getElementById("showMoney").innerHTML =" ";
          document.getElementById("showDate").innerHTML = " ";
+         
     }
 }
 function formattingCurrency(money){

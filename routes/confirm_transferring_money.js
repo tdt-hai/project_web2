@@ -27,7 +27,6 @@ router.get(
         note = req.session.note;
         vnd = converter.getFullText(amount);
         destinationAccount = await User.findUserByAccountNumber(destinationAccountId);
-
         res.render("confirm_transferring_money", {
             destinationBankId,
             destinationAccountId,
@@ -43,7 +42,7 @@ router.get(
 router.post(
     "/",
     [
-        body("otp_code")
+        body('otp_code')
             .trim()
             .notEmpty()
             .custom(async function (otp_code, { req }) {
@@ -74,7 +73,6 @@ router.post(
                 errOTP_Code,
             });
         }
-
         const sourceAccountId = req.currentUser.account_number;
         const currency = "VND";
         const sourceBankId = "ACB";

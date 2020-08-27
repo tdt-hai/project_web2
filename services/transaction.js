@@ -27,6 +27,22 @@ class Transaction extends Model {
             return cash;
         } else return 0;
     }
+
+    static async findTransaction(sourceAccountId,destinationAccountId){
+        return Transaction.findAll({
+                where: {
+                    sourceAccountId: sourceAccountId,
+                    destinationAccountId: destinationAccountId,
+                },
+            })
+    }
+    static async findTransactionAccount(date1,date2,sourceAccountId,destinationAccountId){
+        return Transaction.findAll({
+            where: {
+                [Op.or]: [{ createdAt: { [Op.between]: [date1,date2] },sourceAccountId: sourceAccountId},{ createdAt: { [Op.between]: [date1,date2] },destinationAccountId: destinationAccountId}]
+            }
+        })
+    }
 }
 Transaction.init(
     {

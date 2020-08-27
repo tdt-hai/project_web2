@@ -27,12 +27,13 @@ router.get('/',asyncHandler (async function(req,res,next){
         var moneyInSavingsAc = null;
         if(tktk){
             tktkvnd = converter.getFullText(tktk.current_balance);
+            tktkvnd = tktkvnd[0].toUpperCase() + tktkvnd.substring(1)
             closeDay = await Function.formatDateToShow(tktk.close_day);
             moneyInSavingsAc = await Function.formattingCurrency(tktk.current_balance);
-
         }
         res.render('user_account',{tktk,tktt,money,openDay,closeDay,moneyInSavingsAc,tktkvnd,tkttvnd});
     }
+    res.render('user_account',{tktk,tktt,money,openDay,closeDay});
 }));
 
 module.exports = router

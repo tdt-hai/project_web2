@@ -4,12 +4,13 @@ const Sequelize = require("sequelize");
 const { or } = require("sequelize");
 const User = require("../services/user");
 const Op = Sequelize.Op;
-
+const Function = require('../services/function');
 /*model user*/
 
 const Model = Sequelize.Model;
 
 class Account extends Model {
+   
     static async addMoney(accountNumber, money) {
         return Account.increment({ current_balance: money }, { where: { account_number: accountNumber, type_account: "TKTT" } });
     }
@@ -19,6 +20,23 @@ class Account extends Model {
     }
     static async findAllAccount() {
         return Account.findAll();
+    }
+    static async findAllSavingsAccounts(){
+        return Account.findAll({
+            where: {
+                type_account: "TKTK",
+            }
+        })
+    }
+    static async DeleteSavingsAccountsByAccountNumber(accountnumber){
+        console.log('da xoa');
+        return Account.destroy({
+            where:{
+                type_account : 'TKTK',
+                account_number : accountnumber,
+            }
+              
+        });
     }
     static async findSavingsAccountById(id) {
         return Account.findOne({
@@ -58,6 +76,19 @@ class Account extends Model {
         (await u).update;
         await u.save();
     }
+  static async returnMoneyToCheckingAccount(){
+    const datenow = Function.getDateNow();
+    console.log(datenow);
+    const listSavings = Account.findAll({
+      where:{
+        // close_day: {[Op.startsWith]: '2020/08/19',},
+        close_day:datenow,
+          type_account: 'TKTK',
+      }
+    });
+    return listSavings;
+  }
+
 }
 Account.init(
     {
