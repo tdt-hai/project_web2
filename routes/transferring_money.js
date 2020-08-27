@@ -8,8 +8,10 @@ const randomstring = require("randomstring");
 const Email = require("../services/email");
 const Function = require('../services/function');
 const Account = require("../services/account");
+const Transaction = require("../services/transaction");
 var destinationAccount;
 var sourceAccount = null;
+var totalAmountTransaction = null;
 
 router.get( "/",Function.checkLogin,asyncHandler(async function (req, res, next) {
         const user = await User.findUserById(req.session.userId);
@@ -17,9 +19,13 @@ router.get( "/",Function.checkLogin,asyncHandler(async function (req, res, next)
             res.render('page404');
         }
         sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
+        totalAmountTransaction = await Transaction.getTransactionOfUserInToDay(req.currentUser.account_number);
+
+        console.log("reload1");
+        console.log(totalAmountTransaction);
         req.sourceAccount = sourceAccount;
         res.locals.sourceAccount = sourceAccount;
-        res.render("transferring_money", { errDestinationAccount: null, errAmount: null, errNote: null });
+        res.render("transferring_money", { errDestinationAccount: null, errAmount: null, errNote: null, totalAmountTransaction });
     })
 );
 
@@ -33,7 +39,7 @@ router.post(
             .custom(async function (destinationAccountId, { req }) {
                 destinationAccount = await Account.findAccountTKTT(destinationAccountId);
 
-                if (!destinationAccount) {
+                if (!destinationAccount || destinationAccountId == req.currentUser.account_number) {
                     throw Error("Tài khoản nhận không tồn tại..!");
                 } else {
                     return true;
@@ -45,8 +51,13 @@ router.post(
             .custom(async function (amount, { req }) {
                 const user = await Account.findAccountTKTT(req.currentUser.account_number);
 
+                amount = amount.replace(/\,/g, "");
+                amount = parseInt(amount, 10);
+
                 if (user.current_balance < amount) {
                     throw Error("Số dư của bạn không đủ...!");
+                } else if (totalAmountTransaction + amount > 100000000) {
+                    throw Error("Bạn đã vượt hạn mức được chuyển trong ngày....!");
                 } else {
                     return true;
                 }
@@ -76,7 +87,10 @@ router.post(
                 }
             });
 
-            return res.render("transferring_money", { errDestinationAccount, errAmount, errNote });
+            var totalAmountTransaction = await Transaction.getTransactionOfUserInToDay(req.currentUser.account_number);
+            totalAmountTransaction = totalAmountTransaction != null ? totalAmountTransaction : 0;
+
+            return res.render("transferring_money", { errDestinationAccount, errAmount, errNote, totalAmountTransaction });
         }
         req.session.destinationBankId = req.body.destinationBankId;
         req.session.destinationAccountId = req.body.destinationAccountId;

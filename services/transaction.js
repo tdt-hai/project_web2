@@ -1,7 +1,10 @@
 const db = require("./db");
 const Sequelize = require("sequelize");
-const { or } = require("sequelize");
+const { or, DATE } = require("sequelize");
+const { RequestResponseStatusCode } = require("nexmo");
 const Op = Sequelize.Op;
+const TODAY_START = new Date().setHours(0, 0, 0, 0);
+const NOW = new Date();
 
 /*model user*/
 const Model = Sequelize.Model;
@@ -10,6 +13,21 @@ class Transaction extends Model {
     static async saveTransactionHistory(amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note) {
         return Transaction.create({ amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note });
     }
+
+    static async getTransactionOfUserInToDay(userId) {
+        var cash = await Transaction.sum("amount", {
+            where: {
+                createdAt: {
+                    [Op.gt]: TODAY_START,
+                    [Op.lt]: NOW,
+                },
+            },
+        });
+        if (cash) {
+            return cash;
+        } else return 0;
+    }
+
     static async findTransaction(sourceAccountId,destinationAccountId){
         return Transaction.findAll({
                 where: {
