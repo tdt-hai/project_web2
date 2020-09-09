@@ -16,7 +16,6 @@ router.get('/', asyncHandler( async function (req,res,next){
 router.post('/',[
     body('email')
     .isEmail()
-    .normalizeEmail()
     .custom(async function (email){
         const found = await User.findUserByEmail(email);
         if(found)
@@ -51,7 +50,7 @@ router.post('/',[
     //Tạo tài khoản
     const users = await User.create({
         email: req.body.email,
-        password: User.hashPassword(passWord),
+        password: await User.hashPassword(passWord),
         displayName: req.body.displayName,
         phoneNumber:  req.body.phoneNumber,
         paper_type: req.body.paperType,

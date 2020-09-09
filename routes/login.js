@@ -12,6 +12,9 @@ router.post('/',asyncHandler(async function (req,res){
     
     const users =  await user.findUserByEmail(req.body.email);
     //res.json(users.adminRole);
+    console.log(users.password);
+    console.log(req.body.password);
+    console.log(user.verifyPassword(req.body.password,users.password ));
     if(!users || ! user.verifyPassword(req.body.password,users.password )){
         return res.render('page_loginError');
     }

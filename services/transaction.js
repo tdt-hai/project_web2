@@ -14,18 +14,16 @@ class Transaction extends Model {
         return Transaction.create({ amount, currency, sourceAccountId, sourceBankId, destinationBankId, destinationAccountId, note });
     }
 
-    static async getTransactionOfUserInToDay(userId) {
-        var cash = await Transaction.sum("amount", {
+    static async getTransactionOfUserInToDay(sourceAccountId) {
+        return Transaction.sum("amount", {
             where: {
+                sourceAccountId: sourceAccountId,
                 createdAt: {
                     [Op.gt]: TODAY_START,
                     [Op.lt]: NOW,
                 },
             },
         });
-        if (cash) {
-            return cash;
-        } else return 0;
     }
 
     static async findTransaction(sourceAccountId,destinationAccountId){
@@ -40,7 +38,8 @@ class Transaction extends Model {
         return Transaction.findAll({
             where: {
                 [Op.or]: [{ createdAt: { [Op.between]: [date1,date2] },sourceAccountId: sourceAccountId},{ createdAt: { [Op.between]: [date1,date2] },destinationAccountId: destinationAccountId}]
-            }
+            },
+            order:[['updatedAt', 'DESC']]
         })
     }
 }

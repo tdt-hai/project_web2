@@ -13,21 +13,24 @@ var destinationAccount;
 var sourceAccount = null;
 var totalAmountTransaction = null;
 
-router.get( "/",Function.checkLogin,asyncHandler(async function (req, res, next) {
-        const user = await User.findUserById(req.session.userId);
-        if(user.active == false){
-            res.render('page404');
-        }
+router.get(
+    "/",
+    asyncHandler(async function (req, res, next) {
         sourceAccount = await Account.findAccountTKTT(req.currentUser.account_number);
         totalAmountTransaction = await Transaction.getTransactionOfUserInToDay(req.currentUser.account_number);
-
-        console.log("reload1");
+        if (!Number.isNaN(totalAmountTransaction)) {
+            totalAmountTransaction = totalAmountTransaction;
+        } else {
+            totalAmountTransaction = 0;
+        }
+        console.log('reload1');
         console.log(totalAmountTransaction);
         req.sourceAccount = sourceAccount;
         res.locals.sourceAccount = sourceAccount;
         res.render("transferring_money", { errDestinationAccount: null, errAmount: null, errNote: null, totalAmountTransaction });
     })
 );
+
 
 router.post(
     "/",
