@@ -12,7 +12,7 @@
         "cookie-session": "^1.4.0",
         "debug": "~2.6.9",
         "ejs": "^2.6.2",
-        "express": "~4.16.1",
+        "express": "~4.17.3",
         "express-async-handler": "^1.1.4",
         "express-validator": "^6.6.0",
         "http-errors": "~1.6.3",
